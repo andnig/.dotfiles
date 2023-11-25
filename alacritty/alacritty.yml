@@ -91,4 +91,6 @@ colors:
     white: "#BAC2DE" # subtext1
 
 key_bindings:
-  - { key: Space,   mods: Control|Option, action: ToggleViMode }
+  - { key: Back,   mods: Control|Shift, action: ToggleViMode }
+  - { key: V,   mods: Control|Shift, action: Paste }
+  - { key: C,   mods: Control|Shift, action: Copy }
