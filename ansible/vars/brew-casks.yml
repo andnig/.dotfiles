@@ -10,7 +10,7 @@ casks:
   - font-fira-code
   - font-sf-mono-nerd-font
   - font-source-code-pro
-  - miniconda
+  - inkscape
   - postman
   - qlcolorcode
   - qlmarkdown
@@ -18,6 +18,8 @@ casks:
   - qlstephen
   - quicklook-csv
   - quicklook-json
+  - paintbrush
+  - readdle-spark
   - rectangle
   - suspicious-package
   - webpquicklook
