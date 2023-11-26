@@ -1,0 +1,6 @@
+- name: Stow dotfiles
+  shell: cd configs/ && ./stow.sh
+  tags:
+    - install
+    - dotfiles
+    - stow

@@ -1,0 +1,102 @@
+---
+- name: Include brew taps list
+  include_vars: vars/brew-taps.yml
+  tags:
+    - install
+
+- name: Include brew formula list
+  include_vars: vars/brew-formula.yml
+  tags:
+    - install
+
+- name: Include brew casks list
+  include_vars: vars/brew-casks.yml
+  tags:
+    - install
+
+- name: Include APT package list
+  include_vars: vars/apt.yml
+  tags:
+    - install
+
+- name: Include python package list
+  include_vars: vars/pip.yml
+  tags:
+    - install
+
+- block:
+  - name: Update/Upgrade Homebrew
+    homebrew:
+      update_homebrew: true
+      upgrade_all: true
+    tags:
+      - install
+
+  - name: Manage taps
+    homebrew_tap:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state | default('present') }}"
+    with_list: "{{ taps }}"
+    tags:
+      - install
+
+  - name: Manage formula
+    homebrew:
+      name: "{{ item.key }}"
+      install_options: "{{ item.value.options | default(omit) }}"
+      state: "{{ item.value.state | default('present') }}"
+    with_list: "{{ formulas }}"
+    tags:
+      - install
+
+  - name: Manage casks
+    homebrew_cask:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state | default('present') }}"
+    with_list: "{{ casks }}"
+    tags:
+      - install
+
+  - name: Manage python packages
+    pip:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state | default('latest') }}"
+      executable: "{{ item.value.executable | default('pip3') }}"
+    with_list: "{{ pip }}"
+    tags:
+      - install
+
+  when: ansible_os_family == "Darwin"
+
+- block:
+  - name: Update/Upgrade apt
+    apt:
+      update_cache: true
+      upgrade: dist
+
+  - name: Manage apt packages
+    apt:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state | default('latest') }}"
+    with_list: "{{ apt }}"
+
+  - name: Manage python packages
+    pip:
+      name: "{{ item.key }}"
+      state: "{{ item.value.state | default('latest') }}"
+      executable: "{{ item.value.executable | default('pip3') }}"
+    with_list: "{{ pip }}"
+    tags:
+      - install
+
+  become: true
+  when: ansible_os_family == "Debian"
+  tags: apt
+
+- name: Install tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+    update: yes
+  tags:
+    - install

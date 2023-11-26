@@ -1,0 +1,27 @@
+---
+casks:
+  - alacritty
+  - appcleaner
+  - betterzip
+  - cheatsheet
+  - docker
+  - flux
+  - flycut
+  - font-fira-code
+  - font-sf-mono-nerd-font
+  - font-source-code-pro
+  - miniconda
+  - postman
+  - qlcolorcode
+  - qlmarkdown
+  - qlprettypatch
+  - qlstephen
+  - quicklook-csv
+  - quicklook-json
+  - rectangle
+  - suspicious-package
+  - webpquicklook
+  - microsoft-onenote
+  - onedrive
+  - microsoft-edge
+  - 1password

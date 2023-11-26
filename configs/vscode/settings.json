@@ -1,0 +1,75 @@
+{
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-O>": true,
+        "<C-s>": false,
+        "<C-z>": false
+    },
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Default Dark+",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontFamily": "Fira Code",
+    "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+    "terminal.integrated.inheritEnv": false,
+    "python.analysis.typeCheckingMode": "basic",
+    "workbench.iconTheme": "material-icon-theme",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "redhat.telemetry.enabled": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.tabSize": 2,
+    "auto-close-tag.insertSpaceBeforeSelfClosingTag": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.shellIntegration.history": 10000,
+    "terminal.integrated.persistentSessionScrollback": 10000,
+    "notebook.output.wordWrap": true,
+    "cSpell.userWords": [
+        "langchain",
+        "openai",
+        "pgvector",
+        "psql",
+        "unsubscription"
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "ruff.interpreter": [
+        "/opt/homebrew/Caskroom/miniconda/base/bin/python"
+    ],
+    "ruff.showNotifications": "onError",
+    "black-formatter.interpreter": [
+        "/opt/homebrew/Caskroom/miniconda/base/bin/python"
+    ],
+    "black-formatter.showNotifications": "onError",
+    "ruff.importStrategy": "useBundled",
+    "ruff.lint.args": [
+        "--select=ALL"
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "pasteImage.basePath": "${currentFileDir}/images",
+    "editor.lineNumbers": "relative",
+    "window.zoomLevel": -1,
+    "vim.useSystemClipboard": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
