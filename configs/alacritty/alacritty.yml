@@ -7,6 +7,7 @@ window:
     y: 16
   dynamic_padding: false
   decorations: buttonless
+  option_as_alt: Both
 
 font:
   normal:
