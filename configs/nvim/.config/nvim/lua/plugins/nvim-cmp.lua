@@ -1,14 +1,12 @@
 return {
-    -- the next two settings setup tab to complete snippets and enter to do nothing
-    {
-        "L3MON4D3/LuaSnip",
-        keys = function()
-            return {}
-        end,
-    },
-    -- then: setup supertab in cmp
+
+    -- nvim-cmp configuration so to not preselect completion and require tab to select
     {
         "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-emoji",
+            opts = nil,
+        },
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
             local has_words_before = function()
@@ -26,10 +24,14 @@ return {
             local cmp = require("cmp")
 
             opts.mapping = vim.tbl_extend("force", opts.mapping, {
+                ["<CR>"] = vim.NIL,
+
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
-                        cmp.confirm({ select = true })
-                    elseif luasnip.expand_or_jumpable() then
+                        cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
+                    elseif require("copilot.suggestion").is_visible() then
+                        require("copilot.suggestion").accept()
+                    elseif luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
                     elseif has_words_before() then
                         cmp.complete()
@@ -37,6 +39,7 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }),
+
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
@@ -46,8 +49,9 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }),
-                ["<CR>"] = vim.NIL,
             })
+            opts.preselect = cmp.PreselectMode.None
+            opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
         end,
     },
 }
