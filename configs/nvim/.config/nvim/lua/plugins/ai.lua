@@ -17,6 +17,10 @@ return {
                     auto_trigger = true,
                     accept = false, -- disable built-in keymapping
                 },
+                filetypes = {
+                    markdown = true,
+                    yaml = true,
+                },
             })
 
             -- hide copilot suggestions when cmp menu is open
@@ -67,6 +71,31 @@ return {
                     local status = require("copilot.api").status.data
                     return colors[status.status] or colors[""]
                 end,
+            })
+        end,
+    },
+    -- https://github.com/jackMort/ChatGPT.nvim
+    {
+        "jackMort/ChatGPT.nvim",
+        dependencies = {
+            { "MunifTanjim/nui.nvim" },
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope.nvim" },
+        },
+        -- event = "VeryLazy",
+        config = function()
+            local home = vim.fn.expand("$HOME")
+            require("chatgpt").setup({
+                api_key_cmd = "cat " .. home .. "/.secrets/openai.secret",
+                openai_params = {
+                    model = "gpt-4",
+                },
+                openai_edit_params = {
+                    model = "gpt-3.5-turbo",
+                    temperature = 0,
+                    top_p = 1,
+                    n = 1,
+                },
             })
         end,
     },

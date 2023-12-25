@@ -6,6 +6,7 @@ return {
         dependencies = {
             "hrsh7th/cmp-emoji",
             opts = nil,
+            "abecodes/tabout.nvim",
         },
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)

@@ -2,6 +2,7 @@
   vars:
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    secret_dir: "{{ lookup('env', 'HOME') }}/.secrets" 
     personal: "{{ lookup('env', 'HOME') }}/personal"
     work: "{{ lookup('env', 'HOME') }}/work"
   pre_tasks:
