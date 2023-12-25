@@ -38,3 +38,4 @@ formulas:
   - jesseduffield/lazygit/lazygit
   - miniforge
   - pnpm
+  - task
