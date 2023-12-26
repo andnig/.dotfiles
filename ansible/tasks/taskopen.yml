@@ -1,0 +1,40 @@
+- name: Clone taskopen repository
+  git:
+    repo: 'https://github.com/jschlatow/taskopen.git'
+    dest: '/tmp/taskopen'
+    clone: yes
+    update: yes
+- name: Compile and Install taskopen for Linux
+  block:
+    - name: Compile taskopen
+      make:
+        chdir: '/tmp/taskopen'
+        params:
+          PREFIX: "/usr"
+
+    - name: Install taskopen
+      become: true
+      make:
+        chdir: '/tmp/taskopen'
+        target: 'install'
+        params:
+          PREFIX: "/usr"
+  when: ansible_os_family == "Debian"
+
+- name: Compile and Install taskopen for macOS
+  block:
+    - name: Compile taskopen
+      make:
+        chdir: '/tmp/taskopen'
+        params:
+          PREFIX: "/usr/local"
+
+    - name: Install taskopen
+      become: true
+      make:
+        chdir: '/tmp/taskopen'
+        target: 'install'
+        params:
+          PREFIX: "/usr/local"
+  when: ansible_os_family == "Darwin"
+

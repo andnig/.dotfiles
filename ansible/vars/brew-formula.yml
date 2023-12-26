@@ -39,3 +39,5 @@ formulas:
   - miniforge
   - pnpm
   - task
+  - nim
+  - syncthing

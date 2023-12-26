@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+local methods = require("methods")
+
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste but do not override yank register" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
@@ -26,3 +28,24 @@ vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line up" })
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line down" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>bn",
+    "<cmd>lua require('methods').create_buffer_with_name()<CR>",
+    { noremap = true, silent = true, desc = "Create buffer with name" }
+)
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>nr",
+    "<cmd>lua require('methods').create_new_note('russmedia')<CR>",
+    { noremap = true, silent = true, desc = "Create new Russmedia note" }
+)
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>ng",
+    "<cmd>lua require('methods').create_new_note('general')<CR>",
+    { noremap = true, silent = true, desc = "Create new General note" }
+)

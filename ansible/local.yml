@@ -5,6 +5,7 @@
     secret_dir: "{{ lookup('env', 'HOME') }}/.secrets" 
     personal: "{{ lookup('env', 'HOME') }}/personal"
     work: "{{ lookup('env', 'HOME') }}/work"
+    username: "{{ lookup('env', 'USER') }}"
   pre_tasks:
   - name: Update Apt
     when: ansible_os_family == "Debian"
