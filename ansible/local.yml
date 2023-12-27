@@ -22,13 +22,19 @@
     - include: tasks/git.yml
     - include: tasks/packages.yml
     - include: tasks/mamba.yml
+      # Mamba is installed with brew on macOS
       when: ansible_os_family == "Debian"
     - include: tasks/nvim.yml
+      # Neovim is installed with brew on macOS
       when: ansible_os_family == "Debian"
     - include: tasks/stow.yml
     - include: tasks/zsh.yml
     - include: tasks/node.yml
     - include: tasks/npm-packages.yml
+    - include: tasks/starship.yml
+      # Starship is installed with brew on macOS
+      when: ansible_os_family == "Debian"
+    - include: tasks/init.yml
   roles:
     - role: ecgalaxy.vscode
       include_vars:

@@ -1,7 +1,14 @@
 #!/usr/bin/env zsh
 
 if [[ -z $STOW_FOLDERS ]]; then
-	STOW_FOLDERS="alacritty,karabiner,nvim,starship,tmux"
+	case "$(uname -s)" in
+	Darwin)
+		STOW_FOLDERS="alacritty,karabiner,nvim,starship,tmux,taskopen,taskwarrior,vscode,zsh_macos"
+	;;
+	Linux)
+		STOW_FOLDERS="nvim,starship,tmux,taskopen,taskwarrior,zsh_macos"
+	;;
+	esac
 fi
 
 if [[ -z $DOTFILES ]]; then
@@ -14,12 +21,5 @@ for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g"); do
 	stow -D $folder -t $HOME
 	stow $folder -t $HOME
 done
-
-# if macos, stow zsh_macos, otherwise zsh_linux
-if [[ $(uname) == "Darwin" ]]; then
-    stow zsh_macos -t $HOME
-else
-    stow zsh_linux -t $HOME
-fi
 
 popd

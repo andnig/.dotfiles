@@ -1,19 +1,24 @@
-- name: Download Miniforge3.sh
-  get_url:
-    url: "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
-    dest: "/tmp/Miniforge3.sh"
-    mode: '0755'
+- block:
+  - name: Download Miniforge3.sh
+    get_url:
+      url: "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+      dest: "/tmp/Miniforge3.sh"
+      mode: '0755'
 
-- name: Run Miniforge3.sh
-  shell: "/tmp/Miniforge3.sh -b -p {{ ansible_env.HOME }}/conda"
-  args:
-    creates: "{{ ansible_env.HOME }}/conda/etc/profile.d/conda.sh"
-  register: result
+  - name: Run Miniforge3.sh
+    shell: "/tmp/Miniforge3.sh -b -p {{ ansible_env.HOME }}/conda"
+    args:
+      creates: "{{ ansible_env.HOME }}/conda/etc/profile.d/conda.sh"
+    register: result
 
-- name: Source conda.sh
-  shell: source {{ ansible_env.HOME }}/conda/etc/profile.d/conda.sh
-  when: result is changed
+  - name: Source conda.sh
+    shell: source {{ ansible_env.HOME }}/conda/etc/profile.d/conda.sh
+    when: result is changed
 
-- name: Source mamba.sh
-  shell: source {{ ansible_env.HOME }}/conda/etc/profile.d/mamba.sh
-  when: result is changed
+  - name: Source mamba.sh
+    shell: source {{ ansible_env.HOME }}/conda/etc/profile.d/mamba.sh
+    when: result is changed
+
+  tags: 
+    - install
+    - mamba
