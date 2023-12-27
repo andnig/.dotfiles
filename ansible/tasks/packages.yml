@@ -2,26 +2,36 @@
 - name: Include brew taps list
   include_vars: vars/brew-taps.yml
   tags:
+    - apt
+    - packages
     - install
 
 - name: Include brew formula list
   include_vars: vars/brew-formula.yml
   tags:
+    - apt
+    - packages
     - install
 
 - name: Include brew casks list
   include_vars: vars/brew-casks.yml
   tags:
+    - apt
+    - packages
     - install
 
 - name: Include APT package list
   include_vars: vars/apt.yml
   tags:
+    - apt
+    - packages
     - install
 
 - name: Include python package list
   include_vars: vars/pip.yml
   tags:
+    - apt
+    - packages
     - install
 
 - block:
@@ -29,67 +39,42 @@
     homebrew:
       update_homebrew: true
       upgrade_all: true
-    tags:
-      - install
 
   - name: Manage taps
     homebrew_tap:
-      name: "{{ item.key }}"
+      name: "{{ item }}"
       state: "{{ item.value.state | default('present') }}"
     with_list: "{{ taps }}"
-    tags:
-      - install
 
   - name: Manage formula
     homebrew:
-      name: "{{ item.key }}"
+      name: "{{ item }}"
       install_options: "{{ item.value.options | default(omit) }}"
       state: "{{ item.value.state | default('present') }}"
     with_list: "{{ formulas }}"
-    tags:
-      - install
 
   - name: Manage casks
     homebrew_cask:
-      name: "{{ item.key }}"
+      name: "{{ item }}"
       state: "{{ item.value.state | default('present') }}"
     with_list: "{{ casks }}"
-    tags:
-      - install
 
   - name: Manage alacritty (requires no-quarantine)
     homebrew_cask:
       name: "alacritty"
       state: "present"
       install_options: "no-quarantine"
-    tags:
-      - install
 
   - name: Start Syncthing service
     command: brew services start syncthing
-    tags:
-      - install
 
   when: ansible_os_family == "Darwin"
-  tags: brew
+  tags: 
+    - brew
+    - install
+    - packages
 
 - block:
-  - name: Update/Upgrade apt
-    apt:
-      update_cache: true
-      upgrade: dist
-  - name: Add Docker GPG apt Key
-    apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
-      state: present
-  - name: Add Docker Repository
-    apt_repository:
-      repo: deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
-      state: present
-  - name: Add PPA for Lazygit
-    apt_repository:
-      repo: ppa:lazygit-team/daily
-      state: present
   - name: Update/Upgrade apt
     apt:
       update_cache: true
@@ -101,9 +86,18 @@
       append: yes
   - name: Manage apt packages
     apt:
-      name: "{{ item.key }}"
-      state: "{{ item.value.state | default('latest') }}"
-    with_list: "{{ apt }}"
+      name: "{{ apt }}"
+
+  - name: Download Nim-lang initialization script
+    get_url:
+      url: https://nim-lang.org/choosenim/init.sh
+      dest: /tmp/init.sh
+      mode: '0755'
+
+  - name: Execute Nim-lang initialization script
+    shell: sh /tmp/init.sh -y
+    args:
+      executable: /bin/sh
 
   - name: Enable Syncthing service for local user
     systemd:
@@ -117,16 +111,21 @@
 
   become: true
   when: ansible_os_family == "Debian"
-  tags: apt
+  tags: 
+   - packages
+   - apt
+   - install
 
 - name: Manage python packages
   pip:
-    name: "{{ item.key }}"
+    name: "{{ item }}"
     state: "{{ item.value.state | default('latest') }}"
     executable: "{{ item.value.executable | default('pip3') }}"
   with_list: "{{ pip }}"
   tags:
     - install
+    - pip
+    - packages
 
 - name: Install tmux plugin manager
   git:
@@ -135,3 +134,5 @@
     update: yes
   tags:
     - install
+    - packages
+    - tmux

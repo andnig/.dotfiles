@@ -138,7 +138,7 @@ esac
 eval "$(starship init zsh)"
 
 alias ls='exa --icons'
-alias cat='bat --style=plain,header'
+alias cat='batcat --style=plain,header'
 alias cl='clear'
 
 
@@ -160,4 +160,5 @@ if [ -f "/home/andreas/miniconda3/etc/profile.d/mamba.sh" ]; then
     . "/home/andreas/miniconda3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
+export PATH=/home/andreas/.nimble/bin:$PATH
 

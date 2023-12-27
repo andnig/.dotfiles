@@ -47,7 +47,7 @@ tags_string=$(
 
 # Run main playbook
 echo "[i] Run Playbook"
-ansible-playbook ./ansible/local.yml --ask-become-pass --tags $tags_string
+ansible-playbook ./ansible/local.yml --ask-become-pass --tags $tags_string --ask-vault-pass
 
 echo "[i] From now on you can use $ dotfiles to manage your dotfiles"
 echo "[i] You can run the script postinstall.sh now!"

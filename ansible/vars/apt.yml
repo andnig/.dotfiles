@@ -1,7 +1,6 @@
 ---
 apt:
   - taskwarrior
-  - nim
   - syncthing
   - curl
   - bat
@@ -20,12 +19,9 @@ apt:
   - gh
   - jq
   - ripgrep
-  - ruff
   - stow
   - tmux
-  - lazygit
   - taskwarrior
   - vit
-  - nim
   - syncthing
   

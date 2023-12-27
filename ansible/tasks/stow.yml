@@ -1,5 +1,7 @@
 - name: Stow dotfiles
-  shell: cd configs/ && ./stow.sh
+  shell: cd ./configs/ && ./stow.sh
+  args:
+    chdir: "{{ dotfiles_dir }}"
   tags:
     - install
     - dotfiles

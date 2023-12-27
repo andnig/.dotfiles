@@ -1,0 +1,33 @@
+- block:
+  - name: Get latest release of Lazygit
+    uri:
+      url: https://api.github.com/repos/jesseduffield/lazygit/releases/latest
+      return_content: yes
+    register: lazygit_release
+
+  - name: Set Lazygit version
+    set_fact:
+      lazygit_version: "{{ lazygit_release.json.tag_name[1:] }}"
+
+  - name: Download Lazygit tar.gz
+    get_url:
+      url: "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
+      dest: "/tmp/lazygit.tar.gz"
+
+  - name: Extract Lazygit from tar.gz
+    unarchive:
+      src: "/tmp/lazygit.tar.gz"
+      dest: "/tmp/"
+      creates: "/tmp/lazygit"
+
+  - name: Install Lazygit binary
+    command:
+      cmd: install /tmp/lazygit /usr/local/bin/
+    become: true
+
+  tags: 
+    - lazygit
+    - install
+    - packages
+    - apt
+  when: ansible_os_family == "Debian"

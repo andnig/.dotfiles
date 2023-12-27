@@ -4,14 +4,14 @@
     scope: global
     value: "andreas.nigg@devopsandmore.com"
   tags:
-  - git-personal
+    - git-personal
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
     value: "Andreas Nigg"
   tags:
-  - git-personal
+    - git-personal
 
 - name: Git work setup email
   git_config:
@@ -19,11 +19,11 @@
     scope: global
     value: "andreas.nigg@russmedia.com"
   tags:
-  - git-work
+    - git-work
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
     value: "Andreas Nigg"
   tags:
-  - git-work
+    - git-work
