@@ -33,5 +33,8 @@ if (-not (Test-Path $alacrittyConfigTarget)) {
 New-Item -ItemType SymbolicLink -Path $alacrittyConfigTarget -Name "alacritty.yml" -Value $alacrittyConfigSource -Force
 Copy-Item $wslSource $userProfile -Force
 
+choco install sparkmail -y
+winget install -e --id SamHocevar.WinCompose --accept-package-agreements --accept-source-agreements
 # Optional: Refresh environment variables again
 refreshenv
+
