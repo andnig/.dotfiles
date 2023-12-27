@@ -1,3 +1,4 @@
+#dsjfkl
 live_config_reload: true
 
 shell:
@@ -5,7 +6,7 @@ shell:
   args:
     - --cd ~
 window:
-  opacity: 0.85
+  opacity: 0.95
   padding:
     x: 18
     y: 16

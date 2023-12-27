@@ -18,7 +18,7 @@ choco install alacritty -y
 choco install nerdfont-hack -y
 
 # Copying alacritty.yml to the user's AppData\Roaming\alacritty folder
-$alacrittyConfigSource = ".\configs\alacritty_windows\alacritty.yml"
+$alacrittyConfigSource = "\\wsl.localhost\Ubuntu-20.04\home\andreas\.dotfiles\configs\alacritty_windows\alacritty.yml"
 $wslSource = ".\configs\wsl\.wslconfig"
 $userProfile = [Environment]::GetFolderPath('UserProfile')
 $alacrittyConfigTarget = Join-Path $userProfile "AppData\Roaming\alacritty"
@@ -29,7 +29,8 @@ if (-not (Test-Path $alacrittyConfigTarget)) {
 }
 
 # Copy the config files
-Copy-Item $alacrittyConfigSource $alacrittyConfigTarget -Force
+#Copy-Item $alacrittyConfigSource $alacrittyConfigTarget -Force
+New-Item -ItemType SymbolicLink -Path $alacrittyConfigTarget -Name "alacritty.yml" -Value $alacrittyConfigSource -Force
 Copy-Item $wslSource $userProfile -Force
 
 # Optional: Refresh environment variables again
