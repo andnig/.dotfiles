@@ -13,3 +13,8 @@ To set up a new macos system, follow the steps below:
     git remote remove origin
     git add remote origin git@github:andnig/.dotfiles.git
     ```
+1. Run `ssh-add` to add ssh key to ssh-agent.
+
+## Troubleshooting
+
+- If tmux does not install plugins, `rm -f $HOME/.config/tmux/plugins` and `ctrl + B + I` again.

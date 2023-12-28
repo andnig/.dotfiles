@@ -26,3 +26,7 @@ Set-ExecutionPolicy Bypass -Scope Process
     git add remote origin git@github.com:andnig/.dotfiles.git
     ```
 14. Run `ssh-add` to add ssh key to ssh-agent.
+
+## Troubleshooting
+
+- If tmux does not install plugins, `rm -f $HOME/.config/tmux/plugins` and `ctrl + B + I` again.
