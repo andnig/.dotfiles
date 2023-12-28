@@ -12,11 +12,11 @@
     register: result
 
   - name: Source conda.sh
-    shell: source {{ ansible_env.HOME }}/conda/etc/profile.d/conda.sh
+    shell: "source {{ ansible_env.HOME }}/conda/etc/profile.d/conda.sh"
     when: result is changed
 
   - name: Source mamba.sh
-    shell: source {{ ansible_env.HOME }}/conda/etc/profile.d/mamba.sh
+    shell: "source {{ ansible_env.HOME }}/conda/etc/profile.d/mamba.sh"
     when: result is changed
 
   tags: 

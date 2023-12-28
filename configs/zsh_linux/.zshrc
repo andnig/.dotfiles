@@ -1,11 +1,11 @@
 /usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/DESKTOP-SMKGJRI-sh
+source $HOME/.keychain/$HOST-sh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/andreas/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,8 +71,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-completions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python fzf-zsh-plugin kubectl)
-
+plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python fzf-zsh-plugin kubectl taskwarrior)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -86,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='mvime
 # fi
 
 # Compilation flags
@@ -101,41 +101,32 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-#export DOTNET_ROOT=$HOME/dotnet
-#export PATH=$PATH:$DOTNET_ROOT
-
 alias r="radian"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-export PATH="$PATH:$(yarn global bin)"
-export PATH="$PATH:/home/andreas/.dotnet/tools/"
+export PATH="$PATH:$HOME/.dotnet/tools/"
 
 autoload -Uz compinit && compinit
 
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-export PATH="/home/andreas/.local/bin:$PATH"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 source <(kubectl completion zsh)
-source <(kubectl krew completion zsh)
-
-export PATH="/home/andreas/.deta/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/home/andreas/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 eval "$(starship init zsh)"
+
+# n version manager
+export PATH="$HOME/.local/.npm-global/bin:$PATH"
+export PATH="$HOME/.local/n/bin:$PATH"
+export N_PREFIX="$HOME/.local/n"
 
 alias ls='exa --icons'
 alias cat='batcat --style=plain,header'
@@ -144,21 +135,21 @@ alias cl='clear'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/andreas/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/andreas/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/andreas/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/andreas/miniconda3/bin:$PATH"
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/home/andreas/miniconda3/etc/profile.d/mamba.sh" ]; then
-    . "/home/andreas/miniconda3/etc/profile.d/mamba.sh"
+if [ -f "$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/miniconda3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
-export PATH=/home/andreas/.nimble/bin:$PATH
+export PATH=$HOME/.nimble/bin:$PATH
 

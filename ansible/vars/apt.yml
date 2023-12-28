@@ -3,6 +3,7 @@ apt:
   - taskwarrior
   - syncthing
   - curl
+  - gcc
   - bat
   - docker-ce
   - docker-ce-cli
@@ -13,6 +14,8 @@ apt:
   - ca-certificates
   - software-properties-common
   - python3-setuptools
+  - python3-pip
+  - python3-neovim
   - exa
   - fd-find
   - fzf
@@ -24,4 +27,7 @@ apt:
   - taskwarrior
   - vit
   - syncthing
-  
+  - cmake
+  - gettext
+  - xclip
+  - keychain

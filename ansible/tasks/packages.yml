@@ -107,6 +107,29 @@
       name: syncthing@{{ username }}.service
       state: started
 
+  # Kubectl needs some special handling
+  - name: Get latest kubectl version
+    uri:
+      url: https://dl.k8s.io/release/stable.txt
+      return_content: yes
+    register: version
+
+  - name: Download the latest kubectl release
+    uri:
+      url: https://dl.k8s.io/release/{{ version.content }}/bin/linux/amd64/kubectl
+      dest: "{{ lookup('env', 'HOME') }}/.local/bin"
+      status_code:
+        - 200
+        - 304
+    register: kubectl
+
+  - name: Move kubectl and change permissions
+    file:
+      path: "{{ kubectl.path }}"
+      state: file
+      owner: "{{ username }}"
+      mode: "+x"
+
   become: true
   when: ansible_os_family == "Debian"
   tags: 
@@ -116,10 +139,9 @@
 
 - name: Manage python packages
   pip:
-    name: "{{ item }}"
-    state: "{{ item.value.state | default('latest') }}"
-    executable: "{{ item.value.executable | default('pip3') }}"
-  with_list: "{{ pip }}"
+    name: "{{ pip }}"
+    state: "latest"
+    executable: "pip3"
   tags:
     - install
     - pip

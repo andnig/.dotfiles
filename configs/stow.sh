@@ -6,7 +6,8 @@ if [[ -z $STOW_FOLDERS ]]; then
 		STOW_FOLDERS="alacritty,karabiner,nvim,starship,tmux,taskopen,taskwarrior,vscode,zsh_macos"
 	;;
 	Linux)
-		STOW_FOLDERS="nvim,starship,tmux,taskopen,taskwarrior,zsh_linux"
+        rm -rf "$HOME/.zshrc"
+		STOW_FOLDERS="nvim,starship,tmux,taskopen,taskwarrior,zsh_linux,ssh"
 	;;
 	esac
 fi

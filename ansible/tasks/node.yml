@@ -7,40 +7,40 @@
     - node
 
 - name: npmjs prefix
-  shell: mkdir -p ~/.local/.npm-global
+  shell: mkdir -p {{ lookup('env', 'HOME') }}/.local/.npm-global
   tags:
   - install
   - node
 
 - name: add npmjs to path
-  shell: PATH=~/.local/.npm-global/bin:$PATH
+  shell: PATH={{ lookup('env', 'HOME') }}/.local/.npm-global/bin:$PATH
   tags:
   - install
   - node
 
 - name: npmjs global settings
-  shell: npm config set prefix '~/.local/.npm-global'
+  shell: npm config set prefix '{{ lookup('env', 'HOME') }}/.local/.npm-global'
   tags:
   - install
   - node
 
 - name: npmjs global settings export path in case I don't have dotfiles installed
-  shell: export PATH=~/.local/.npm-global/bin:$PATH
+  shell: export PATH={{ lookup('env', 'HOME') }}/.local/.npm-global/bin:$PATH
   tags:
   - install
   - node
   - npm-path
 
-- name: Install N
+- name: install n
   npm:
     name: n
     global: yes
   tags:
-    - install
-    - node
+  - install
+  - node
 
 - name: Install correct version of Node
-  shell: n 18
+  shell: N_PREFIX="{{ lookup('env', 'HOME') }}/.local/n" ~/.local/.npm-global/bin/n 18
   tags:
     - install
     - node

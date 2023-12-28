@@ -2,6 +2,7 @@
   vars:
     source_key: "{{ lookup('env', 'HOME') }}/.dotfiles/.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    ssh_dir: "{{ lookup('env', 'HOME') }}/.ssh"
     secret_dir: "{{ lookup('env', 'HOME') }}/.secrets" 
     personal: "{{ lookup('env', 'HOME') }}/personal"
     work: "{{ lookup('env', 'HOME') }}/work"
@@ -35,8 +36,8 @@
     - include: tasks/lazygit.yml
       # Lazygit is installed with brew on macOS
       when: ansible_os_family == "Debian"
-    - include: tasks/stow.yml
     - include: tasks/zsh.yml
+    - include: tasks/stow.yml
     - include: tasks/node.yml
     - include: tasks/npm-packages.yml
     - include: tasks/starship.yml

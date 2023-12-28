@@ -18,9 +18,11 @@ Set-ExecutionPolicy Bypass -Scope Process
 8. Run `bootstrap.sh` in WSL
 9. Run `ansible.sh --tag private (or work) --tag install`
 10. Maybe run `conda init zsh` to initialize conda.
-11. Run `tmux` and then press `prefix + I` to install plugins.
-12. Replace http github url with ssh
+11. Maybe run `source ~/conda/etc/profile.d/mamba.sh` and `source ~/conda/etc/profile.d/conda.sh`
+12. Run `tmux` and then press `prefix + I` to install plugins.
+13. Replace http github url with ssh
     ```
     git remote remove origin
     git add remote origin git@github.com:andnig/.dotfiles.git
     ```
+14. Run `ssh-add` to add ssh key to ssh-agent.
