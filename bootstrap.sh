@@ -34,6 +34,7 @@ Linux)
 		debian | ubuntu)
 			if [[ ! -x /usr/bin/ansible ]]; then
 				echo "[i] Install Ansible"
+				sudo apt-get update
 				sudo apt-get install -y ansible
 			fi
 			;;
