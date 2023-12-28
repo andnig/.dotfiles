@@ -91,12 +91,14 @@
       url: https://nim-lang.org/choosenim/init.sh
       dest: /tmp/init.sh
       mode: '0755'
+    become: false
 
   - name: Execute Nim-lang initialization script
     shell: sh /tmp/init.sh -y
     args:
       executable: /bin/sh
-
+    become: false
+    
   - name: Enable Syncthing service for local user
     systemd:
       name: syncthing@{{ username }}.service

@@ -24,8 +24,11 @@
     - include: tasks/secrets.yml
     - include: tasks/git.yml
     - include: tasks/docker.yml
-    - include: tasks/packages.yml
       # Docker is installed with brew on macOS
+      when: ansible_os_family == "Debian"
+    - include: tasks/packages.yml
+    - include: tasks/taskopen.yml
+      # Taskopen is installed with brew on macOS
       when: ansible_os_family == "Debian"
     - include: tasks/mamba.yml
       # Mamba is installed with brew on macOS

@@ -21,7 +21,10 @@
           params:
             PREFIX: "/usr"
     when: ansible_os_family == "Debian"
-
+    tags:
+      - taskopen
+      - install
+      - packages
   - name: Compile and Install taskopen for macOS
     block:
       - name: Compile taskopen
@@ -38,6 +41,10 @@
           params:
             PREFIX: "/usr/local"
     when: ansible_os_family == "Darwin"
+    tags:
+      - taskopen
+      - install
+      - packages
   tags:
     - taskopen
     - install

@@ -43,9 +43,9 @@ refreshenv
 
 # Preparing symlink dirs for windows programs
 $userProfile = [Environment]::GetFolderPath('UserProfile')
-$wslConfigSource = "\\wsl.localhost\$distro\home\$wsluser\.dotfiles\configs\wsl\.wslconfig"
+$wslConfigSource = ".\configs\wsl\.wslconfig"
 $wslConfigTargaet = $userProfile
-$windowsTerminalConfigSource = "\\wsl.localhost\$distro\home\$wsluser\.dotfiles\configs\windows_terminal\settings.json"
+$windowsTerminalConfigSource = ".\configs\windows_terminal\settings.json"
 $windowsTerminalConfigTarget = Join-Path $userProfile "AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState"
 
 # Create the target directory if it doesn't exist
@@ -53,7 +53,6 @@ if (-not (Test-Path $windowsTerminalConfigTarget)) {
     New-Item -ItemType Directory -Force -Path $windowsTerminalConfigTarget
 }
 
-# Create the symlinks 
-New-Item -ItemType SymbolicLink -Path $windowsTerminalConfigTarget -Name "settings.json" -Value $windowsTerminalConfigSource -Force
-New-Item -ItemType SymbolicLink -Path $wslConfigTargaet -Name ".wslconfig" -Value $wslConfigSource -Force
-
+# Copy the files 
+Copy-Item -Path $windowsTerminalConfigSource -Destination (Join-Path $windowsTerminalConfigTarget "settings.json") -Force
+Copy-Item -Path $wslConfigSource -Destination (Join-Path $wslConfigTarget ".wslconfig") -Force
