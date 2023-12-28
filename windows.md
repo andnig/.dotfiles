@@ -1,13 +1,18 @@
 # Windows
 
-1. Run powershell as administrator
+1. Run powershell as administrator.
 2. Run the following command:
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process
 ```
-3. Run the following command:
+3. Optional: If your WSL distro is NOT "Ubuntu" change "Ubuntu" to your distro name in the following
+    files:
+    - `windows_terminal/settings.json`
+4. Run the following command:
 ```powershell
-./prepare_win.ps1
+./prepare_win.ps1 -distro 'Ubuntu' -wsluser 'andreas'
 ```
-4. Maybe run `conda init zsh` to initialize conda.
-5. Run `tmux` and then press `prefix + I` to install plugins.
+5. Run WSL and set 'andreas' as your user.
+6. Maybe run `conda init zsh` to initialize conda.
+7. Run `tmux` and then press `prefix + I` to install plugins.
+

@@ -1,5 +1,2 @@
 [wsl2]
 localhostForwarding=true
-
-[boot]
-systemd=true
