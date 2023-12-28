@@ -42,22 +42,17 @@
 
   - name: Manage taps
     homebrew_tap:
-      name: "{{ item }}"
+      name: "{{ taps }}"
       state: "{{ item.value.state | default('present') }}"
     with_list: "{{ taps }}"
 
   - name: Manage formula
     homebrew:
-      name: "{{ item }}"
-      install_options: "{{ item.value.options | default(omit) }}"
-      state: "{{ item.value.state | default('present') }}"
-    with_list: "{{ formulas }}"
+      name: "{{ formulas }}"
 
   - name: Manage casks
     homebrew_cask:
-      name: "{{ item }}"
-      state: "{{ item.value.state | default('present') }}"
-    with_list: "{{ casks }}"
+      name: "{{ casks }}"
 
   - name: Manage alacritty (requires no-quarantine)
     homebrew_cask:
