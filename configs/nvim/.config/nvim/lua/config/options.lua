@@ -8,4 +8,4 @@ vim.opt.softtabstop = 4
 
 vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "100"
-vim.opt.conceallevel = 0
+vim.opt.conceallevel = 1
