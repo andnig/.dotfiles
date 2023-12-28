@@ -27,6 +27,14 @@ Set-ExecutionPolicy Bypass -Scope Process
     ```
 14. Run `ssh-add` to add ssh key to ssh-agent.
 
+## Syncthing
+Open syncthing in your Pixel 6 and the web interface of the new computer on localhost:8384. 
+On Pixel 6, add the new device - when asked for confirmation on the new device select "introducer"
+("Verteilergeraet") - this automatically connects with all other devices Pixel 6 is synced.
+Add the shared folders on Pixel 6 as normal.
+(If the web ui cant be reached, look at `systemclt status syncthing@andreas` for info on which
+port the ui runs).
+
 ## Troubleshooting
 
 - If tmux does not install plugins, `rm -f $HOME/.config/tmux/plugins` and `ctrl + B + I` again.
