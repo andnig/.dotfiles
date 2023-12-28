@@ -35,8 +35,11 @@ winget install -e --id Microsoft.WindowsTerminal.Preview --accept-package-agreem
 winget install -e --id Microsoft.PowerToys --accept-package-agreements --accept-source-agreements
 winget install -e --id Microsoft.VisualStudioCode --accept-package-agreements --accept-source-agreements
 winget install -e --id Microsoft.PowerShell --accept-package-agreements --accept-source-agreements
+
 # Installing the WSL2 distro
+wsl --update
 wsl --install -d $distro --no-launch
+wsl --manage $distro --set-sparse true
 
 # Optional: Refresh environment variables again
 refreshenv
