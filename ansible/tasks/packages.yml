@@ -74,15 +74,17 @@
     apt:
       update_cache: true
       upgrade: dist
+
+  - name: Manage apt packages
+    apt:
+      name: "{{ apt }}"
+      state: latest
+
   - name: Add user to Docker group
     user:
       name: "{{ ansible_env.USER }}"
       groups: docker
       append: yes
-  - name: Manage apt packages
-    apt:
-      name: "{{ apt }}"
-      state: latest
 
   - name: Download Nim-lang initialization script
     get_url:
