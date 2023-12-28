@@ -13,6 +13,8 @@ Set-ExecutionPolicy Bypass -Scope Process
 ./prepare_win.ps1 -distro 'Ubuntu' -wsluser 'andreas'
 ```
 5. Run WSL and set 'andreas' as your user.
-6. Maybe run `conda init zsh` to initialize conda.
-7. Run `tmux` and then press `prefix + I` to install plugins.
+6. Run `bootstrap.sh` in WSL
+7. Run `ansible.sh --tag private (or work) --tag install`
+8. Maybe run `conda init zsh` to initialize conda.
+9. Run `tmux` and then press `prefix + I` to install plugins.
 

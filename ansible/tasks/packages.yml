@@ -87,6 +87,7 @@
   - name: Manage apt packages
     apt:
       name: "{{ apt }}"
+      state: latest
 
   - name: Download Nim-lang initialization script
     get_url:
