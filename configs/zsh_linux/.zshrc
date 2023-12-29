@@ -132,9 +132,14 @@ alias ls='exa --icons'
 alias cat='batcat --style=plain,header'
 alias cl='clear'
 
+# miniforge
+export PATH="$HOME/conda/bin:$PATH"
+source $HOME/conda/etc/profile.d/conda.sh
+source $HOME/conda/etc/profile.d/mamba.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
+# This block can be deleted once the old Ubuntu thingy is gone!
 __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
