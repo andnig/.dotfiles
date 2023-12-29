@@ -136,6 +136,7 @@ export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
 # custom scripts
 export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh
+alias on="cd $HOME/.notes && nvim ."
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"

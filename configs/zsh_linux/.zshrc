@@ -140,7 +140,7 @@ source $HOME/conda/etc/profile.d/mamba.sh
 # custom scripts
 export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh
-
+alias on="cd $HOME/.notes && nvim ."
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # This block can be deleted once the old Ubuntu thingy is gone!
