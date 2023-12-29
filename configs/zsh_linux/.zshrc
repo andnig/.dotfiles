@@ -137,6 +137,10 @@ export PATH="$HOME/conda/bin:$PATH"
 source $HOME/conda/etc/profile.d/conda.sh
 source $HOME/conda/etc/profile.d/mamba.sh
 
+# custom scripts
+export PATH="$HOME/scripts:$PATH"
+alias fo=find_and_open.sh
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # This block can be deleted once the old Ubuntu thingy is gone!

@@ -14,7 +14,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete into void" }
 
 vim.keymap.set(
     "n",
-    "<leader>x",
+    "<leader>fx",
     "<cmd>!chmod +x %<CR>",
     { silent = true, desc = "Chmod +x this file" }
 )
