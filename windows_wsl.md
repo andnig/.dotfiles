@@ -27,6 +27,13 @@ Set-ExecutionPolicy Bypass -Scope Process
     ```
 14. Run `ssh-add` to add ssh key to ssh-agent.
 
+## VSCode
+For now, vscode is is not automatically configured as it's kinda shitshow with WSL.
+Run `./ansible.sh --tag vscode` to install the extensions (not sure if this works due to windows).
+Then manually configure the settings, or copy the settings.json from 
+`configs/vscode_wsl/settings.json` to the vscode settings folder 
+(`%APPDATA%\Code\User\settings.json`)
+
 ## Syncthing
 Open syncthing in your Pixel 6 and the web interface of the new computer on localhost:8384. 
 On Pixel 6, add the new device - when asked for confirmation on the new device select "introducer"
