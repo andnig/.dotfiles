@@ -11,7 +11,7 @@
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.defaultProfile.osx": "zsh",
     "terminal.integrated.fontFamily": "Fira Code",
-    "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+    "python.defaultInterpreterPath": "${env:CONDA_PYTHON_EXE}",
     "terminal.integrated.inheritEnv": false,
     "python.analysis.typeCheckingMode": "basic",
     "workbench.iconTheme": "material-icon-theme",
@@ -47,11 +47,11 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "ruff.interpreter": [
-        "/opt/homebrew/Caskroom/miniconda/base/bin/python"
+        "${env:CONDA_PYTHON_EXE}"
     ],
     "ruff.showNotifications": "onError",
     "black-formatter.interpreter": [
-        "/opt/homebrew/Caskroom/miniconda/base/bin/python"
+        "${env:CONDA_PYTHON_EXE}"
     ],
     "black-formatter.showNotifications": "onError",
     "ruff.importStrategy": "useBundled",
