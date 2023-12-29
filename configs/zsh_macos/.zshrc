@@ -129,9 +129,11 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
-export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
+    . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 
 # custom scripts
 export PATH="$HOME/scripts:$PATH"
