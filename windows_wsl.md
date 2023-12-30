@@ -45,6 +45,6 @@ port the ui runs).
 ## Troubleshooting
 
 - If tmux does not install plugins, `rm -f $HOME/.config/tmux/plugins` and `ctrl + B + I` again.
-
+- You should see this image below. Otherwise, please check `image.nvim`
 ![image](./remote.png)
 

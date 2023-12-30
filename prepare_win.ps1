@@ -59,3 +59,11 @@ if (-not (Test-Path $windowsTerminalConfigTarget)) {
 # Copy the files 
 Copy-Item -Path $windowsTerminalConfigSource -Destination (Join-Path $windowsTerminalConfigTarget "settings.json") -Force
 Copy-Item -Path $wslConfigSource -Destination (Join-Path $wslConfigTarget ".wslconfig") -Force
+
+# Create Startmenu shortcut for kitty, launched in WSL
+$WScriptShell = New-Object -ComObject WScript.Shell
+$Shortcut = $WScriptShell.CreateShortcut("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\YourShortcutName.lnk")
+$Shortcut.TargetPath = "C:\Program Files\PowerShell\7\pwsh.exe"
+$Shortcut.Arguments = '-WorkingDirectory ~ -WindowStyle Hidden -Command "C:\Windows\System32\wsl.exe --cd ~ -e bash -c  ~/.local/kitty.app/bin/kitty"'
+$Shortcut.IconLocation = "whiskers-tokyo.ico"
+$Shortcut.Save()
