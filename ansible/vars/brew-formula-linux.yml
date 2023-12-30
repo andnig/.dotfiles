@@ -1,5 +1,4 @@
 ---
 formulas_linux:
   - gcc
-  - kitty
   - tmux
