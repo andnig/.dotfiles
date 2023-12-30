@@ -16,13 +16,13 @@ apt:
   - python3-setuptools
   - python3-pip
   - python3-neovim
+  - python3.11-dev
   - exa
   - fd-find
   - gh
   - jq
   - ripgrep
   - stow
-  - tmux
   - taskwarrior
   - vit
   - syncthing

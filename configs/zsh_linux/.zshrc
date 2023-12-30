@@ -131,9 +131,13 @@ export N_PREFIX="$HOME/.local/n"
 alias ls='exa --icons'
 alias cat='batcat --style=plain,header'
 alias cl='clear'
+alias kitty='$HOME/.local/kitty.app/bin/kitty'
+alias kitten='$HOME/.local/kitty.app/bin/kitten'
+export GTK_THEME=Adwaita:dark
 
 # miniforge
 export PATH="$HOME/conda/bin:$PATH"
+export CONDA_BASE_PREFIX="$HOME/conda"
 source $HOME/conda/etc/profile.d/conda.sh
 source $HOME/conda/etc/profile.d/mamba.sh
 
@@ -162,3 +166,5 @@ fi
 # <<< conda initialize <<<
 export PATH=$HOME/.nimble/bin:$PATH
 
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

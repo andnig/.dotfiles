@@ -2,19 +2,26 @@
 - name: Include brew taps list
   include_vars: vars/brew-taps.yml
   tags:
-    - apt
+    - brew
     - packages
     - install
 
 - name: Include brew formula list
   include_vars: vars/brew-formula.yml
   tags:
-    - apt
+    - brew
     - packages
     - install
 
 - name: Include brew casks list
   include_vars: vars/brew-casks.yml
+  tags:
+    - brew
+    - packages
+    - install
+    
+- name: Include brew formula list for linux
+  include_vars: vars/brew-formula-linux.yml
   tags:
     - apt
     - packages
@@ -30,7 +37,7 @@
 - name: Include python package list
   include_vars: vars/pip.yml
   tags:
-    - apt
+    - pip
     - packages
     - install
 
@@ -75,10 +82,19 @@
       update_cache: true
       upgrade: dist
 
+  - name: Update/Upgrade Homebrew
+    homebrew:
+      update_homebrew: true
+      upgrade_all: true
+
   - name: Manage apt packages
     apt:
       name: "{{ apt }}"
       state: latest
+
+  - name: Manage formula
+    homebrew:
+      name: "{{ formulas_linux }}"
 
   - name: Add user to Docker group
     user:
