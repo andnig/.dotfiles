@@ -30,3 +30,4 @@ apt:
   - gettext
   - xclip
   - keychain
+  - fonts-noto-color-emoji

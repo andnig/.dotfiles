@@ -10,6 +10,7 @@ casks:
   - font-sf-mono-nerd-font
   - font-source-code-pro
   - font-hack-nerd-font
+  - font-jetbrains-mono
   - inkscape
   - postman
   - qlcolorcode

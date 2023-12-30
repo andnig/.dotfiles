@@ -2,3 +2,6 @@
 formulas_linux:
   - gcc
   - tmux
+  - imagemagick
+  - lua@5.1
+  - luarocks

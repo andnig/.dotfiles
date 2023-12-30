@@ -135,6 +135,8 @@ if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+export CONDA_BASE_PREFIX="$HOME/conda"
+
 # custom scripts
 export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh

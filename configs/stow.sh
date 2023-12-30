@@ -3,11 +3,11 @@
 if [[ -z $STOW_FOLDERS ]]; then
 	case "$(uname -s)" in
 	Darwin)
-		STOW_FOLDERS="alacritty,karabiner,nvim,starship,tmux,taskopen_macos,taskwarrior,vscode,zsh_macos,ssh,scripts"
+		STOW_FOLDERS="kitty,karabiner,nvim,starship,tmux,taskopen_macos,taskwarrior,vscode,zsh_macos,ssh,scripts"
 	;;
 	Linux)
         rm -rf "$HOME/.zshrc"
-		STOW_FOLDERS="nvim,starship,tmux,taskopen_linux,taskwarrior,zsh_linux,ssh,scripts"
+		STOW_FOLDERS="kitty,nvim,starship,tmux,taskopen_linux,taskwarrior,zsh_linux,ssh,scripts"
 	;;
 	esac
 fi

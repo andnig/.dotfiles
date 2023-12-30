@@ -37,3 +37,6 @@ formulas:
   - vit
   - nim
   - syncthing
+  - imagemagick
+  - lua@5.1
+  - luarocks
