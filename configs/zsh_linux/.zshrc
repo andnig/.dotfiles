@@ -131,8 +131,6 @@ export N_PREFIX="$HOME/.local/n"
 alias ls='exa --icons'
 alias cat='batcat --style=plain,header'
 alias cl='clear'
-alias kitty='$HOME/.local/kitty.app/bin/kitty'
-alias kitten='$HOME/.local/kitty.app/bin/kitten'
 export GTK_THEME=Adwaita:dark
 
 # miniforge
