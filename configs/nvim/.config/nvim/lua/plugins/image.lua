@@ -19,8 +19,8 @@ return {
                     filetypes = { "norg" },
                 },
             },
-            max_width = nil,
-            max_height = nil,
+            max_width = 299,
+            max_height = 100,
             max_width_window_percentage = math.huge,
             max_height_window_percentage = math.huge,
             window_overlap_clear_enabled = true, -- toggles images when windows are overlapped

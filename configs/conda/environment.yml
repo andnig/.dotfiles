@@ -8,3 +8,5 @@ dependencies:
   - ipykernel
   - plotly
   - pyperclip
+  - nbformat
+  - python-kaleido
