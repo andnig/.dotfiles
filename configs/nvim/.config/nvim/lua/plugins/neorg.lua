@@ -6,6 +6,8 @@ return {
         require("neorg").setup({
             load = {
                 ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.itero"] = {},
+                ["core.promo"] = {},
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
                 ["core.summary"] = {}, -- Adds the generate-workspace-summary command
                 ["core.completion"] = {
