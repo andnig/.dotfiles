@@ -12,7 +12,7 @@ disabled = true
 
 [conda]
 format = "[$symbol$environment]($style) "
-symbol = "🅒 "
+symbol = " "
 
 [hostname]
 ssh_only = false
