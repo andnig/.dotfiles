@@ -27,6 +27,7 @@
       # Docker is installed with brew on macOS
       when: ansible_os_family == "Debian"
     - include: tasks/packages.yml
+    - include: tasks/kitty.yml
     - include: tasks/taskopen.yml
       # Taskopen is installed with brew on macOS
       when: ansible_os_family == "Debian"

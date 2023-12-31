@@ -1,0 +1,53 @@
+- name: Check if kitty is installed
+  command: which kitty
+  register: kitty_installed
+  ignore_errors: yes
+
+- block:
+  - name: Install kitty
+    command: /bin/bash -c "$(curl -fsSL https://sw.kovidgoyal.net/kitty/installer.sh)"
+
+  - block:
+    - name: Create symlink for kitty
+      file:
+        src: "~/.local/kitty.app/bin/kitty"
+        dest: "/usr/local/bin/kitty"
+        state: link
+        force: yes
+
+    - name: Create symlink for kitten
+      file:
+        src: "~/.local/kitty.app/bin/kitten"
+        dest: "/usr/local/bin/kitten"
+        state: link
+        force: yes
+
+    - name: Copy desktop file
+      copy:
+        src: "~/.local/kitty.app/share/applications/kitty.desktop"
+        dest: "/usr/share/applications/kitty.desktop"
+        owner: root
+        group: root
+        mode: 0644
+      become: true
+
+    - name: Find all whiskers_* files
+      find:
+        paths: "{{ dotfiles_dir }}/configs/kitty/.config/kitty/icons"
+        patterns: 'whiskers_*'
+      register: whiskers_files
+
+    - name: Copy files to /usr/share/icons/hicolor
+      copy:
+        src: "{{ item.path }}"
+        dest: "/usr/share/icons/hicolor/{{ item.path | regex_search('(\\d+x\\d+)') }}/apps/kitty.png"
+      loop: "{{ whiskers_files.files }}"
+      when: whiskers_files.matched > 0
+
+    when: ansible_os_family == "Debian"
+
+  when: kitty_installed.rc != 0
+  tags:
+    - kitty
+    - install
+    - packages

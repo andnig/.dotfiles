@@ -212,16 +212,3 @@
     - packages
     - luarocks
 
-- block:
-  - name: Check if kitty is installed
-    command: which kitty
-    register: kitty_installed
-    ignore_errors: yes
-
-  - name: Install kitty
-    command: /bin/bash -c "$(curl -fsSL https://sw.kovidgoyal.net/kitty/installer.sh)"
-    when: kitty_installed.rc != 0
-  tags:
-    - kitty
-    - install
-    - packages
