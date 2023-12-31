@@ -1,0 +1,104 @@
+---
+- block:
+  - set_fact:
+      font_dir: "~/.local/share/fonts"
+    when: ansible_os_family == "Debian" or ansible_os_family == "RedHat"
+
+  - set_fact:
+      font_dir: "~/Library/Fonts"
+    when: ansible_os_family == "Darwin"
+
+  - name: Get latest version of Nerd Fonts
+    uri:
+      url: "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
+      return_content: yes
+    register: latest_version_response
+
+  - name: Set latest version variable
+    set_fact:
+      latest_version: "{{ latest_version_response.json.tag_name }}"
+
+  - name: Download Nerd Fonts Symbols Only zip
+    get_url:
+      url: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ latest_version }}/NerdFontsSymbolsOnly.zip"
+      dest: "/tmp/NerdFontsSymbolsOnly.zip"
+      force: no
+
+  - name: Ensure fonts directory exists
+    file:
+      path: "/tmp/NerdFontsSymbolsOnly"
+      state: directory
+      mode: '0755'
+
+  - name: Unzip Nerd Fonts Symbols Only
+    unarchive:
+      src: "/tmp/NerdFontsSymbolsOnly.zip"
+      dest: "/tmp/NerdFontsSymbolsOnly"
+      remote_src: yes
+      creates: "/tmp/NerdFontsSymbolsOnly/SymbolsNerdFont-Regular.ttf"
+
+  - name: Ensure fonts directory exists
+    file:
+      path: "{{ font_dir }}"
+      state: directory
+      mode: '0755'
+
+  - name: Find .ttf files in extracted directory
+    find:
+      paths: "/tmp/NerdFontsSymbolsOnly"
+      patterns: "*.ttf"
+    register: font_files
+
+  - name: Copy font files to fonts directory
+    copy:
+      src: "{{ item.path }}"
+      dest: "{{ font_dir }}"
+    loop: "{{ font_files.files }}"
+    when: font_files.matched > 0
+  tags: &tags_for_zsh_tasks [ 'install', 'fonts', 'packages' ]
+
+- block:
+  - name: Download JetBrains Mono font zip
+    get_url:
+      url: "https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip"
+      dest: "/tmp/JetBrainsMono-2.304.zip"
+      force: no
+
+  - name: Ensure fonts directory exists
+    file:
+      path: "/tmp/JetBrainsMono"
+      state: directory
+      mode: '0755'
+
+  - name: Unzip JetBrains Mono font
+    unarchive:
+      src: "/tmp/JetBrainsMono-2.304.zip"
+      dest: "/tmp/JetBrainsMono"
+      remote_src: yes
+      creates: "/tmp/JetBrainsMono/fonts/"
+
+  - name: Ensure fonts directory exists
+    file:
+      path: "~/.local/share/fonts"
+      state: directory
+      mode: '0755'
+
+  - name: Find .ttf files in JetBrains Mono directory
+    find:
+      paths: "/tmp/JetBrainsMono/fonts/ttf"
+      patterns: "JetBrainsMono*.ttf"
+    register: font_files
+
+  - name: Copy font files to fonts directory
+    copy:
+      src: "{{ item.path }}"
+      dest: "~/.local/share/fonts/"
+    loop: "{{ font_files.files }}"
+    when: font_files.matched > 0
+  when: ansible_os_family == "Debian"
+  tags: *tags_for_zsh_tasks
+
+- name: Update font cache
+  command: fc-cache -f -v
+  become: true
+  tags: *tags_for_zsh_tasks

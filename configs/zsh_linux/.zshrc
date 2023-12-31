@@ -1,6 +1,3 @@
-/usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/$HOST-sh
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -164,5 +161,8 @@ fi
 # <<< conda initialize <<<
 export PATH=$HOME/.nimble/bin:$PATH
 
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+/usr/bin/keychain $HOME/.ssh/id_rsa
+source $HOME/.keychain/UBUNTU-sh
+

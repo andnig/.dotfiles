@@ -46,6 +46,8 @@
     - include: tasks/starship.yml
       # Starship is installed with brew on macOS
       when: ansible_os_family == "Debian"
+    - include: tasks/wsl.yml
+      when: ansible_os_family == "Debian"
   roles:
     - role: ecgalaxy.vscode
       include_vars:

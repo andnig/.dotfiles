@@ -41,6 +41,31 @@
     - packages
     - install
 
+- name: Include fonts installation tasks
+  include_tasks: fonts.yml
+  tags:
+    - fonts
+    - apt
+    - brew
+    - packages
+    - install
+
+- block:
+  - name: Check if Homebrew is already installed
+    command: which brew
+    register: brew_installed
+    ignore_errors: yes
+
+  - name: Install Homebrew
+    command: /bin/bash -c "NONINTERACTIVE=1 $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    when: brew_installed.rc != 0
+  tags:
+    - brew
+    - apt
+    - install
+    - packages
+    - install_brew
+
 - block:
   - name: Update/Upgrade Homebrew
     homebrew:
@@ -56,16 +81,18 @@
   - name: Manage formula
     homebrew:
       name: "{{ formulas }}"
+      state: latest
 
   - name: Manage casks
     homebrew_cask:
       name: "{{ casks }}"
+      state: latest
 
-  - name: Manage alacritty (requires no-quarantine)
-    homebrew_cask:
-      name: "alacritty"
-      state: "present"
-      install_options: "no-quarantine"
+  # - name: Manage alacritty (requires no-quarantine)
+  #   homebrew_cask:
+  #     name: "alacritty"
+  #     state: "present"
+  #     install_options: "no-quarantine"
 
   - name: Start Syncthing service
     command: brew services start syncthing
@@ -95,6 +122,7 @@
   - name: Manage formula
     homebrew:
       name: "{{ formulas_linux }}"
+      state: latest
 
   - name: Add user to Docker group
     user:
@@ -174,3 +202,26 @@
     - install
     - packages
     - tmux
+
+- name: Install magick for image.nvim
+  command: luarocks --lua-version 5.1 install --local magick
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.luarocks/share/lua/5.1/magick/init.lua"
+  tags:
+    - install
+    - packages
+    - luarocks
+
+- block:
+  - name: Check if kitty is installed
+    command: which kitty
+    register: kitty_installed
+    ignore_errors: yes
+
+  - name: Install kitty
+    command: /bin/bash -c "$(curl -fsSL https://sw.kovidgoyal.net/kitty/installer.sh)"
+    when: kitty_installed.rc != 0
+  tags:
+    - kitty
+    - install
+    - packages
