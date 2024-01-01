@@ -13,3 +13,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
         require("venv-selector").retrieve_from_cache()
     end,
 })
+
+-- automatically disable command continuation for norg files (as they have their own)
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    pattern = "*.norg",
+    command = "setlocal fo-=ro",
+})

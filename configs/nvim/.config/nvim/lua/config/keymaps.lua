@@ -47,3 +47,10 @@ vim.api.nvim_set_keymap(
     "<cmd>lua require('methods').create_new_note('general')<CR>",
     { noremap = true, silent = true, desc = "Create new General note" }
 )
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>ni",
+    "<cmd>lua require('methods').create_new_note('ideas')<CR>",
+    { noremap = true, silent = true, desc = "Create new idea" }
+)

@@ -5,6 +5,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "hrsh7th/nvim-cmp",
         },
+        enabled = false,
         config = function()
             -- https://github.com/abecodes/tabout.nvim#more-complex-keybindings
 
