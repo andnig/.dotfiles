@@ -8,6 +8,7 @@ return {
                 ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.itero"] = {},
                 ["core.promo"] = {},
+                ["core.export"] = {},
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
                 ["core.summary"] = {}, -- Adds the generate-workspace-summary command
                 ["core.completion"] = {
