@@ -167,3 +167,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 /usr/bin/keychain $HOME/.ssh/id_rsa
 source $HOME/.keychain/UBUNTU-sh
 
+export NOTES="$HOME/.notes"
+export TASKS="$HOME/.tasks"
+export DOTFILES="$HOME/.dotfiles"

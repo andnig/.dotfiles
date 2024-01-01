@@ -156,3 +156,7 @@ eval "$(starship init zsh)"
 alias ls='exa --icons'
 alias cat='bat --style=plain,header'
 alias cl='clear'
+
+export NOTES="$HOME/.notes"
+export TASKS="$HOME/.tasks"
+export DOTFILES="$HOME/.dotfiles"

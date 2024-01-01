@@ -31,4 +31,4 @@ fi
 touch "$HOME/.notes/reference/$IDEA_TYPE/$FILE_NAME"
 
 # Open the file in nvim
-nvim "$HOME/.notes/reference/$IDEA_TYPE/$FILE_NAME"
+cd $HOME/.notes/reference/$IDEA_TYPE && nvim "$HOME/.notes/reference/$IDEA_TYPE/$FILE_NAME.norg"
