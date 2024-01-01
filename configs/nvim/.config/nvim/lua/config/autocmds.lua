@@ -19,3 +19,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     pattern = "*.norg",
     command = "setlocal fo-=ro",
 })
+
+-- use only two spaces as tabls for neorg files
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    pattern = "*.norg",
+    command = "setlocal shiftwidth=2 tabstop=2",
+})
