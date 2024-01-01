@@ -141,6 +141,7 @@ export CONDA_BASE_PREFIX="$HOME/conda"
 export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh
 alias on="cd $HOME/.notes && nvim ."
+alias nn="new_note.sh"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
