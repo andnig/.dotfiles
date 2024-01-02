@@ -1,5 +1,6 @@
 ---
 apt:
+  - build-essential
   - mesa-utils
   - unzip
   - fontconfig
@@ -34,3 +35,5 @@ apt:
   - xclip
   - keychain
   - fonts-noto-color-emoji
+  - luajit
+  - libmagickwand-dev
