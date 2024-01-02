@@ -147,6 +147,7 @@
       path: "{{ lookup('env', 'HOME') }}/.local/bin"
       state: directory
       mode: '0755'
+    become: false
 
   - name: Download the latest kubectl release
     uri:
@@ -154,6 +155,7 @@
       dest: "{{ lookup('env', 'HOME') }}/.local/bin"
       status_code:
         - 200
+        - 302
         - 304
     register: kubectl
     become: false

@@ -1,6 +1,8 @@
 ---
 apt:
   - mesa-utils
+  - unzip
+  - fontconfig
   - taskwarrior
   - syncthing
   - curl
