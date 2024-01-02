@@ -79,6 +79,11 @@
     - packages
 
 - block:
+  - name: Add Kisak Mesa PPA
+    ansible.builtin.apt_repository:
+      repo: ppa:kisak/kisak-mesa
+      state: present
+
   - name: Update/Upgrade apt
     apt:
       update_cache: true
