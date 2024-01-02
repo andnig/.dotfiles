@@ -39,3 +39,5 @@ include solarized-dark-256.theme
 #include solarized-light-256.theme
 #include no-color.theme
 
+color.tag.habit=inverse
+urgency.user.tag.habit.coefficient=50
