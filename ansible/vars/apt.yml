@@ -1,7 +1,6 @@
 ---
 apt:
   - build-essential
-  - mesa-utils
   - unzip
   - fontconfig
   - taskwarrior

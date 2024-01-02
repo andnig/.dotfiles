@@ -1,5 +1,6 @@
 # Windows
 
+1. Make sure to have the latest graphics drivers installed.
 1. Run powershell as administrator.
 2. Download dotfiles: `git clone https://github.com/andnig/.dotfiles.git`
 3. Run the following command:
