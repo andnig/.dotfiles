@@ -41,31 +41,6 @@
     - packages
     - install
 
-- name: Include fonts installation tasks
-  include_tasks: fonts.yml
-  tags:
-    - fonts
-    - apt
-    - brew
-    - packages
-    - install
-
-- block:
-  - name: Check if Homebrew is already installed
-    command: which brew
-    register: brew_installed
-    ignore_errors: yes
-
-  - name: Install Homebrew
-    command: /bin/bash -c "NONINTERACTIVE=1 $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    when: brew_installed.rc != 0
-  tags:
-    - brew
-    - apt
-    - install
-    - packages
-    - install_brew
-
 - block:
   - name: Update/Upgrade Homebrew
     homebrew:
@@ -113,6 +88,9 @@
     homebrew:
       update_homebrew: true
       upgrade_all: true
+    environment:
+      PATH: "/home/linuxbrew/.linuxbrew/bin:{{ ansible_env.PATH }}"
+    become: false
 
   - name: Manage apt packages
     apt:
@@ -123,6 +101,9 @@
     homebrew:
       name: "{{ formulas_linux }}"
       state: latest
+    environment:
+      PATH: "/home/linuxbrew/.linuxbrew/bin:{{ ansible_env.PATH }}"
+    become: false
 
   - name: Add user to Docker group
     user:
@@ -159,6 +140,13 @@
       url: https://dl.k8s.io/release/stable.txt
       return_content: yes
     register: version
+    become: false
+
+  - name: Ensure the directory exists
+    ansible.builtin.file:
+      path: "{{ lookup('env', 'HOME') }}/.local/bin"
+      state: directory
+      mode: '0755'
 
   - name: Download the latest kubectl release
     uri:
@@ -168,6 +156,7 @@
         - 200
         - 304
     register: kubectl
+    become: false
 
   - name: Move kubectl and change permissions
     file:
@@ -182,6 +171,15 @@
    - packages
    - apt
    - install
+
+- name: Include fonts installation tasks
+  include_tasks: fonts.yml
+  tags:
+    - fonts
+    - apt
+    - brew
+    - packages
+    - install
 
 - name: Manage python packages
   pip:

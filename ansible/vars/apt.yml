@@ -1,5 +1,6 @@
 ---
 apt:
+  - mesa-utils
   - taskwarrior
   - syncthing
   - curl

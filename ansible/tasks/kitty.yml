@@ -2,34 +2,43 @@
   command: which kitty
   register: kitty_installed
   ignore_errors: yes
+  tags:
+    - kitty
+    - install
+    - packages
 
 - block:
-  - name: Install kitty
-    command: /bin/bash -c "$(curl -fsSL https://sw.kovidgoyal.net/kitty/installer.sh)"
+  - name: Download the kitty installer script
+    get_url:
+      url: https://sw.kovidgoyal.net/kitty/installer.sh
+      dest: /tmp/kitty_installer.sh
+      mode: '0755'
+
+  - name: Execute the kitty installer script
+    shell: /tmp/kitty_installer.sh
 
   - block:
     - name: Create symlink for kitty
       file:
-        src: "~/.local/kitty.app/bin/kitty"
+        src: "{{ home }}/.local/kitty.app/bin/kitty"
         dest: "/usr/local/bin/kitty"
         state: link
         force: yes
 
     - name: Create symlink for kitten
       file:
-        src: "~/.local/kitty.app/bin/kitten"
+        src: "{{ home }/.local/kitty.app/bin/kitten"
         dest: "/usr/local/bin/kitten"
         state: link
         force: yes
 
     - name: Copy desktop file
       copy:
-        src: "~/.local/kitty.app/share/applications/kitty.desktop"
+        src: "{{ home }/.local/kitty.app/share/applications/kitty.desktop"
         dest: "/usr/share/applications/kitty.desktop"
         owner: root
         group: root
         mode: 0644
-      become: true
 
     - name: Find all whiskers_* files
       find:
@@ -43,8 +52,10 @@
         dest: "/usr/share/icons/hicolor/{{ item.path | regex_search('(\\d+x\\d+)') }}/apps/kitty.png"
       loop: "{{ whiskers_files.files }}"
       when: whiskers_files.matched > 0
+      ignore_errors: true
 
     when: ansible_os_family == "Debian"
+    become: true
 
   when: kitty_installed.rc != 0
   tags:

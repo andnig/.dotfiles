@@ -37,6 +37,12 @@ Linux)
 				sudo apt-get update
 				sudo apt-get install -y ansible
 			fi
+
+	                # install homwbrew
+			if [[ ! -x /opt/homebrew/bin/brew ]]; then
+				echo "[i] Install Homebrew"
+				/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+			fi
 			;;
 
 		*)
