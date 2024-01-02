@@ -1,5 +1,5 @@
 - name: Check if kitty is installed
-  command: which kitt
+  command: which kitty
   register: kitty_installed
   ignore_errors: yes
   tags:
