@@ -21,6 +21,8 @@
           params:
             PREFIX: "/usr"
     when: ansible_os_family == "Debian"
+    environment:
+      PATH: "{{ ansible_env.HOME }}/.nimble/bin:{{ ansible_env.PATH }}"
     tags:
       - taskopen
       - install

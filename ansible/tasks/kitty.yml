@@ -1,5 +1,5 @@
 - name: Check if kitty is installed
-  command: which kitty
+  command: which kitt
   register: kitty_installed
   ignore_errors: yes
   tags:
@@ -20,21 +20,21 @@
   - block:
     - name: Create symlink for kitty
       file:
-        src: "{{ home }}/.local/kitty.app/bin/kitty"
+        src: "{{ ansible_env.HOME }}/.local/kitty.app/bin/kitty"
         dest: "/usr/local/bin/kitty"
         state: link
         force: yes
 
     - name: Create symlink for kitten
       file:
-        src: "{{ home }/.local/kitty.app/bin/kitten"
+        src: "{{ ansible_env.HOME }}/.local/kitty.app/bin/kitten"
         dest: "/usr/local/bin/kitten"
         state: link
         force: yes
 
     - name: Copy desktop file
       copy:
-        src: "{{ home }/.local/kitty.app/share/applications/kitty.desktop"
+        src: "{{ ansible_env.HOME }}/.local/kitty.app/share/applications/kitty.desktop"
         dest: "/usr/share/applications/kitty.desktop"
         owner: root
         group: root
