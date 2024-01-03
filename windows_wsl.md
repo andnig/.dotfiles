@@ -28,6 +28,7 @@ Set-ExecutionPolicy Bypass -Scope Process
     git add remote origin git@github.com:andnig/.dotfiles.git
     ```
 14. Run `ssh-add` to add ssh key to ssh-agent.
+15. Run `gcloud init` to initialize gcloud.
 
 ## VSCode
 For now, vscode is is not automatically configured as it's kinda shitshow with WSL.
