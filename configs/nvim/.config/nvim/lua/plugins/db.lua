@@ -22,5 +22,5 @@ return {
             vim.g.db_adapter_bigquery_region = "region-eu"
         end,
     },
-    { "kristijanhusak/vim-dadbod-completion" },
+    { "kristijanhusak/vim-dadbod-completion", enabled = false },
 }

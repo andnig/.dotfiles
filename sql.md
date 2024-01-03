@@ -20,3 +20,9 @@ To run with Bigquery:
     ```
 
 3. Run `:DBUIToggle` to open the dadbod ui.
+
+## Auto completion
+
+There is a plugin `nvim-dadbod-completion` that provides auto completion for
+dadbod. However, it is not installed by default. To install it, activate it in
+the `db.lua` file.
