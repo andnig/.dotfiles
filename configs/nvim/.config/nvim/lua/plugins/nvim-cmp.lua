@@ -7,6 +7,7 @@ return {
             "hrsh7th/cmp-emoji",
             opts = nil,
             "abecodes/tabout.nvim",
+            "vim-dadbod-completion",
         },
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
@@ -52,7 +53,12 @@ return {
                 end, { "i", "s" }),
             })
             opts.preselect = cmp.PreselectMode.None
-            opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
+            opts.sources = cmp.config.sources(
+                vim.list_extend(
+                    opts.sources,
+                    { { name = "emoji" }, { name = "vim-dadbod-completion" } }
+                )
+            )
         end,
     },
 }
