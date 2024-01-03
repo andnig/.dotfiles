@@ -1,5 +1,6 @@
 # Windows
 
+1. Make sure to have the latest graphics drivers installed.
 1. Run powershell as administrator.
 2. Download dotfiles: `git clone https://github.com/andnig/.dotfiles.git`
 3. Run the following command:
@@ -17,6 +18,7 @@ Set-ExecutionPolicy Bypass -Scope Process
 7. Download dotfiles in WSL: `git clone https://github.com/andnig/.dotfiles.git`
 8. Run `bootstrap.sh` in WSL
 9. Run `ansible.sh --tag private (or work) --tag install`
+10. Restart wsl (in powershell, run `wsl --shutdown`. This inits systemd.
 10. Maybe run `conda init zsh` to initialize conda.
 11. Maybe run `source ~/conda/etc/profile.d/mamba.sh` and `source ~/conda/etc/profile.d/conda.sh`
 12. Run `tmux` and then press `prefix + I` to install plugins.

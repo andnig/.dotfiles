@@ -99,6 +99,5 @@
   tags: *tags_for_zsh_tasks
 
 - name: Update font cache
-  command: fc-cache -f -v
-  become: true
+  command: "fc-cache -f -v"
   tags: *tags_for_zsh_tasks
