@@ -1,5 +1,4 @@
 return {
-
     -- custom config which piggybacks on the copilot extras in lazy.lua.
     {
         "zbirenbaum/copilot.lua",
@@ -89,6 +88,19 @@ return {
                 api_key_cmd = "cat " .. home .. "/.secrets/openai.secret",
                 openai_params = {
                     model = "gpt-4",
+                },
+                edit_with_instructions = {
+                    keymaps = {
+                        accept = "<leader>aa",
+                        use_output_as_input = "<leader>ao",
+                    },
+                },
+                chat = {
+                    keymaps = {
+                        yank_last = "<leader>ay",
+                        yank_last_code = "<leader>ak",
+                        toggle_sessions = "<leader>as",
+                    },
                 },
                 openai_edit_params = {
                     model = "gpt-3.5-turbo",

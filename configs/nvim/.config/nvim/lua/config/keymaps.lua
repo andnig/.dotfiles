@@ -54,3 +54,16 @@ vim.api.nvim_set_keymap(
     "<cmd>lua require('methods').create_new_note('ideas')<CR>",
     { noremap = true, silent = true, desc = "Create new idea" }
 )
+
+vim.keymap.set(
+    "v",
+    "<leader>ae",
+    "<cmd>lua require('chatgpt').edit_with_instructions()<CR>",
+    { desc = "Edit with ChatGPT with instructions" }
+)
+vim.keymap.set(
+    { "n", "v" },
+    "<leader>ac",
+    "<cmd>lua require('chatgpt').openChat()<CR>",
+    { desc = "Open ChatGPT" }
+)

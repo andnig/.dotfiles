@@ -12,7 +12,7 @@ end
 M.create_new_note = function(note_type)
     local note_name = vim.fn.input("Enter new note name: ")
     if note_name ~= "" then
-        vim.cmd("edit ~/.notes/reference/" .. note_type .. "/" .. note_name .. ".norg")
+        vim.cmd("edit ~/.notes/reference/" .. note_type .. "/" .. note_name .. ".md")
     else
         print("No note name provided.")
     end
