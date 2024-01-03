@@ -1,5 +1,6 @@
 return {
     "HakonHarnes/img-clip.nvim",
+    ft = { "markdown", "vimwiki", "md", "norg", "png" },
     event = "BufEnter",
     opts = {
         -- add options here
