@@ -1,6 +1,6 @@
 #!/bin/bash
 # Directory where the png files are located
-dir="./"
+dir="./icons"
 # Destination directory
 dest="/usr/share/icons/hicolor"
 # Loop through all png files in the directory

@@ -103,11 +103,9 @@ alias r="radian"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-export PATH="$PATH:$HOME/.dotnet/tools/"
-
 autoload -Uz compinit && compinit
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="/snap/bin:$HOME/.local/bin:$PATH"
 
 source <(kubectl completion zsh)
 
