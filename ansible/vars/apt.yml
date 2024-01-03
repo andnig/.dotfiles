@@ -35,7 +35,6 @@ apt:
   - cmake
   - gettext
   - xclip
-  - keychain
   - fonts-noto-color-emoji
   - luajit
   - libmagickwand-dev
