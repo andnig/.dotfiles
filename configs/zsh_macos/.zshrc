@@ -137,6 +137,10 @@ fi
 
 export CONDA_BASE_PREFIX="$HOME/conda"
 
+# gcloud sdk
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
 # custom scripts
 export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh

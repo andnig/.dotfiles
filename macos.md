@@ -14,6 +14,7 @@ To set up a new macos system, follow the steps below:
     git add remote origin git@github:andnig/.dotfiles.git
     ```
 1. Run `ssh-add` to add ssh key to ssh-agent.
+1. Run `gcloud init` to initialize gcloud.
 
 ## Syncthing
 Open syncthing in your Pixel 6 and the web interface of the new computer on localhost:8384. 

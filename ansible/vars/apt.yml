@@ -1,5 +1,8 @@
 ---
 apt:
+  - apt-transport-https
+  - ca-certificates 
+  - gnupg 
   - build-essential
   - unzip
   - fontconfig
@@ -36,3 +39,4 @@ apt:
   - fonts-noto-color-emoji
   - luajit
   - libmagickwand-dev
+  - google-cloud-cli
