@@ -164,8 +164,14 @@ export PATH=$HOME/.nimble/bin:$PATH
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-/usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/UBUNTU-sh
+# /usr/bin/keychain $HOME/.ssh/id_rsa
+# source $HOME/.keychain/UBUNTU-sh
+export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOSTNAME.sock
+ssh-add -l 2>/dev/null >/dev/null
+if [ $? -ge 2 ]; then
+  ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+  ssh-add
+fi
 
 export NOTES="$HOME/.notes"
 export TASKS="$HOME/.tasks"
