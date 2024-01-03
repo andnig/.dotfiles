@@ -36,7 +36,7 @@ return {
                 "n",
                 "<leader>dm",
                 require("dbtpal.telescope").dbt_picker,
-                { desc = "Run dbt commands" }
+                { desc = "Pick dbt model to run" }
             )
 
             -- Enable Telescope Extension
