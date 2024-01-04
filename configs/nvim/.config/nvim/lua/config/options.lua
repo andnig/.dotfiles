@@ -14,3 +14,20 @@ vim.opt.softtabstop = 4
 vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "80"
 vim.opt.conceallevel = 1
+
+vim.filetype.add({
+    extension = {
+        conf = "conf",
+        env = "bash",
+    },
+    filename = {
+        [".env"] = "bash",
+        ["env"] = "bash",
+        ["tsconfig.json"] = "jsonc",
+        [".yamlfmt"] = "yaml",
+    },
+    pattern = {
+        -- INFO: Match filenames like - ".env.example", ".env.local" and so on
+        ["%.env%.[%w_.-]+"] = "bash",
+    },
+})
