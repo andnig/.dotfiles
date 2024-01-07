@@ -10,3 +10,4 @@ dependencies:
   - pyperclip
   - nbformat
   - python-kaleido
+  - jupytext

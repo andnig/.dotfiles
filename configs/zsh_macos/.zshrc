@@ -135,7 +135,7 @@ if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-export CONDA_BASE_PREFIX="$HOME/conda"
+export CONDA_BASE_PREFIX="/opt/homebrew/Caskroom/miniforge/base"
 
 # gcloud sdk
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
