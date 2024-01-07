@@ -25,5 +25,9 @@
    `jupytext --set-formats ipynb,py:percent notebook.ipynb`.
 
 5. Open this newly created python file and run:
+
    - :MoltenInit (Note: In the file buffer, not neotree!)
    - :MoltenEvaluate
+   - There are several keymaps defined. Press <localleader> c to find them.
+
+6. To sync ipynb and py files, run `jupytext --sync notebook.ipynb`.
