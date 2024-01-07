@@ -136,6 +136,7 @@ fi
 # <<< conda initialize <<<
 
 export CONDA_BASE_PREFIX="/opt/homebrew/Caskroom/miniforge/base"
+export PATH="/opt/homebrew/Caskroom/miniforge/base:$PATH"
 
 # gcloud sdk
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"

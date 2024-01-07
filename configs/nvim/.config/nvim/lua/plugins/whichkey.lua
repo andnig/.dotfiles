@@ -8,6 +8,7 @@ return {
             ["<leader>m"] = { name = "+markdown" },
             ["<leader>a"] = { name = "+ai" },
             ["<leader>d"] = { name = "+dbt" },
+            ["<localleader>c"] = { name = "+code" },
         },
     },
 }
