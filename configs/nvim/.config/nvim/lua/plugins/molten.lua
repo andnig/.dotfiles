@@ -8,6 +8,7 @@ return {
             -- this is an example, not a default. Please see the readme for more configuration options
             vim.g.molten_image_provider = "image.nvim"
             vim.keymap.set("n", "<localleader>ci", ":MoltenInit<CR>")
+            vim.keymap.set("n", "<localleader>cl", ":MoltenEvaluateLine<CR>")
             vim.keymap.set("n", "<localleader>ce", ":MoltenEvaluateOperator<CR>")
             vim.keymap.set("n", "<localleader>cr", ":MoltenReevaluateCell<CR>")
             vim.keymap.set("v", "<localleader>cv", ":<C-u>MoltenEvaluateVisual<CR>gv")
