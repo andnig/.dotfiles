@@ -164,11 +164,19 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # /usr/bin/keychain $HOME/.ssh/id_rsa
 # source $HOME/.keychain/UBUNTU-sh
-export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOSTNAME.sock
-ssh-add -l 2>/dev/null >/dev/null
-if [ $? -ge 2 ]; then
-  ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
-  ssh-add
+export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOST.sock
+ALREADY_RUNNING=$(ps -auxww | grep -q ssh-agent; echo $?)
+
+if [[ $ALREADY_RUNNING != "0" ]]; then
+    if [[ -S $SSH_AUTH_SOCK ]]; then
+        # not expecting the socket to exist as the forwarding command isn't running (http://www.tldp.org/LDP/abs/html/fto.html)
+        rm $SSH_AUTH_SOCK
+    fi
+    ssh-add -l 2>/dev/null >/dev/null
+    if [ $? -ge 2 ]; then
+        ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+        ssh-add
+    fi
 fi
 
 export NOTES="$HOME/.notes"
