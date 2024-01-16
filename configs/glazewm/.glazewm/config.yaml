@@ -204,8 +204,8 @@ window_rules:
   - command: "move to workspace 3"
     match_process_name: "(teams|Spark Desktop)"
 
-  - command: "move to workspace 2"
-    match_process_name: "firefox"
+  - command: "move to workspace 4"
+    match_process_name: "explorer"
 
 binding_modes:
   - name: "resize"
