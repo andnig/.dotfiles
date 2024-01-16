@@ -51,12 +51,26 @@ $wslConfigSource = ".\configs\wsl\.wslconfig"
 $wslConfigTargaet = $userProfile
 $windowsTerminalConfigSource = ".\configs\windows_terminal\settings.json"
 $windowsTerminalConfigTarget = Join-Path $userProfile "AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState"
+$glazewmConfigSource = ".\configs\.glazewm\config.yaml"
+$glazewmConfigTarget = Join-Path $userProfile ".glazewm"
 
 # Create the target directory if it doesn't exist
 if (-not (Test-Path $windowsTerminalConfigTarget)) {
     New-Item -ItemType Directory -Force -Path $windowsTerminalConfigTarget
 }
 
+if (-not (Test-Path $glazewmConfigTarget)) {
+    New-Item -ItemType Directory -Force -Path $glazewmConfigTarget
+}
 # Copy the files 
 Copy-Item -Path $windowsTerminalConfigSource -Destination (Join-Path $windowsTerminalConfigTarget "settings.json") -Force
+Copy-Item -Path $glazewmConfigSource -Destination (Join-Path $glazewmConfigTarget "config.yaml") -Force
 Copy-Item -Path $wslConfigSource -Destination (Join-Path $wslConfigTarget ".wslconfig") -Force
+
+# Add glazewm to autostart
+$SourceFile = Join-Path $userProfile "AppData\Local\Microsoft\WinGet\Packages\lars-berger.GlazeWM_Microsoft.Winget.Source_8wekyb3d8bbwe\glazewm.exe"
+$ShortcutPath = [System.Environment]::GetFolderPath("Startup") + "\glazewm.lnk"
+$WScriptShell = New-Object -ComObject WScript.Shell
+$Shortcut = $WScriptShell.CreateShortcut($ShortcutPath)
+$Shortcut.TargetPath = $SourceFile
+$Shortcut.Save()
