@@ -52,7 +52,7 @@ $wslConfigTargaet = $userProfile
 $windowsTerminalConfigSource = ".\configs\windows_terminal\settings.json"
 $windowsTerminalConfigTarget = Join-Path $userProfile "AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState"
 $glazewmConfigSource = ".\configs\.glazewm\config.yaml"
-$glazewmConfigTarget = Join-Path $userProfile ".glazewm"
+$glazewmConfigTarget = Join-Path $userProfile ".glaze-wm"
 
 # Create the target directory if it doesn't exist
 if (-not (Test-Path $windowsTerminalConfigTarget)) {
