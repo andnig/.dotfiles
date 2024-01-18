@@ -23,14 +23,14 @@ if [ "$HAS_WINDOWS_OR_IS_SELECTED" = "true" ]; then
    icon=
    iconfont="Font Awesome 6 Free:Solid:15.4"
    offset="1"
-   iconcolor=0xff7aa1f7
+   iconcolor=0xff89b4fa
 else
    icon=⬤
-   iconcolor=0xff583794
+   iconcolor=0xffcba6f7
 fi
 
 if [ "$SELECTED" = "true" ]; then
-  icon=
+  icon=
   iconfont="Font Awesome 6 Free:Solid:15.4"
   offset="1"
 fi

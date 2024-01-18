@@ -3,7 +3,7 @@ sketchybar --add item cpu left \
 	--set cpu update_freq=10 \
 	icon.font="Font Awesome 6 Free:Solid:15.4" \
 	icon.padding_right=4 \
-	icon.color=0xfff6768e \
+	icon.color=0xfff38ba8 \
 	icon.y_offset=1 \
 	label.font="$FONT:Bold:12.0" \
 	label.color=0xffdfe1ea \
@@ -20,7 +20,7 @@ sketchybar --add item mem left \
 	--set mem update_freq=10 \
 	icon.font="Font Awesome 6 Free:Solid:15.4" \
 	icon.padding_right=4 \
-	icon.color=0xff4ed2e3 \
+	icon.color=0xff74c7ec \
 	icon.y_offset=1 \
 	label.font="$FONT:Bold:12.0" \
 	label.color=0xffdfe1ea \
@@ -37,7 +37,7 @@ sketchybar --add item ssd left \
 	--set ssd update_freq=10 \
 	icon.font="Font Awesome 6 Free:Solid:15.4" \
 	icon.padding_right=4 \
-	icon.color=0xfffbc02d \
+	icon.color=0xfff9e2af \
 	icon.y_offset=1 \
 	label.font="$FONT:Bold:12.0" \
 	label.color=0xffdfe1ea \

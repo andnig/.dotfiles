@@ -3,8 +3,8 @@
 export SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null"
 
 sketchybar --add space space_template left \
-	--set space_template icon.color=0xff583794 \
-	icon.highlight_color=0xffe0af68 \
+	--set space_template icon.color=0xffcba6f7 \
+	icon.highlight_color=0xfffab387 \
 	label.drawing=off \
 	drawing=on \
 	updates=on \

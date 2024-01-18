@@ -3,7 +3,7 @@ sketchybar --add item clock right \
 	icon="" \
 	icon.font="Font Awesome 6 Free:Solid:15.4" \
 	icon.padding_right=4 \
-	icon.color=0xff6d8896 \
+	icon.color=0xff89dceb \
 	label.font="$FONT:Bold:12.0" \
 	label.color=0xffdfe1ea \
 	label.padding_right=8 \
