@@ -21,30 +21,30 @@ sketchybar --add space space_template left \
 	background.padding_right=-24 \
 	background.padding_left=-24 \
 	\
-	--clone spaces_1.idle space_template \
-	--set spaces_1.idle associated_space=1 \
+	--clone spaces_1.terminal space_template \
+	--set spaces_1.terminal associated_space=1 \
 	icon=⬤ \
 	script="$PLUGIN_DIR/space.sh" \
 	icon.padding_left=8 \
 	\
-	--clone spaces_1.misc space_template \
-	--set spaces_1.misc associated_space=2 \
+	--clone spaces_1.browser space_template \
+	--set spaces_1.browser associated_space=2 \
 	icon=⬤ \
 	script="$PLUGIN_DIR/space.sh" \
 	\
-	--clone spaces_1.doc space_template \
-	--set spaces_1.doc associated_space=3 \
+	--clone spaces_1.email space_template \
+	--set spaces_1.email associated_space=3 \
 	icon=⬤ \
 	drawing=on \
 	script="$PLUGIN_DIR/space.sh" \
 	\
-	--clone spaces_1.help space_template \
-	--set spaces_1.help associated_space=4 \
+	--clone spaces_1.notes space_template \
+	--set spaces_1.notes associated_space=4 \
 	icon=⬤ \
 	script="$PLUGIN_DIR/space.sh" \
 	\
-	--clone spaces_1.music space_template \
-	--set spaces_1.music associated_space=5 \
+	--clone spaces_1.misc1 space_template \
+	--set spaces_1.misc1 associated_space=5 \
 	icon=⬤ \
 	script="$PLUGIN_DIR/space.sh" \
 	\
@@ -56,14 +56,12 @@ sketchybar --add space space_template left \
 	\
 	--add bracket spaces_1 \
 	spaces_1.label \
-	spaces_1.idle \
-	spaces_1.misc \
-	spaces_1.doc \
-	spaces_1.help \
-	spaces_1.music \
+	spaces_1.terminal \
+	spaces_1.browser \
+	spaces_1.email \
+	spaces_1.notes \
+	spaces_1.misc1 \
 	spaces_1.nine \
 	spaces_1.label \
-	spaces_1.code \
-	spaces_1.web \
-	spaces_1.tex \
-	spaces_1.web
+	spaces_1.terminal \
+	spaces_1.browser

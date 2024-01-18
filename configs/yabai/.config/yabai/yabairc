@@ -32,12 +32,29 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 ### Space labels ###
-yabai -m space 1 --label Code
-yabai -m space 2 --label Text
-yabai -m space 3 --label Web
-yabai -m space 4 --label Idle
+yabai -m space 1 --label Terminal
+yabai -m space 2 --label Browser
+yabai -m space 3 --label Email
+yabai -m space 4 --label Notes
 yabai -m space 5 --label Misc
-yabai -m space 6 --label doc
-yabai -m space 7 --label help
-yabai -m space 8 --label music
+yabai -m space 6 --label Misc1
+yabai -m space 7 --label Misc2
+yabai -m space 8 --label Misc3
 echo "yabai configuration loaded.."
+
+yabai -m rule --add app="^Safari$" space=^2
+yabai -m rule --add app="^FireFox$" space=^2
+yabai -m rule --add app="^Edge$" space=^2
+yabai -m rule --add app="^kitty$" space=1
+yabai -m rule --add app="^iTerm2$" space=1
+yabai -m rule --add app="^Spark Desktop$" space=3
+yabai -m rule --add app="^Finder$" space=4
+yabai -m rule --add app="^Applications$" space=4
+
+yabai -m rule --add app="^(Calculator|System Settings|zoom.us|Photo Booth|Archive Utility|Color Picker|balenaEtcher)$" manage=off  # Don't tile unresizable apps
+
+### Sketchybar ###
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"         # Notify sketchybar when space changes
+yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change"   # Notify sketchybar when the focused app changes
+
+
