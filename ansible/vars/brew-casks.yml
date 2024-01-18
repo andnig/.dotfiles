@@ -8,6 +8,9 @@ casks:
   - flycut
   - font-fira-code
   - font-sf-mono-nerd-font
+  - font-fontawesome
+  - font-material-icons
+  - font-fira-code-nerd-font
   - font-source-code-pro
   - font-hack-nerd-font
   - font-jetbrains-mono
