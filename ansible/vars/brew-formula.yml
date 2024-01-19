@@ -8,8 +8,8 @@ formulas:
   - docker-machine
   - exa
   - fd
-  - gh
   - fzf
+  - gh
   - gnutls
   - gpgme
   - htop

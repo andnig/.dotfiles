@@ -2,7 +2,6 @@
 casks:
   - appcleaner
   - betterzip
-  - cheatsheet
   - docker
   - flux
   - flycut
