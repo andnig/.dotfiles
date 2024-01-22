@@ -8,7 +8,15 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboar
 vim.keymap.set("n", "<leader>p", [["+p]], { desc = "[p]aste from system clipboard" })
 vim.keymap.set("n", "<leader>P", [["+P]], { desc = "[P]aste from system clipboard" })
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete into void" })
+vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete into void" })
+
+vim.keymap.set({ "n" }, "<localleader>ds", "<cmd>!sqlfluff fix % -f <CR>", { desc = "Fix SQL" })
+vim.keymap.set(
+    { "n" },
+    "<localleader>dc",
+    "<cmd>!dbt compile -s % <CR>",
+    { desc = "dbt compile file" }
+)
 
 vim.keymap.set(
     "n",
