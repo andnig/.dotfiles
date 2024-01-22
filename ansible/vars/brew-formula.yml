@@ -8,8 +8,8 @@ formulas:
   - docker-machine
   - exa
   - fd
-  - gh
   - fzf
+  - gh
   - gnutls
   - gpgme
   - htop
@@ -40,3 +40,6 @@ formulas:
   - imagemagick
   - lua@5.1
   - luarocks
+  - yabai
+  - skhd
+  - sketchybar

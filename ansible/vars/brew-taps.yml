@@ -6,3 +6,4 @@ taps:
   - homebrew/services
   - jesseduffield/lazygit
   - koekeishiya/formulae
+  - FelixKratz/formulae
