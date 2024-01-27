@@ -43,7 +43,7 @@ Add this to file `/private/etc/sudoers.d/yabai`:
 andre ALL=(root) NOPASSWD: sha256:5c729cfc728ec8780c14d6fe0bfd74376bd2f057960b542c41106d8e8c5df787 /opt/homebrew/bin/yabai --load-sa
 ```
 
-Run `./postfix_macos.sh` to set install and set up skhd, yabai and sketchybar.
+Run `./postfix_macos.sh` to set install and set up skhd, yabai
 
 ## Troubleshooting
 
