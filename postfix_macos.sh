@@ -6,12 +6,12 @@ if [ $dock_hide == "n" ]; then
 	osascript -e "tell application \"System Events\" to set the autohide of the dock preferences to true"
 fi
 
-read -p "Is your menu bar currently hidden? (y/n)" menu_hide
-if [ $menu_hide == "n" ]; then
-	osascript -e 'tell application "System Events"
-    tell dock preferences to set autohide menu bar to not autohide menu bar
-    end tell'
-fi
+# read -p "Is your menu bar currently hidden? (y/n)" menu_hide
+# if [ $menu_hide == "n" ]; then
+# 	osascript -e 'tell application "System Events"
+#     tell dock preferences to set autohide menu bar to not autohide menu bar
+#     end tell'
+# fi
 
 echo "make sure dark mode is activated"
 osascript -e 'tell application "System Events"
@@ -21,7 +21,7 @@ osascript -e 'tell application "System Events"
 end tell'
 
 echo "Starting services"
-brew services restart sketchybar
+# brew services restart sketchybar -- sketchybar requires too much battery...
 yabai --start-service
 skhd --start-service
 echo "That's It!"

@@ -20,7 +20,7 @@ yabai -m config                                 \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            \
-    top_padding                  32             \
+    top_padding                  12             \
     bottom_padding               12             \
     left_padding                 12             \
     right_padding                12             \
@@ -40,7 +40,6 @@ yabai -m space 5 --label Misc
 yabai -m space 6 --label Misc1
 yabai -m space 7 --label Misc2
 yabai -m space 8 --label Misc3
-echo "yabai configuration loaded.."
 
 yabai -m rule --add app="^Safari$" space=^2
 yabai -m rule --add app="^FireFox$" space=^2
@@ -53,8 +52,5 @@ yabai -m rule --add app="^Applications$" space=4
 
 yabai -m rule --add app="^(Calculator|System Settings|zoom.us|Photo Booth|Archive Utility|Color Picker|balenaEtcher)$" manage=off  # Don't tile unresizable apps
 
-### Sketchybar ###
-yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"         # Notify sketchybar when space changes
-yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change"   # Notify sketchybar when the focused app changes
-
+echo "yabai configuration loaded.."
 

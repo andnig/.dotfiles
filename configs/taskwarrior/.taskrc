@@ -41,3 +41,9 @@ include solarized-dark-256.theme
 
 color.tag.habit=inverse
 urgency.user.tag.habit.coefficient=50
+news.version=2.6.0
+taskd.certificate=\/Users\/andre\/.secrets\/task.andreas_nigg.cert.pem
+taskd.key=\/Users\/andre\/.secrets\/task.andreas_nigg.key.pem
+taskd.ca=\/Users\/andre\/.secrets\/task.ca.cert.pem
+taskd.server=tasks.devopsandmore.com:53589
+taskd.credentials=devopsandmore\/Andreas Nigg\/210de195-3cf3-4b91-b18d-e54450048630
