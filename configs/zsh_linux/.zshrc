@@ -165,7 +165,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # /usr/bin/keychain $HOME/.ssh/id_rsa
 # source $HOME/.keychain/UBUNTU-sh
 export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOST.sock
-ALREADY_RUNNING=$(ps -auxww | grep -q ssh-agent; echo $?)
+ALREADY_RUNNING=$(ssh-add -l > /dev/null; echo $?)
 
 if [[ $ALREADY_RUNNING != "0" ]]; then
     if [[ -S $SSH_AUTH_SOCK ]]; then
