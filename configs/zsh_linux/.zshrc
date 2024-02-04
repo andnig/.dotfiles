@@ -168,3 +168,5 @@ export DOTFILES="$HOME/.dotfiles"
 export LD_LIBRARY_PATH=/usr/local/cuda-12.3/lib64:$LD_LIBRARY_PATH
 export PATH=/usr/local/cuda-12.3/bin:$PATH
 export CUDA_HOME=/usr/local/cuda-12.3
+
+export PATH="$HOME/.dotnet:$PATH"
