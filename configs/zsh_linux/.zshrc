@@ -141,8 +141,8 @@ export PATH=$HOME/.nimble/bin:$PATH
 # miniforge
 # export PATH="$HOME/conda/bin:$PATH"
 export CONDA_BASE_PREFIX="$HOME/conda"
-source $HOME/conda/etc/profile.d/conda.sh
-source $HOME/conda/etc/profile.d/mamba.sh
+# source $HOME/conda/etc/profile.d/conda.sh  # commented out by conda initialize
+# source $HOME/conda/etc/profile.d/mamba.sh
 
 # /usr/bin/keychain $HOME/.ssh/id_rsa
 # source $HOME/.keychain/UBUNTU-sh
@@ -170,3 +170,23 @@ export PATH=/usr/local/cuda-12.3/bin:$PATH
 export CUDA_HOME=/usr/local/cuda-12.3
 
 export PATH="$HOME/.dotnet:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$("$HOME/conda/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/conda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "$HOME/conda/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/conda/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
