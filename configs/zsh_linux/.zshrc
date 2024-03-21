@@ -128,12 +128,6 @@ alias cat='batcat --style=plain,header'
 alias cl='clear'
 export GTK_THEME=Adwaita:dark
 
-# miniforge
-# export PATH="$HOME/conda/bin:$PATH"
-export CONDA_BASE_PREFIX="$HOME/conda"
-source $HOME/conda/etc/profile.d/conda.sh
-source $HOME/conda/etc/profile.d/mamba.sh
-
 # custom scripts
 export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh
@@ -143,6 +137,12 @@ alias nn="new_note.sh"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH=$HOME/.nimble/bin:$PATH
+
+# miniforge
+# export PATH="$HOME/conda/bin:$PATH"
+export CONDA_BASE_PREFIX="$HOME/conda"
+source $HOME/conda/etc/profile.d/conda.sh
+source $HOME/conda/etc/profile.d/mamba.sh
 
 # /usr/bin/keychain $HOME/.ssh/id_rsa
 # source $HOME/.keychain/UBUNTU-sh

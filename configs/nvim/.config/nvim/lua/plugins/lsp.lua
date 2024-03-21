@@ -1,4 +1,5 @@
 return {
+    { "nvim-neotest/nvim-nio" }, -- required for nvim dap
     {
         "neovim/nvim-lspconfig",
         opts = {
