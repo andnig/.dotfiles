@@ -128,39 +128,21 @@ alias cat='batcat --style=plain,header'
 alias cl='clear'
 export GTK_THEME=Adwaita:dark
 
-# miniforge
-export PATH="$HOME/conda/bin:$PATH"
-export CONDA_BASE_PREFIX="$HOME/conda"
-source $HOME/conda/etc/profile.d/conda.sh
-source $HOME/conda/etc/profile.d/mamba.sh
-
 # custom scripts
 export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh
 alias on="cd $HOME/.notes && nvim ."
 alias nn="new_note.sh"
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# This block can be deleted once the old Ubuntu thingy is gone!
-__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "$HOME/miniconda3/etc/profile.d/mamba.sh" ]; then
-    . "$HOME/miniconda3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-export PATH=$HOME/.nimble/bin:$PATH
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export PATH=$HOME/.nimble/bin:$PATH
+
+# miniforge
+# export PATH="$HOME/conda/bin:$PATH"
+export CONDA_BASE_PREFIX="$HOME/conda"
+# source $HOME/conda/etc/profile.d/conda.sh  # commented out by conda initialize
+# source $HOME/conda/etc/profile.d/mamba.sh
 
 # /usr/bin/keychain $HOME/.ssh/id_rsa
 # source $HOME/.keychain/UBUNTU-sh
@@ -182,3 +164,29 @@ fi
 export NOTES="$HOME/.notes"
 export TASKS="$HOME/.tasks"
 export DOTFILES="$HOME/.dotfiles"
+
+export LD_LIBRARY_PATH=/usr/local/cuda-12.3/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda-12.3/bin:$PATH
+export CUDA_HOME=/usr/local/cuda-12.3
+
+export PATH="$HOME/.dotnet:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$("$HOME/conda/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/conda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "$HOME/conda/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/conda/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
