@@ -12,7 +12,7 @@ and taskwarrior in sync between Android and all the other devices.
    - Scripts: `/sdcard/scripts`
    - Tasks: `/sdcard/taskwarrior`
 6. In termux, create a new folder `~/scripts`
-7. Add the scripts you want to sync to the `sync` folder on the "source device". Then move the
+7. Add the scripts you want to sync to the `sync` folder on the "source device" Then move the
    scripts from the `sync` folder to the `~/scripts` folder in termux.
 8. Add a ~/.bashrc file to termux. This file should contain the following:
    ```bash
