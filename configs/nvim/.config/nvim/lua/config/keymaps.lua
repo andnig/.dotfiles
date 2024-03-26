@@ -75,3 +75,8 @@ vim.keymap.set(
     "<cmd>lua require('chatgpt').openChat()<CR>",
     { desc = "Open ChatGPT" }
 )
+
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", { desc = "Navigate pane up" })
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>", { desc = "Navigate pane down" })
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", { desc = "Navigate pane left" })
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", { desc = "Navigate pane right" })
