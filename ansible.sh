@@ -64,5 +64,7 @@ else
 	ansible-playbook ./ansible/local.yml --ask-become-pass --tags $tags_string --ask-vault-pass
 fi
 
+mamba install anaconda::pillow
+
 echo "[i] From now on you can use $ dotfiles to manage your dotfiles"
 echo "[i] You can run the script postinstall.sh now!"
