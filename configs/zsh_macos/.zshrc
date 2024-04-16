@@ -165,3 +165,6 @@ alias cl='clear'
 export NOTES="$HOME/.notes"
 export TASKS="$HOME/.tasks"
 export DOTFILES="$HOME/.dotfiles"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"

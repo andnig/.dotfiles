@@ -9,13 +9,13 @@ devices.
 3. Run the termux app
 4. Install the [syncthing app](https://play.google.com/store/search?q=syncthing)
 5. In Syncthing add all the devices to sync. Make sure that the following folders
-are synced:
+   are synced:
    - Notes: `/sdcard/notes`
    - Scripts: `/sdcard/scripts`
    - Tasks: `/sdcard/taskwarrior`
 6. In termux, create a new folder `~/scripts`
 7. Add the scripts you want to sync to the `sync` folder on the "source device".
-Then move the scripts from the `sync` folder to the `~/scripts` folder in termux.
+   Then move the scripts from the `sync` folder to the `~/scripts` folder in termux.
 8. Add a ~/.bashrc file to termux. This file should contain the following:
 
    ```bash
