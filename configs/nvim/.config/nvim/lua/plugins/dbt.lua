@@ -1,8 +1,14 @@
 return {
     {
         "PedramNavid/dbtpal",
-        dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope.nvim" } },
-        init = function()
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+        ft = {
+            "sql",
+            "dbt",
+            "md",
+            "yaml",
+        },
+        config = function()
             local dbt = require("dbtpal")
             dbt.setup({
                 -- Path to the dbt executable
@@ -25,10 +31,10 @@ return {
             -- Setup key mappings
             vim.keymap.set("n", "<localleader>df", dbt.run, { desc = "dbt run file" })
             vim.keymap.set("n", "<localleader>dp", dbt.run_all, { desc = "dbt run project" })
-            vim.keymap.set("n", "<leader>dt", dbt.test, { desc = "dbt test file" })
+            vim.keymap.set("n", "<localleader>dt", dbt.test, { desc = "dbt test file" })
             vim.keymap.set(
                 "n",
-                "<leader>dm",
+                "<localleader>dm",
                 require("dbtpal.telescope").dbt_picker,
                 { desc = "dbt picker" }
             )
