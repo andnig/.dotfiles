@@ -5,3 +5,6 @@ formulas_linux:
   - imagemagick
   - lua@5.1
   - luarocks
+  - tlrc
+  - fpp
+  - zoxide

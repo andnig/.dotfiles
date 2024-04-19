@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias r="radian"
+alias ssh="TERM=screen ssh"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
@@ -126,6 +127,7 @@ export N_PREFIX="$HOME/.local/n"
 alias ls='exa --icons'
 alias cat='batcat --style=plain,header'
 alias cl='clear'
+
 export GTK_THEME=Adwaita:dark
 
 # custom scripts
@@ -190,3 +192,6 @@ if [ -f "$HOME/conda/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+eval "$(zoxide init zsh)"
+
+bindkey -s ^f "tmux-sessionizer.sh\n"

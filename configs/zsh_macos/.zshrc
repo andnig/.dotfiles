@@ -148,6 +148,8 @@ alias fo=find_and_open.sh
 alias on="cd $HOME/.notes && nvim ."
 alias nn="new_note.sh"
 
+alias ssh="TERM=screen ssh"
+
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
@@ -168,3 +170,7 @@ export DOTFILES="$HOME/.dotfiles"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"
+
+eval "$(zoxide init zsh)"
+
+bindkey -s ^f "tmux-sessionizer.sh\n"

@@ -35,7 +35,7 @@ winget install -e --id Microsoft.WindowsTerminal.Preview --accept-package-agreem
 winget install -e --id Microsoft.PowerToys --accept-package-agreements --accept-source-agreements
 winget install -e --id Microsoft.VisualStudioCode --accept-package-agreements --accept-source-agreements
 winget install -e --id Microsoft.PowerShell --accept-package-agreements --accept-source-agreements
-winget install -e --id lars-berger.GlazeWM --accept-package-agreements --accept-source-agreements
+winget install -e --id glzr-io.glazewm --accept-package-agreements --accept-source-agreements
 winget install -e --id Flameshot.Flameshot --accept-package-agreements --accept-source-agreements
 
 # Installing the WSL2 distro
