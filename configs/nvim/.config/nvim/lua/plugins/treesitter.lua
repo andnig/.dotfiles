@@ -4,7 +4,7 @@ return {
         opts = {
             highlight = {
                 enable = true,
-                disable = { "dbt", "sql" },
+                disable = { "sql", "dbt" },
             },
             ensure_installed = {
                 "bash",

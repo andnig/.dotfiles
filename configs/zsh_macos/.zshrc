@@ -148,6 +148,8 @@ alias fo=find_and_open.sh
 alias on="cd $HOME/.notes && nvim ."
 alias nn="new_note.sh"
 
+alias ssh="TERM=screen ssh"
+
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in

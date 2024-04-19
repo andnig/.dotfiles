@@ -7,6 +7,7 @@ dependencies:
   - jupyter_client
   - ipykernel
   - plotly
+  - pillow
   - pyperclip
   - nbformat
   - python-kaleido
