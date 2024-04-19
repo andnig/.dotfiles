@@ -7,6 +7,7 @@ return {
         init = function()
             -- this is an example, not a default. Please see the readme for more configuration options
             vim.g.molten_image_provider = "image.nvim"
+            vim.g.molten_auto_image_popup = true
             vim.g.molten_wrap_output = true
             vim.g.molten_virt_text_output = true
             vim.keymap.set("n", "<localleader>ci", ":MoltenInit<CR>")
