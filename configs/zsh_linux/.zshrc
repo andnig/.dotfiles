@@ -126,6 +126,7 @@ export N_PREFIX="$HOME/.local/n"
 alias ls='exa --icons'
 alias cat='batcat --style=plain,header'
 alias cl='clear'
+
 export GTK_THEME=Adwaita:dark
 
 # custom scripts
@@ -190,3 +191,6 @@ if [ -f "$HOME/conda/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+eval "$(zoxide init zsh)"
+
+bindkey -s ^f "tmux-sessionizer.sh\n"

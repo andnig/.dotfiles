@@ -168,3 +168,7 @@ export DOTFILES="$HOME/.dotfiles"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"
+
+eval "$(zoxide init zsh)"
+
+bindkey -s ^f "tmux-sessionizer.sh\n"

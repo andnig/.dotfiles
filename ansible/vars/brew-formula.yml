@@ -42,3 +42,6 @@ formulas:
   - luarocks
   - yabai
   - skhd
+  - tlrc
+  - fpp
+  - zoxide
