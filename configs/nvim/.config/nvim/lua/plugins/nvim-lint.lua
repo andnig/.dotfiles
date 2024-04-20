@@ -7,6 +7,9 @@ return {
                 dbt = { "sqlfluff" },
             },
             linters = {
+                markdownlint = {
+                    args = { "--disable", "MD033", "--" },
+                },
                 sqlfluff = {
                     args = {
                         "lint",

@@ -1,8 +1,8 @@
 ---
 apt:
   - apt-transport-https
-  - ca-certificates 
-  - gnupg 
+  - ca-certificates
+  - gnupg
   - build-essential
   - unzip
   - fontconfig
@@ -19,6 +19,7 @@ apt:
   - apt-transport-https
   - ca-certificates
   - software-properties-common
+  - pandoc
   - python3-setuptools
   - python3-pip
   - python3-neovim

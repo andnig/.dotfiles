@@ -32,4 +32,7 @@ fi
 # Move to the presentation directory and run pnpm install
 cd "$presentation_path"
 pnpm install
+pnpm install -D tailwindcss
+pnpm dlx tailwindcss init
 echo "Dependencies installed using pnpm."
+echo "Add <script src="https://cdn.tailwindcss.com"></script> to the header of your index.html file"

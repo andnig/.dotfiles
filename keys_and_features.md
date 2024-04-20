@@ -6,7 +6,8 @@
 - Find and open note: `fo <search term> <optional: program to open it with>`
 - Create new note: `nn <note type (idea, general, russmedia)> <filename>`
 - Add a new anaconda env: `add_conda.sh <env name>`
-- Create a new reveal.js presentation: `new_presentation.sh <presentation name>`
+- Create a new reveal.js presentation server: `new_presentation.sh <presentation name>`
+- Transform markdown to reveal.js presentation: `convert_md_to_reveal.sh <markdown file> <output file> <theme>`
 
 ## Tmux
 
