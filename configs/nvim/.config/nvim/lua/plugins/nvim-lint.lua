@@ -8,7 +8,7 @@ return {
             },
             linters = {
                 markdownlint = {
-                    args = { "--disable", "MD033", "--" },
+                    args = { "--disable", "MD033", "--disable", "MD034", "--" },
                 },
                 sqlfluff = {
                     args = {

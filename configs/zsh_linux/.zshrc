@@ -192,6 +192,6 @@ if [ -f "$HOME/conda/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 bindkey -s ^f "tmux-sessionizer.sh\n"

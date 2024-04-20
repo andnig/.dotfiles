@@ -1,10 +1,43 @@
 # Keys and features
 
+## Features
+
+- _GNU stow_ is used for dotfile management. Dotfiles are stored in ~/.dotfiles,
+  and stow then symlinks to home. To add a new symlink folder, add a folder to
+  ~/.dotfiles/configs and run `stow <new folder> -t $HOME`
+- _Neovim_ is the main editor. It uses lazyvim as distro. The main features are
+  LSP, telescope, and treesitter. The configuration is modular and can be found
+  in ~/.dotfiles/configs/nvim
+- _ZSH_ is used as shell, with oh-my-zsh as plugin manager.
+- _Starship_ is used as shell prompt, showing various nice status information
+- _TMUX_ is used as terminal multiplexer and automatically started
+- The folder _scripts_ contains useful scripts for various tasks
+- _fzf_ is used for fuzzy finding in the terminal
+- _taskwarrior_ is used for task management. **taskserver** (running on
+  hetzner.general) is used to sync the tasks
+- On Winodws: _glazewm_ is used as window manager
+- On MacOS: **yabai** is used as window manager, with **skhd** as hotkey daemon
+- On Windows: a powershell script bootstraps **Ubuntu** in WSL2
+- **SSH keys** are automatically managed with ansible vault
+- **syncthing** is used to sync the following folders between devices:
+  (Note: navigate to `http://localhost:8384` to access the syncthing web
+  interface. You need to initially add these folders manually to the interface
+  and accept them in all the other devices to sync them.
+  (You can run `syncthing cli show system | rg guiAddressUsed` to get the address))
+  - **~/.sync**
+  - **~/.notes**
+- **ripgrep** is used for searching in files
+- **zioxide** is used as smart replacement for `cd`
+- **bat** is used to get nicer output for `cat`
+- Instead of `ls`, **exa** is used, to get better output
+- **jq** can be used to parse json outputs
+
 ## General
 
 - Open tmux sessionizer: `Ctrl + f`
 - Find and open note: `fo <search term> <optional: program to open it with>`
 - Create new note: `nn <note type (idea, general, russmedia)> <filename>`
+- Open notes: `on`
 - Add a new anaconda env: `add_conda.sh <env name>`
 - Create a new reveal.js presentation server: `new_presentation.sh <presentation name>`
 - Transform markdown to reveal.js presentation: `convert_md_to_reveal.sh <markdown file> <output file> <theme>`
@@ -66,6 +99,7 @@
 - Add word to spell list: `zg`
 - Mark word as wrong: `zw`
 - Get suggestions for word: `z=`
+- Record macros: `q<register>` (Play them with `@<register>`)
 
 - open chatgpt ui: `leader ac`
 - in chatgpt: help: `Ctrl h`
