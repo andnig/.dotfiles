@@ -10,6 +10,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 ZSH_TMUX_AUTOSTART=true
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -135,8 +137,6 @@ export PATH="$HOME/scripts:$PATH"
 alias fo=find_and_open.sh
 alias on="cd $HOME/.notes && nvim ."
 alias nn="new_note.sh"
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH=$HOME/.nimble/bin:$PATH
 
