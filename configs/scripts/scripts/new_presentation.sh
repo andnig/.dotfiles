@@ -34,5 +34,7 @@ cd "$presentation_path"
 pnpm install
 pnpm install -D tailwindcss
 pnpm dlx tailwindcss init
+rm -rf .git
+git init --initial-branch=main
 echo "Dependencies installed using pnpm."
 echo "Add <script src="https://cdn.tailwindcss.com"></script> to the header of your index.html file"

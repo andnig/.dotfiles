@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
+ZSH_TMUX_AUTOSTART=true
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python fzf-zsh-plugin kubectl taskwarrior)
+plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python fzf-zsh-plugin kubectl taskwarrior tmux)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 

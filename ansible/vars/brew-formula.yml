@@ -17,7 +17,6 @@ formulas:
   - imagemagick
   - jq
   - neovim
-  - nvm
   - pandoc
   - poppler
   - postgresql
