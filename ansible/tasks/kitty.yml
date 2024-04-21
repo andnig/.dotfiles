@@ -1,12 +1,3 @@
-- name: Check if kitty is installed
-  command: which kitty
-  register: kitty_installed
-  ignore_errors: yes
-  tags:
-    - kitty
-    - install
-    - packages
-
 - block:
   - name: Download the kitty installer script
     get_url:
@@ -57,7 +48,6 @@
     when: ansible_os_family == "Debian"
     become: true
 
-  when: kitty_installed.rc != 0
   tags:
     - kitty
     - install
