@@ -1,5 +1,6 @@
 ---
 apt:
+  - nala
   - apt-transport-https
   - ca-certificates
   - gnupg

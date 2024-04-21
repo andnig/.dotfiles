@@ -34,7 +34,10 @@
 
 ## General
 
-- Open tmux sessionizer: `Ctrl + f`
+- Open tmux windowizer from shell: `Ctrl + f` (or `Ctrl + w`)
+- Open tmux sessionizer from shell: `Ctrl + s`
+- Open tmux sessionizer from nvim: `Ctrl + b S`
+- Open tmux windowizer from nvim: `Ctrl + b W`
 - Find and open note: `fo <search term> <optional: program to open it with>`
 - Create new note: `nn <note type (idea, general, russmedia)> <filename>`
 - Open notes: `on`
