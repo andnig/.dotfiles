@@ -44,7 +44,7 @@
             "keys": "alt+shift+plus"
         }
     ],
-    "alwaysShowTabs": true,
+    "alwaysShowTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": true,
     "defaultProfile": "{51855cb2-8cce-5362-8f54-464b92b32386}",
@@ -401,7 +401,7 @@
             "yellow": "#808000"
         }
     ],
-    "showTabsInTitlebar": true,
+    "showTabsInTitlebar": false,
     "themes": [
         {
             "name": "Catppuccin Mocha",

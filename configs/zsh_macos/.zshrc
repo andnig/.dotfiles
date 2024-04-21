@@ -176,4 +176,6 @@ export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"
 
 eval "$(zoxide init --cmd cd zsh)"
 
-bindkey -s ^f "tmux-sessionizer.sh\n"
+bindkey -s ^s "tmux-sessionizer.sh\n"
+bindkey -s ^f "tmux-windowizer.sh\n"
+bindkey -s ^w "tmux-windowizer.sh\n"
