@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias r="radian"
 alias ssh="TERM=screen ssh"
+alias vim=nvim
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
@@ -173,6 +174,8 @@ export PATH=/usr/local/cuda-12.3/bin:$PATH
 export CUDA_HOME=/usr/local/cuda-12.3
 
 export PATH="$HOME/.dotnet:$PATH"
+
+export EDITOR=nvim
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

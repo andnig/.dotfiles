@@ -165,6 +165,7 @@ eval "$(starship init zsh)"
 alias ls='exa --icons'
 alias cat='bat --style=plain,header'
 alias cl='clear'
+alias vim=nvim
 
 export NOTES="$HOME/.notes"
 export TASKS="$HOME/.tasks"
@@ -173,6 +174,7 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"
+export EDITOR=nvim
 
 eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)

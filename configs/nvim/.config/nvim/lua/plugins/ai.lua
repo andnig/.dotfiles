@@ -87,7 +87,7 @@ return {
             require("chatgpt").setup({
                 api_key_cmd = "cat " .. home .. "/.secrets/openai.secret",
                 openai_params = {
-                    model = "gpt-4",
+                    model = "gpt-4-turbo",
                 },
                 edit_with_instructions = {
                     keymaps = {
@@ -103,7 +103,7 @@ return {
                     },
                 },
                 openai_edit_params = {
-                    model = "gpt-3.5-turbo",
+                    model = "gpt-4-turbo",
                     temperature = 0,
                     top_p = 1,
                     n = 1,
