@@ -34,6 +34,7 @@
 - **httpie** is used as a curl replacement
   (eg. http https://google.com hand=12 peter=1 sends POST JSON)
 - Instead of **apt**, use **nala** to install packages
+- **thefuck** für - well - the fuck
 
 ## General
 
