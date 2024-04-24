@@ -194,6 +194,7 @@ fi
 # <<< conda initialize <<<
 
 eval "$(zoxide init --cmd cd zsh)"
+eval $(thefuck --alias)
 
 bindkey -s ^s "tmux-sessionizer.sh\n"
 bindkey -s ^f "tmux-windowizer.sh\n"

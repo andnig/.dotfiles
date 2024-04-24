@@ -175,6 +175,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"
 
 eval "$(zoxide init --cmd cd zsh)"
+eval $(thefuck --alias)
 
 bindkey -s ^s "tmux-sessionizer.sh\n"
 bindkey -s ^f "tmux-windowizer.sh\n"
