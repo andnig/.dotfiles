@@ -31,6 +31,9 @@
 - **bat** is used to get nicer output for `cat`
 - Instead of `ls`, **exa** is used, to get better output
 - **jq** can be used to parse json outputs
+- **httpie** is used as a curl replacement
+  (eg. http https://google.com hand=12 peter=1 sends POST JSON)
+- Instead of **apt**, use **nala** to install packages
 
 ## General
 

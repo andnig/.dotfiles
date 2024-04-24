@@ -18,6 +18,7 @@ formulas:
   - jq
   - neovim
   - pandoc
+  - httpie
   - poppler
   - postgresql
   - qt@5
