@@ -9,3 +9,4 @@ formulas_linux:
   - fpp
   - zoxide
   - thefuck
+  - httpie
