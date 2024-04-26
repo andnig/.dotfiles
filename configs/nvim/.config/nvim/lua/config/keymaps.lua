@@ -25,8 +25,8 @@ vim.keymap.set(
     { silent = true, desc = "Chmod +x this file" }
 )
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location" })
 
@@ -76,7 +76,7 @@ vim.keymap.set(
     { desc = "Open ChatGPT" }
 )
 
-vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", { desc = "Navigate pane up" })
-vim.keymap.set("n", "<c-j>", ":wincmd j<CR>", { desc = "Navigate pane down" })
-vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", { desc = "Navigate pane left" })
-vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", { desc = "Navigate pane right" })
+-- vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", { desc = "Navigate pane up" })
+-- vim.keymap.set("n", "<c-j>", ":wincmd j<CR>", { desc = "Navigate pane down" })
+-- vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", { desc = "Navigate pane left" })
+-- vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", { desc = "Navigate pane right" })

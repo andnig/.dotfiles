@@ -2,20 +2,20 @@
 
 ## Features
 
-- _GNU stow_ is used for dotfile management. Dotfiles are stored in ~/.dotfiles,
+- **GNU stow** is used for dotfile management. Dotfiles are stored in ~/.dotfiles,
   and stow then symlinks to home. To add a new symlink folder, add a folder to
   ~/.dotfiles/configs and run `stow <new folder> -t $HOME`
-- _Neovim_ is the main editor. It uses lazyvim as distro. The main features are
+- **Neovim** is the main editor. It uses lazyvim as distro. The main features are
   LSP, telescope, and treesitter. The configuration is modular and can be found
   in ~/.dotfiles/configs/nvim
-- _ZSH_ is used as shell, with oh-my-zsh as plugin manager.
-- _Starship_ is used as shell prompt, showing various nice status information
-- _TMUX_ is used as terminal multiplexer and automatically started
-- The folder _scripts_ contains useful scripts for various tasks
-- _fzf_ is used for fuzzy finding in the terminal
-- _taskwarrior_ is used for task management. **taskserver** (running on
+- **ZSH** is used as shell, with oh-my-zsh as plugin manager.
+- **Starship** is used as shell prompt, showing various nice status information
+- **TMUX** is used as terminal multiplexer and automatically started
+- The folder **scripts** contains useful scripts for various tasks
+- **fzf** is used for fuzzy finding in the terminal. Toggle preview with `Shift + ?`
+- **taskwarrior** is used for task management. **taskserver** (running on
   hetzner.general) is used to sync the tasks
-- On Winodws: _glazewm_ is used as window manager
+- On Winodws: **glazewm** is used as window manager
 - On MacOS: **yabai** is used as window manager, with **skhd** as hotkey daemon
 - On Windows: a powershell script bootstraps **Ubuntu** in WSL2
 - **SSH keys** are automatically managed with ansible vault
@@ -31,6 +31,12 @@
 - **bat** is used to get nicer output for `cat`
 - Instead of `ls`, **exa** is used, to get better output
 - **jq** can be used to parse json outputs
+- **httpie** is used as a curl replacement
+  (eg. http https://google.com hand=12 peter=1 sends POST JSON)
+- Instead of **apt**, use **nala** to install packages
+- **thefuck** für - well - the fuck
+- **tldr**
+- **cht.sh**
 
 ## General
 
@@ -43,7 +49,7 @@
 - Open notes: `on`
 - Add a new anaconda env: `add_conda.sh <env name>`
 - Create a new reveal.js presentation server: `new_presentation.sh <presentation name>`
-- Transform markdown to reveal.js presentation: `convert_md_to_reveal.sh <markdown file> <output file> <theme>`
+- Transform markdown to reveal.js presentation: `convert**md_to**reveal.sh <markdown file> <output file> <theme>`
 
 ## Tmux
 
@@ -70,7 +76,7 @@
 - detach from session: `Ctrl + b d`
 - list sessions: `tmux ls`
 - kill session: `tmux kill-session -t <session_name>`
-- rename session: `tmux rename-session -t <old_name> <new_name>`
+- rename session: `tmux rename-session -t <old**name> <new**name>`
 - manage session: `Ctrl + b s`
 - next/previous window: `Ctrl + b n/p`
 - specific window: `Ctrl + b <window_number>`

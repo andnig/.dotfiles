@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias r="radian"
 alias ssh="TERM=screen ssh"
+alias vim=nvim
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
@@ -174,6 +175,8 @@ export CUDA_HOME=/usr/local/cuda-12.3
 
 export PATH="$HOME/.dotnet:$PATH"
 
+export EDITOR=nvim
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$("$HOME/conda/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
@@ -194,6 +197,7 @@ fi
 # <<< conda initialize <<<
 
 eval "$(zoxide init --cmd cd zsh)"
+eval $(thefuck --alias)
 
 bindkey -s ^s "tmux-sessionizer.sh\n"
 bindkey -s ^f "tmux-windowizer.sh\n"

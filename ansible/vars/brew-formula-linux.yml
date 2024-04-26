@@ -8,3 +8,5 @@ formulas_linux:
   - tlrc
   - fpp
   - zoxide
+  - thefuck
+  - httpie

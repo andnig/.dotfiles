@@ -14,20 +14,30 @@ if [ $# -lt 1 ]; then
 	exit 1
 fi
 
-# Assign arguments
+# Assign first argument
 SEARCH_TERM="$1"
-OPEN_PROGRAM="${2:-$(command -v batcat || command -v bat || echo cat)}"
+shift # Shift after capturing the search term to process the rest arguments
+
+# Initialize default program
+OPEN_PROGRAM="$(command -v batcat || command -v bat || echo cat)"
+
+# Default search folder
 SEARCH_FOLDER="$HOME/.notes"
 
-# Check for named parameter '--folder'
-for arg in "$@"; do
-	case $arg in
+# Process remaining arguments
+while (("$#")); do
+	case $1 in
 	--folder=*)
-		SEARCH_FOLDER="${arg#*=}"
+		SEARCH_FOLDER="${1#*=}"
+		shift
+		;;
+	*)
+		# If it's not the folder option, it must be the OPEN_PROGRAM
+		OPEN_PROGRAM="$1"
 		shift
 		;;
 	esac
 done
 
 # Search for the provided term in the specified folder and open the selected file with the specified program
-rg -uu "$SEARCH_TERM" "$SEARCH_FOLDER" | fzf | cut -d':' -f1 | xargs -I '{}' "$OPEN_PROGRAM" '{}'
+rg -uu "$SEARCH_TERM" "$SEARCH_FOLDER" --files-with-matches | fzf | cut -d':' -f1 | xargs -I '{}' "$OPEN_PROGRAM" '{}'
