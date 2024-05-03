@@ -28,6 +28,5 @@ mkdir ~/docker/caddy_config
 
 echo "Add the Caddyfile to ~/docker/."
 echo "Add the remote_server_docker-compose.yml to ~/docker/."
-echo "Add the server.yml to ~/docker/ntfy/conf/."
 echo "Add a DNS route for ntfy.devopsandmore.com to the servers IP address."
 echo "Run docker compose up -d in ~/docker/ to start the services."
