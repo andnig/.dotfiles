@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    command:
+      - serve
+    environment:
+      - TZ=UTC # optional: Change to your desired timezone
+      - NTFY_BASE_URL=https://ntfy.devopsandmore.com
+      - NTFY_BEHIND_PROXY=true
+      - NTFY_CACHE_FILE=/var/cache/ntfy/cache.db
+      - NTFY_AUTH_FILE=/etc/ntfy/auth.db
+      - NTFY_AUTH_DEFAULT_ACCESS=write-only
+      - NTFY_ENABLE_LOGIN=true
+
+    volumes:
+      - /home/docker/ntfy/cache:/var/cache/ntfy
+      - /home/docker/ntfy/conf:/etc/ntfy
+    restart: unless-stopped
+
+  caddy:
+    image: caddy
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/andreas/docker/Caddyfile:/etc/caddy/Caddyfile
+      - /home/andreas/docker/caddy_data:/data
+      - /home/andreas/docker/caddy_config:/config
