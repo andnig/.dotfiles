@@ -29,9 +29,15 @@ return {
             })
 
             -- Setup key mappings
-            vim.keymap.set("n", "<localleader>df", dbt.run, { desc = "dbt run file" })
+            vim.keymap.set("n", "<localleader>dr", dbt.run, { desc = "dbt run file" })
             vim.keymap.set("n", "<localleader>dp", dbt.run_all, { desc = "dbt run project" })
             vim.keymap.set("n", "<localleader>dt", dbt.test, { desc = "dbt test file" })
+            vim.keymap.set(
+                { "n" },
+                "<localleader>df",
+                "<cmd>!sqlfluff fix % -f <CR>",
+                { desc = "Fix SQL" }
+            )
             vim.keymap.set(
                 "n",
                 "<localleader>dm",
