@@ -28,10 +28,10 @@ return {
                 ["<CR>"] = vim.NIL,
 
                 ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
-                    elseif require("copilot.suggestion").is_visible() then
+                    if require("copilot.suggestion").is_visible() then
                         require("copilot.suggestion").accept()
+                    elseif cmp.visible() then
+                        cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
                     elseif has_words_before() then
                         cmp.complete()
                     else

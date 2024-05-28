@@ -1,5 +1,8 @@
-- name: Remove neovim
-  shell: rm -rf ~/neovim
+- name: Remove Neovim
+  file:
+    path: "{{ lookup('env', 'HOME') }}/neovim"
+    state: absent
+  become: true
   tags:
     - install
     - neovim
@@ -11,12 +14,12 @@
   tags:
     - install
     - neovim
-- name: Build neovim
-  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make -j 20"
+- name: Build Neovim
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make -j 20 CMAKE_BUILD_TYPE=Release"
   tags:
     - install
     - neovim
-- name: Install neovim
+- name: Install Neovim
   become: true
   shell: "cd {{ lookup('env', 'HOME') }}/neovim && make install"
   tags:
