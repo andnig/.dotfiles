@@ -24,7 +24,6 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.editor.illuminate" },
         { import = "lazyvim.plugins.extras.editor.mini-move" },
         { import = "lazyvim.plugins.extras.editor.refactoring" },
-        { import = "lazyvim.plugins.extras.editor.trouble-v3" },
 
         { import = "lazyvim.plugins.extras.coding.mini-surround" },
         -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
