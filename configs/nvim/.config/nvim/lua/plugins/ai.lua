@@ -5,36 +5,50 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         event = "InsertEnter",
-        config = function()
-            require("copilot").setup({
-                panel = {
-                    enabled = true,
-                    auto_refresh = true,
+        opts = {
+            suggestion = {
+                enabled = true,
+                auto_trigger = false,
+                debounce = 75,
+                keymap = {
+                    accept = "<Tab>",
                 },
-                suggestion = {
-                    enabled = true,
-                    auto_trigger = true,
-                    -- accept = false, -- disable built-in keymapping
-                },
-                filetypes = {
-                    markdown = true,
-                    yaml = true,
-                },
-            })
-
-            -- hide copilot suggestions when cmp menu is open
-            -- to prevent odd behavior/garbled up suggestions
-            local cmp_status_ok, cmp = pcall(require, "cmp")
-            if cmp_status_ok then
-                cmp.event:on("menu_opened", function()
-                    vim.b.copilot_suggestion_hidden = true
-                end)
-
-                cmp.event:on("menu_closed", function()
-                    vim.b.copilot_suggestion_hidden = false
-                end)
-            end
-        end,
+            },
+            filetypes = {
+                markdown = true,
+                yaml = true,
+            },
+        },
+        -- config = function()
+        --     require("copilot").setup({
+        --         panel = {
+        --             enabled = true,
+        --             auto_refresh = true,
+        --         },
+        --         suggestion = {
+        --             enabled = true,
+        --             auto_trigger = true,
+        --             -- accept = false, -- disable built-in keymapping
+        --         },
+        --         filetypes = {
+        --             markdown = true,
+        --             yaml = true,
+        --         },
+        --     })
+        --
+        --     -- hide copilot suggestions when cmp menu is open
+        --     -- to prevent odd behavior/garbled up suggestions
+        --     local cmp_status_ok, cmp = pcall(require, "cmp")
+        --     if cmp_status_ok then
+        --         cmp.event:on("menu_opened", function()
+        --             vim.b.copilot_suggestion_hidden = true
+        --         end)
+        --
+        --         cmp.event:on("menu_closed", function()
+        --             vim.b.copilot_suggestion_hidden = false
+        --         end)
+        --     end
+        -- end,
     },
 
     -- -- copilot status in lualine
