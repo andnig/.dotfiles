@@ -105,6 +105,7 @@ alias ssh="TERM=screen ssh"
 alias vim=nvim
 alias explorer.exe="/mnt/c/Windows/explorer.exe"
 alias code="/mnt/c/Users/andre/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
+alias fd="fdfind"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
