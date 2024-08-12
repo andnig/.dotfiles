@@ -63,6 +63,13 @@ vim.api.nvim_set_keymap(
 )
 
 vim.keymap.set(
+    "n",
+    "<leader>cb",
+    "<cmd>silent !biome check --unsafe --write --formatter-enabled=true --organize-imports-enabled=true --skip-errors %<CR>",
+    { desc = "Format with biome" }
+)
+
+vim.keymap.set(
     "v",
     "<leader>ae",
     "<cmd>lua require('chatgpt').edit_with_instructions()<CR>",

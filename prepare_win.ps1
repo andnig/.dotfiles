@@ -37,6 +37,7 @@ winget install -e --id Microsoft.VisualStudioCode --accept-package-agreements --
 winget install -e --id Microsoft.PowerShell --accept-package-agreements --accept-source-agreements
 winget install -e --id glzr-io.glazewm --accept-package-agreements --accept-source-agreements
 winget install -e --id Flameshot.Flameshot --accept-package-agreements --accept-source-agreements
+winget install -e --id=TheBrowserCompany.Arc --accept-package-agreements --accept-source-agreements
 
 # Installing the WSL2 distro
 wsl --update
