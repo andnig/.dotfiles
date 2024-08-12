@@ -25,7 +25,7 @@ if [ -z "$TMUX" ]; then
 fi
 
 # List of hosts
-hosts=("mt.db1" "mt.compute1" "engie.db1")
+hosts=("mt.db1" "mt.compute1" "engie.db1" "emco.db1" "emco.compute1")
 
 # Create a window for each host
 for host in "${hosts[@]}"; do
