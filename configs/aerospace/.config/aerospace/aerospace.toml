@@ -37,8 +37,11 @@ alt-shift-l = 'move up'
 alt-shift-semicolon = 'move right'
 
 # Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
-alt-h = 'split horizontal'
-alt-v = 'split vertical'
+# alt-h = 'split horizontal'
+# alt-v = 'split vertical'
+
+alt-h = 'join-with left'
+alt-v = 'join-with down'
 
 alt-f = 'fullscreen'
 
@@ -91,6 +94,22 @@ enter = 'mode main'
 esc = 'mode main'
 
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace T' # mnemonics T - Terminal
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.readdle.SparkDesktop'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = 'move-node-to-workspace 5'
 
