@@ -3,7 +3,7 @@
 echo "Hiding Dock and menu bar"
 read -p "Is your dock currently hidden? (y/n)" dock_hide
 if [ $dock_hide == "n" ]; then
-	osascript -e "tell application \"System Events\" to set the autohide of the dock preferences to true"
+  osascript -e "tell application \"System Events\" to set the autohide of the dock preferences to true"
 fi
 
 # read -p "Is your menu bar currently hidden? (y/n)" menu_hide
@@ -20,8 +20,4 @@ osascript -e 'tell application "System Events"
     end tell
 end tell'
 
-echo "Starting services"
-# brew services restart sketchybar -- sketchybar requires too much battery...
-yabai --start-service
-skhd --start-service
-echo "That's It!"
+echo "Start 'aerospace' window manager now, from you application launcher"

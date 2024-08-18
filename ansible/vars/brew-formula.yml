@@ -40,8 +40,6 @@ formulas:
   - imagemagick
   - lua@5.1
   - luarocks
-  - yabai
-  - skhd
   - tlrc
   - fpp
   - zoxide

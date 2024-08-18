@@ -199,6 +199,17 @@ if [ -f "$HOME/conda/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+
+# Homebrew shell completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+# Homebrew end
+
 eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)
 

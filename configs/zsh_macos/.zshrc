@@ -160,6 +160,17 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+
+# Homebrew shell completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+# Homebrew end
+
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 eval "$(starship init zsh)"
 alias ls='exa --icons'
