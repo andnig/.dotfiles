@@ -180,6 +180,8 @@ export PATH="$HOME/.dotnet:$PATH"
 
 export EDITOR=nvim
 
+export WINDOWS_DOWNLOADS="/mnt/c/Users/andre/Downloads"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$("$HOME/conda/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"

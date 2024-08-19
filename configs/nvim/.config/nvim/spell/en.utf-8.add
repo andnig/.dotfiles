@@ -49,3 +49,7 @@ Neo4j's
 LangChain
 AuraDB
 whitelist
+base64
+url
+BytesIO
+intuitivity
