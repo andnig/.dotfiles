@@ -16,7 +16,7 @@
 - **taskwarrior** is used for task management. **taskserver** (running on
   hetzner.general) is used to sync the tasks
 - On Winodws: **glazewm** is used as window manager
-- On MacOS: **yabai** is used as window manager, with **skhd** as hotkey daemon
+- On MacOS: **aerospace** is used as window manager
 - On Windows: a powershell script bootstraps **Ubuntu** in WSL2
 - **SSH keys** are automatically managed with ansible vault
 - **syncthing** is used to sync the following folders between devices:

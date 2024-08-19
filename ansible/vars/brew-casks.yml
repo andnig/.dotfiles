@@ -32,3 +32,4 @@ casks:
   - 1password
   - displaylink
   - google-cloud-sdk
+  - nikitabobko/tap/aerospace

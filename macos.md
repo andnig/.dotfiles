@@ -28,22 +28,7 @@ select "introducer" ("Verteilergeraet") - this automatically connects with all
 other devices Pixel 6 is synced.
 Add the shared folders on Pixel 6 as normal.
 
-## Yabai
-
-Add this to file `/private/etc/sudoers.d/yabai`:
-(make sure to change the hash each time you update yabai)
-
-```bash
-# input the line below into the file you are editing.
-#  replace <yabai> with the path to the yabai binary (output of: which yabai).
-#  replace <user> with your username (output of: whoami).
-#  replace <hash> with the sha256 hash of the yabai binary (output of: shasum -a 256 $(which yabai)).
-#   this hash must be updated manually after running brew upgrade.
-
-andre ALL=(root) NOPASSWD: sha256:5c729cfc728ec8780c14d6fe0bfd74376bd2f057960b542c41106d8e8c5df787 /opt/homebrew/bin/yabai --load-sa
-```
-
-Run `./postfix_macos.sh` to set install and set up skhd, yabai
+Run `./postfix_macos.sh` to set install and set up aerospace
 
 ## Troubleshooting
 
