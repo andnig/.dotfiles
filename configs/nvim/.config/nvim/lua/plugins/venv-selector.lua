@@ -31,10 +31,12 @@ return {
             settings = {
                 search = {
                     anaconda_envs = {
-                        command = "fd bin/python$ $CONDA_BASE_PREFIX/envs --full-path --color never -E /proc", -- change path here to your anaconda envs
+                        command = "fdfind bin/python$ $CONDA_BASE_PREFIX/envs --full-path --color never -E /proc",
+                        type = "anaconda",
                     },
                     anaconda_base = {
-                        command = "fd /python$ $CONDA_BASE_PREFIX/bin --full-path --color never -E /proc", -- change path here to your anaconda base
+                        command = "fdfind /python$ $CONDA_BASE_PREFIX/bin --full-path --color never -E /proc",
+                        type = "anaconda",
                     },
                 },
                 options = {
