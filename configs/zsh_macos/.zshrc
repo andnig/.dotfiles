@@ -185,7 +185,10 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"
-export EDITOR=nvim
+# export EDITOR=nvim
+
+export OPENAI_API_KEY=$(cat ~/.secrets/openai.secret)
+export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
 
 eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)

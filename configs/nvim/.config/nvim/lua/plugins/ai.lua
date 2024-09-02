@@ -1,6 +1,45 @@
 return {
     -- custom config which piggybacks on the copilot extras in lazy.lua.
     {
+        "yetone/avante.nvim",
+        enable = false,
+        event = "VeryLazy",
+        build = "make",
+        opts = {
+            -- add any opts here
+        },
+        dependencies = {
+            "echasnovski/mini.icons",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below is optional, make sure to setup it properly if you have lazy=true
+            "zbirenbaum/copilot.lua", -- for providers='copilot'
+            {
+                -- support for image pasting
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    -- recommended settings
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
+                        },
+                    },
+                },
+            },
+            {
+                "MeanderingProgrammer/render-markdown.nvim",
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
+        },
+    },
+    {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         build = ":Copilot auth",
@@ -101,7 +140,7 @@ return {
             require("chatgpt").setup({
                 api_key_cmd = "cat " .. home .. "/.secrets/openai.secret",
                 openai_params = {
-                    model = "gpt-4-turbo",
+                    model = "gpt-4o",
                 },
                 edit_with_instructions = {
                     keymaps = {
@@ -117,7 +156,7 @@ return {
                     },
                 },
                 openai_edit_params = {
-                    model = "gpt-4-turbo",
+                    model = "gpt-4",
                     temperature = 0,
                     top_p = 1,
                     n = 1,
