@@ -35,7 +35,7 @@ return {
             vim.keymap.set(
                 { "n" },
                 "<localleader>df",
-                "<cmd>!sqlfluff fix % -f <CR>",
+                "<cmd>!sqlfluff fix % -f <CR> --templater dbt",
                 { desc = "Fix SQL" }
             )
             vim.keymap.set(
