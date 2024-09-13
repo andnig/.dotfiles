@@ -1,4 +1,5 @@
 find
+unzip
 man
 tldr
 sed
