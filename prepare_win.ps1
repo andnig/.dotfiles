@@ -70,7 +70,7 @@ Copy-Item -Path $glazewmConfigSource -Destination (Join-Path $glazewmConfigTarge
 Copy-Item -Path $wslConfigSource -Destination (Join-Path $wslConfigTarget ".wslconfig") -Force
 
 # Add glazewm to autostart
-$SourceFile = Join-Path $userProfile "AppData\Local\Microsoft\WinGet\Packages\glzr-io.glazewm_Microsoft.Winget.Source_8wekyb3d8bbwe\glazewm.exe"
+$SourceFile = "C:\Program Files\glzr.io\GlazeWM\glazewm.exe"
 $ShortcutPath = [System.Environment]::GetFolderPath("Startup") + "\glazewm.lnk"
 $WScriptShell = New-Object -ComObject WScript.Shell
 $Shortcut = $WScriptShell.CreateShortcut($ShortcutPath)
