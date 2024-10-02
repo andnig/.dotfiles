@@ -38,6 +38,7 @@
 - **tldr**
 - **cht.sh**
 - **ntfy** for sending push notifications like `http POST https://ntfy.devopsandmore.com/devops_notify <<< "Hi. push"`
+- **encrypt_folder.sh** to encrypt all files in a folder. Use `--decrypt` to decrypt all files in folder
 
 ## General
 
