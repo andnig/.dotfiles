@@ -6,7 +6,7 @@ formulas:
   - curl
   - docker
   - docker-machine
-  - exa
+  - eza
   - fd
   - fzf
   - gh

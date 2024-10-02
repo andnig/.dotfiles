@@ -2,13 +2,15 @@ return {
     -- custom config which piggybacks on the copilot extras in lazy.lua.
     {
         "yetone/avante.nvim",
-        enable = false,
+        enable = true,
         event = "VeryLazy",
+        lazy = false,
         build = "make",
         opts = {
             -- add any opts here
         },
         dependencies = {
+            "nvim-treesitter/nvim-treesitter",
             "echasnovski/mini.icons",
             "stevearc/dressing.nvim",
             "nvim-lua/plenary.nvim",

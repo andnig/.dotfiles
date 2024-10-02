@@ -177,6 +177,7 @@ export PATH=/usr/local/cuda-12.3/bin:$PATH
 export CUDA_HOME=/usr/local/cuda-12.3
 
 export PATH="$HOME/.dotnet:$PATH"
+export DOTNET_ROOT="$(dirname $(which dotnet))"
 
 # export EDITOR=nvim
 
@@ -184,6 +185,8 @@ export OPENAI_API_KEY=$(cat ~/.secrets/openai.secret)
 export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
 
 export WINDOWS_DOWNLOADS="/mnt/c/Users/andre/Downloads"
+
+export XDG_RUNTIME_DIR="/tmp/"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -214,6 +217,10 @@ then
   compinit
 fi
 # Homebrew end
+
+# Dotnet tools
+export PATH="$PATH:~/.dotnet/tools"
+# Dotnet tools end
 
 eval "$(zoxide init --cmd cd zsh)"
 eval $(thefuck --alias)

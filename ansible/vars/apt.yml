@@ -25,7 +25,7 @@ apt:
   - python3-pip
   - python3-neovim
   - python3.11-dev
-  - exa
+  - eza
   - fd-find
   - gh
   - jq
