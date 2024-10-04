@@ -55,6 +55,8 @@ $windowsTerminalConfigSource = ".\configs\windows_terminal\settings.json"
 $windowsTerminalConfigTarget = Join-Path $userProfile "AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState"
 $glazewmConfigSource = ".\configs\glazewm\.glazewm\config.yaml"
 $glazewmConfigTarget = Join-Path $userProfile ".glzr\glazewm"
+$zebarConfigSource = ".\configs\zebar"
+$zebarConfigTarget = Join-Path $userProfile ".glzr\zebar"
 
 # Create the target directory if it doesn't exist
 if (-not (Test-Path $windowsTerminalConfigTarget)) {
@@ -64,10 +66,14 @@ if (-not (Test-Path $windowsTerminalConfigTarget)) {
 if (-not (Test-Path $glazewmConfigTarget)) {
     New-Item -ItemType Directory -Force -Path $glazewmConfigTarget
 }
+if (-not (Test-Path $zebarConfigTarget)) {
+    New-Item -ItemType Directory -Force -Path $zebarConfigTarget
+}
 # Copy the files 
 Copy-Item -Path $windowsTerminalConfigSource -Destination (Join-Path $windowsTerminalConfigTarget "settings.json") -Force
 Copy-Item -Path $glazewmConfigSource -Destination (Join-Path $glazewmConfigTarget "config.yaml") -Force
 Copy-Item -Path $wslConfigSource -Destination (Join-Path $wslConfigTarget ".wslconfig") -Force
+Copy-Item -Path $zebarConfigSource -Destination $zebarConfigTarget -Recurse -Force
 
 # Add glazewm to autostart
 $SourceFile = "C:\Program Files\glzr.io\GlazeWM\glazewm.exe"
