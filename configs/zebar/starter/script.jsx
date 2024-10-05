@@ -136,9 +136,15 @@ function App() {
   return (
     <div className="app">
       <div className="left">
-        <div className="template logo">
-          
-        </div>
+        <button className="logo"
+          onClick={() => {
+            output.glazewm.runCommand('shell-exec %userprofile%/.glzr/zebar/starter/scripts/OpenStartMenu.vbs')
+          }}>
+          <span className="content">
+            
+          </span>
+        </button>
+
         {output.glazewm && (
           <>
             <div className="workspaces">
@@ -245,10 +251,15 @@ function App() {
           </div>
         )}
         {output.network && (
-          <div className="template network">
-              {getNetworkIcon(output.network)}
-              {output.network.defaultGateway?.ssid}
-          </div>
+          <button className="template network"
+            onClick={() => {
+              output.glazewm.runCommand('shell-exec %userprofile%/.glzr/zebar/starter/scripts/OpenActionCenter.ahk');
+            }}>
+              <span className="content">
+                {getNetworkIcon(output.network)}
+                {output.network.defaultGateway?.ssid}
+              </span>
+          </button>
         )}
 
         {output.battery && (
@@ -259,10 +270,17 @@ function App() {
         )}
 
         {output.date && (
-          <div className="template date">
-            <img src="./icons/icons8-time-32.png" className="i-time" width="17" height="17"></img>
-            <span className="time">{output.date?.formatted}</span>
-          </div>
+          <button className="template date"
+            onClick={() => {
+              output.glazewm.runCommand('shell-exec explorer.exe ms-actioncenter://');
+            }}>
+            <span className="content">
+                  <span className="i-time">
+                    󱑀
+                  </span>
+              <span className="time">{output.date?.formatted}</span>
+            </span>
+          </button>
         )}
 
       </div>

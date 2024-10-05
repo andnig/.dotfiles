@@ -456,10 +456,14 @@ button:hover {
 }
 
 .date {
-  width: 3.8rem;
-  margin-right: 10px;
-  color: rgb(180, 200, 255)
+  width: auto;
+  color: var(--maroon);
+  padding-inline: 10px;
+  margin-left: -10px;
+  height: 24px;
 }
-.i-time {
-  margin-bottom: 1px;
+
+.i-time{
+  font-size: 13px;
+  width: 16px;
 }

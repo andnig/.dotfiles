@@ -40,6 +40,7 @@ winget install -e --id Flameshot.Flameshot --accept-package-agreements --accept-
 winget install -e --id=TheBrowserCompany.Arc --accept-package-agreements --accept-source-agreements
 winget install -e --id=AgileBits.1Password --accept-package-agreements --accept-source-agreements
 winget install -e --id=Henry++.MemReduct --accept-package-agreements --accept-source-agreements
+winget install -e --id AutoHotkey.AutoHotkey --accept-package-agreements --accept-source-agreements
 
 # Installing the WSL2 distro
 wsl --update
