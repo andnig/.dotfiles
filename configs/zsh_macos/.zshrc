@@ -151,7 +151,10 @@ alias on="cd $HOME/.notes && nvim ."
 alias nn="new_note.sh"
 
 alias ssh="TERM=screen ssh"
-
+function ntfy() {
+    echo "Sending notification with message: $1"
+    curl -d $1 "https://ntfy.devopsandmore.com/devops_notify"
+} 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in

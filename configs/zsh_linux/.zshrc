@@ -107,6 +107,11 @@ alias explorer.exe="/mnt/c/Windows/explorer.exe"
 alias code="/mnt/c/Users/andre/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
 alias fd="fdfind"
 
+function ntfy() {
+    echo "Sending notification with message: $1"
+    curl -d $1 "https://ntfy.devopsandmore.com/devops_notify"
+} 
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
