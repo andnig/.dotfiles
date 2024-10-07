@@ -437,6 +437,9 @@ button:hover {
 }
 
 .weather {
+  height: 24px;
+  padding-inline: 5px;
+  margin-inline: -5px;
   color: var(--yellow);
   i {
     color: var(--yellow);

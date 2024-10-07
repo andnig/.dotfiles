@@ -245,10 +245,15 @@ function App() {
           </button>
         )}
         {output.weather && (
-          <div className="template weather">
-            {getWeatherIcon(output.weather)}
-            {Math.round(output.weather.celsiusTemp)}°C
-          </div>
+          <button className="template weather"
+            onClick={() => {
+              output.glazewm.runCommand('shell-exec explorer https://www.bergfex.at/sommer/feldkirch/wetter/');
+            }}>
+            <span className="content">
+              {getWeatherIcon(output.weather)}
+              {Math.round(output.weather.celsiusTemp)}°C
+            </span>
+          </button>
         )}
         {output.network && (
           <button className="template network"
