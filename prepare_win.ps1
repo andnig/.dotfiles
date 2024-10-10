@@ -74,8 +74,8 @@ if (-not (Test-Path $zebarConfigTarget)) {
 }
 # Copy the files 
 Copy-Item -Path $windowsTerminalConfigSource -Destination (Join-Path $windowsTerminalConfigTarget "settings.json") -Force
-Copy-Item -Path $glazewmConfigSource -Destination (Join-Path $glazewmConfigTarget "config.yaml") -Force
 Copy-Item -Path $wslConfigSource -Destination (Join-Path $wslConfigTarget ".wslconfig") -Force
+Copy-Item -Path $glazewmConfigSource -Destination (Join-Path $glazewmConfigTarget "config.yaml") -Force
 Copy-Item -Path $zebarConfigSource -Destination $zebarConfigTarget -Recurse -Force
 
 # Add glazewm to autostart
