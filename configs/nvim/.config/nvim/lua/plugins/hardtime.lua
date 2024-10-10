@@ -9,6 +9,7 @@ return {
         },
         opts = {
             max_count = 5,
+            disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "avante", "oil" },
             -- disable_mouse = false,
         },
     },
