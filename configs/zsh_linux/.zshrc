@@ -88,6 +88,9 @@ else
   export EDITOR='nvim'
 fi
 
+export WINDOWS_USERNAME="$(/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -Command 'dir Env:USERNAME | select-object -expandproperty VALUE' | tr -d '\r')"
+export WINDOWS_DOWNLOADS="/mnt/c/Users/$WINDOWS_USERNAME/Downloads"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -104,7 +107,7 @@ alias r="radian"
 alias ssh="TERM=screen ssh"
 alias vim=nvim
 alias explorer.exe="/mnt/c/Windows/explorer.exe"
-alias code="/mnt/c/Users/andre/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
+alias code="/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
 alias fd="fdfind"
 
 function ntfy() {
@@ -188,8 +191,6 @@ export DOTNET_ROOT="$(dirname $(which dotnet))"
 
 export OPENAI_API_KEY=$(cat ~/.secrets/openai.secret)
 export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
-
-export WINDOWS_DOWNLOADS="/mnt/c/Users/andre/Downloads"
 
 export XDG_RUNTIME_DIR="/tmp/"
 

@@ -6,6 +6,7 @@ return {
             ensure_installed = {
                 "debugpy",
                 "js-debug-adapter",
+                "biome",
                 -- "sqlfluff",
             },
         },

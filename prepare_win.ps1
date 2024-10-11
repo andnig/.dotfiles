@@ -38,6 +38,9 @@ winget install -e --id Microsoft.PowerShell --accept-package-agreements --accept
 winget install -e --id glzr-io.glazewm --accept-package-agreements --accept-source-agreements
 winget install -e --id Flameshot.Flameshot --accept-package-agreements --accept-source-agreements
 winget install -e --id=TheBrowserCompany.Arc --accept-package-agreements --accept-source-agreements
+winget install -e --id=AgileBits.1Password --accept-package-agreements --accept-source-agreements
+winget install -e --id=Henry++.MemReduct --accept-package-agreements --accept-source-agreements
+winget install -e --id AutoHotkey.AutoHotkey --accept-package-agreements --accept-source-agreements
 
 # Installing the WSL2 distro
 wsl --update
@@ -71,8 +74,8 @@ if (-not (Test-Path $zebarConfigTarget)) {
 }
 # Copy the files 
 Copy-Item -Path $windowsTerminalConfigSource -Destination (Join-Path $windowsTerminalConfigTarget "settings.json") -Force
-Copy-Item -Path $glazewmConfigSource -Destination (Join-Path $glazewmConfigTarget "config.yaml") -Force
 Copy-Item -Path $wslConfigSource -Destination (Join-Path $wslConfigTarget ".wslconfig") -Force
+Copy-Item -Path $glazewmConfigSource -Destination (Join-Path $glazewmConfigTarget "config.yaml") -Force
 Copy-Item -Path $zebarConfigSource -Destination $zebarConfigTarget -Recurse -Force
 
 # Add glazewm to autostart
