@@ -10,3 +10,4 @@ formulas_linux:
   - zoxide
   - thefuck
   - httpie
+  - infisical/get-cli/infisical
