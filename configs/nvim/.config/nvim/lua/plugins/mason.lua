@@ -5,7 +5,6 @@ return {
         opts = {
             ensure_installed = {
                 "debugpy",
-                "mdx-analyzer",
                 "js-debug-adapter",
                 "biome",
                 -- "sqlfluff",

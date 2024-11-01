@@ -2,13 +2,13 @@ return {
     "folke/which-key.nvim",
     opts = {
         plugins = { spelling = true },
-        defaults = {
-            ["<leader>n"] = { name = "+notes" },
-            ["<leader>i"] = { name = "+image" },
-            ["<leader>m"] = { name = "+markdown" },
-            ["<leader>a"] = { name = "+ai" },
-            ["<localleader>c"] = { name = "+code" },
-            ["<localleader>d"] = { name = "+dbt/sql" },
+        spec = {
+            { "<leader>a", group = "ai" },
+            { "<leader>i", group = "image" },
+            { "<leader>m", group = "markdown" },
+            { "<leader>n", group = "notes" },
+            { "<localleader>c", group = "code" },
+            { "<localleader>d", group = "dbt/sql" },
         },
     },
 }
