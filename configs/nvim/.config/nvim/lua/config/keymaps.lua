@@ -62,11 +62,11 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true, desc = "Create new idea" }
 )
 
-vim.keymap.set(
+vim.api.nvim_set_keymap(
     "n",
     "<leader>cb",
-    "<cmd>silent !biome check --unsafe --write --formatter-enabled=true --organize-imports-enabled=true --skip-errors %<CR>",
-    { desc = "Format with biome" }
+    "<cmd>:lua vim.cmd('silent !biome check --unsafe --write --formatter-enabled=true --organize-imports-enabled=true --skip-errors ' .. vim.fn.shellescape('%'))<CR>",
+    { noremap = true, silent = true, desc = "Format with biome" }
 )
 
 vim.keymap.set(
