@@ -16,7 +16,6 @@ formulas:
   - libheif
   - imagemagick
   - jq
-  - neovim
   - pandoc
   - httpie
   - poppler
