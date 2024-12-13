@@ -2,12 +2,13 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste but do not override yank register" })
+vim.keymap.set("x", "<leader>pp", [["_dP]], { desc = "Paste but do not override yank register" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
-vim.keymap.set("n", "<leader>p", [["+p]], { desc = "[p]aste from system clipboard" })
-vim.keymap.set("n", "<leader>P", [["+P]], { desc = "[P]aste from system clipboard" })
+vim.keymap.set("n", "<leader>ps", [["+p]], { desc = "[p]aste from system clipboard" })
+vim.keymap.set("n", "<leader>Ps", [["+P]], { desc = "[P]aste from system clipboard" })
 
+vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete into void" })
 vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete into void" })
 
 vim.keymap.set(
