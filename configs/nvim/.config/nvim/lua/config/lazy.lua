@@ -27,6 +27,9 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.editor.refactoring" },
         { import = "lazyvim.plugins.extras.lang.omnisharp" },
         { import = "lazyvim.plugins.extras.coding.mini-surround" },
+        { import = "lazyvim.plugins.extras.formatting.biome" },
+        { import = "lazyvim.plugins.extras.util.dot" },
+        -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
         -- import/override with your plugins
         { import = "plugins" },
     },
