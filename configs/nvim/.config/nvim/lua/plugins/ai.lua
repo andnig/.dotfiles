@@ -3,8 +3,8 @@ return {
     {
         "yetone/avante.nvim",
         enable = true,
-        event = "VeryLazy",
-        lazy = false,
+        event = "LazyFile",
+        lazy = true,
         build = "make",
         opts = {
             -- add any opts here
@@ -64,41 +64,41 @@ return {
     -- },
 
     -- https://github.com/jackMort/ChatGPT.nvim
-    {
-        "jackMort/ChatGPT.nvim",
-        dependencies = {
-            { "MunifTanjim/nui.nvim" },
-            { "nvim-lua/plenary.nvim" },
-            { "nvim-telescope/telescope.nvim" },
-        },
-        -- event = "VeryLazy",
-        config = function()
-            local home = vim.fn.expand("$HOME")
-            require("chatgpt").setup({
-                api_key_cmd = "cat " .. home .. "/.secrets/openai.secret",
-                openai_params = {
-                    model = "gpt-4o",
-                },
-                edit_with_instructions = {
-                    keymaps = {
-                        accept = "<leader>aa",
-                        use_output_as_input = "<leader>ao",
-                    },
-                },
-                chat = {
-                    keymaps = {
-                        yank_last = "<leader>ay",
-                        yank_last_code = "<leader>ak",
-                        toggle_sessions = "<leader>as",
-                    },
-                },
-                openai_edit_params = {
-                    model = "gpt-4o",
-                    temperature = 0,
-                    top_p = 1,
-                    n = 1,
-                },
-            })
-        end,
-    },
+    -- {
+    --     "jackMort/ChatGPT.nvim",
+    --     dependencies = {
+    --         { "MunifTanjim/nui.nvim" },
+    --         { "nvim-lua/plenary.nvim" },
+    --         -- { "nvim-telescope/telescope.nvim" },
+    --     },
+    --     -- event = "VeryLazy",
+    --     config = function()
+    --         local home = vim.fn.expand("$HOME")
+    --         require("chatgpt").setup({
+    --             api_key_cmd = "cat " .. home .. "/.secrets/openai.secret",
+    --             openai_params = {
+    --                 model = "gpt-4o",
+    --             },
+    --             edit_with_instructions = {
+    --                 keymaps = {
+    --                     accept = "<leader>aa",
+    --                     use_output_as_input = "<leader>ao",
+    --                 },
+    --             },
+    --             chat = {
+    --                 keymaps = {
+    --                     yank_last = "<leader>ay",
+    --                     yank_last_code = "<leader>ak",
+    --                     toggle_sessions = "<leader>as",
+    --                 },
+    --             },
+    --             openai_edit_params = {
+    --                 model = "gpt-4o",
+    --                 temperature = 0,
+    --                 top_p = 1,
+    --                 n = 1,
+    --             },
+    --         })
+    --     end,
+    -- },
 }

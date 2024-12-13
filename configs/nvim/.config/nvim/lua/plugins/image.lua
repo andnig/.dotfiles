@@ -1,5 +1,7 @@
 return {
     "3rd/image.nvim",
+    lazy = true,
+    event = "LazyFile",
     opts = {
         backend = "kitty",
         integrations = {

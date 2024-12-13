@@ -1,6 +1,8 @@
 return {
     {
         "benlubas/molten-nvim",
+        event = "LazyFile",
+        lazy = true,
         version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
         build = ":UpdateRemotePlugins",
         dependencies = { "3rd/image.nvim" },
