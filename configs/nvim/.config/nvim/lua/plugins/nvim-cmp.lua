@@ -3,6 +3,7 @@ return {
     -- nvim-cmp configuration so to not preselect completion and require tab to select
     {
         "hrsh7th/nvim-cmp",
+        enabled = false,
         dependencies = {
             "hrsh7th/cmp-emoji",
             opts = nil,

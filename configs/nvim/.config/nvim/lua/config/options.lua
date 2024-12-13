@@ -8,6 +8,7 @@ package.path = package.path
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
 
 vim.g.snacks_scroll = false
+vim.g.ai_cmp = false
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
