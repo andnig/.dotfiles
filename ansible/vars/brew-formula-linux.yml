@@ -11,3 +11,4 @@ formulas_linux:
   - thefuck
   - httpie
   - infisical/get-cli/infisical
+  - yazi
