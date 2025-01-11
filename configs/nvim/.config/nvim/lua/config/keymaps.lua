@@ -7,6 +7,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clip
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
 vim.keymap.set("n", "<leader>ps", [["+p]], { desc = "[p]aste from system clipboard" })
 vim.keymap.set("n", "<leader>Ps", [["+P]], { desc = "[P]aste from system clipboard" })
+vim.keymap.set("n", "<leader>pd", [["=strftime("%F")<CR>P]], { desc = "Insert current date" })
 
 vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete into void" })
 vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete into void" })
