@@ -204,4 +204,5 @@ eval $(thefuck --alias)
 bindkey -s ^s "tmux-sessionizer.sh\n"
 bindkey -s ^f "tmux-windowizer.sh\n"
 bindkey -s ^w "tmux-windowizer.sh\n"
+
 eval "$(uv generate-shell-completion zsh)"
