@@ -12,3 +12,4 @@ formulas_linux:
   - httpie
   - infisical/get-cli/infisical
   - yazi
+  - uv
