@@ -32,7 +32,7 @@
 - Instead of `ls`, **exa** is used, to get better output
 - **jq** can be used to parse json outputs
 - **httpie** is used as a curl replacement
-  (eg. http https://google.com hand=12 peter=1 sends POST JSON)
+  (eg. http <https://google.com> hand=12 peter=1 sends POST JSON)
 - Instead of **apt**, use **nala** to install packages
 - **thefuck** für - well - the fuck
 - **tldr**
@@ -53,6 +53,7 @@
 - Add a new anaconda env: `add_conda.sh <env name>`
 - Create a new reveal.js presentation server: `new_presentation.sh <presentation name>`
 - Transform markdown to reveal.js presentation: `convert**md_to**reveal.sh <markdown file> <output file> <theme>`
+- Upload env files to infisical: `upload_to_infisical.sh .env dev`
 
 ## Tmux
 
