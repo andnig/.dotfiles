@@ -189,7 +189,7 @@ export DOTNET_ROOT="$(dirname $(which dotnet))"
 
 # export EDITOR=nvim
 
-export OPENAI_API_KEY=$(cat ~/.secrets/openai.secret)
+export OPENAI_API_KEY=$(cat ~/.secrets/rmopenai.secret)
 export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
 
 export XDG_RUNTIME_DIR="/tmp/"
