@@ -174,6 +174,11 @@ then
 fi
 # Homebrew end
 
+# dotnet
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 eval "$(starship init zsh)"
 alias ls='exa --icons'
@@ -199,3 +204,5 @@ eval $(thefuck --alias)
 bindkey -s ^s "tmux-sessionizer.sh\n"
 bindkey -s ^f "tmux-windowizer.sh\n"
 bindkey -s ^w "tmux-windowizer.sh\n"
+
+eval "$(uv generate-shell-completion zsh)"

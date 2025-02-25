@@ -40,7 +40,7 @@ alt-shift-semicolon = 'move right'
 # alt-h = 'split horizontal'
 # alt-v = 'split vertical'
 
-alt-h = 'join-with left'
+# alt-h = 'join-with left'
 alt-v = 'join-with down'
 
 alt-f = 'fullscreen'
