@@ -57,8 +57,18 @@ fi
 while IFS= read -r line || [ -n "$line" ]; do
   # Skip empty lines and lines starting with '#'
   if [ -n "$line" ] && [ "${line:0:1}" != "#" ]; then
-    # Set the secret in Infisical
-    infisical secrets set "$line" --env "$ENV"
+    # Split the line into key and value
+    key=$(echo "$line" | cut -d= -f1)
+    value=$(echo "$line" | cut -d= -f2-)
+
+    # Strip quotes if value starts and ends with either '' or ""
+    if [[ ($value == \"*\" || $value == \'*\') ]]; then
+      # Remove the first and last character (quotes)
+      value="${value:1:${#value}-2}"
+    fi
+
+    # Set the secret in Infisical with the potentially modified value
+    infisical secrets set "$key=$value" --env "$ENV"
   fi
 done <"$ENV_FILE"
 
