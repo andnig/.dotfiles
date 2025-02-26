@@ -1,0 +1,134 @@
+#!/usr/bin/env zsh
+
+###
+### xclip(-wsl)
+###
+###   Drop in xclip substitute for interacting with the Windows clipboard from
+### WSL environment. Attempts to resolve various Windows clipboard interfaces
+### on $PATH in order of performance, falling back to powershell executables'
+### Get-Clipboard and Set-Clipboard (with priority to pwsh.exe)—
+###
+### Install Notes:
+###
+###   Symlink into a PATH directory, before real xclip if previously installed (have not personally
+### tested this case). Command will fail if Windows executable paths removed from or shadowed in
+### $PATH, or if interop and appendWindowsPath have been disabled in /etc/wsl.conf—see
+### <https://docs.microsoft.com/en-us/windows/wsl/wsl-config#interop> for more information.
+###
+### win32yank is recommended, installable (in Windows shell) via one of the methods below:
+###
+###   # Chocolatey
+###   choco.exe install win32yank -y
+###
+###   # Build from source (requires rust install)
+###   git clone https://github.com/equalsraf/win32yank win32yank
+###   cd win32yank
+###   cargo.exe install --path .
+###
+### Last tested (as of writing) with ArchWSL (WSL Version 2), on Windows 10 20H2 19042.906.
+###
+
+builtin zmodload zsh/{parameter,zutil} 2>/dev/null || {
+    builtin print -Pu2 -- "%F{3}Failed to load required zsh modules.%f"
+    return 1
+}
+
+builtin emulate zsh -L
+
+unset -m 'OPT_(HELP|OUT|IN)'
+zparseopts -E -D -- {-help,h}=OPT_HELP {i,-in}=OPT_IN {o,-o}=OPT_OUT
+
+local cmd=${0}
+function xclip-help()
+{
+    # Cribbed sytax from win32yank
+    local -a lines=(
+        "Usage:"
+        "    ${cmd:t} [-o|--out]"
+        "    ${cmd:t} | <command>"
+        ""
+        "    ${cmd:t} [-i|--in]"
+        "    <command> | ${cmd:t}"
+        "    ${cmd:t} < <command>"
+    )
+
+    builtin print -l -u2 -- "${(@)^lines}"
+}
+
+if (( $#OPT_HELP ))
+then
+    xclip-help
+    return 0
+fi
+
+#section Paste
+
+if (( $#OPT_OUT )) || [[ ! -t 1 ]]
+then
+    # Resolve best paste command
+    local resolved
+
+    #section Paste - win32yank
+
+    resolved="${commands[(i)win32yank(|.exe)]}"
+    if [[ -n $resolved ]]
+    then
+        command =$resolved -o --lf 2>/dev/null
+
+        return $?
+    fi
+
+    #section Paste - PowerShell
+
+    # Parameter expansion gets best available powershell executable
+    resolved="${commands[(i)p(wsh|owershell).exe]}"
+    if [[ -n $resolved ]]
+    then
+        command =$resolved -No{Profile,nInteractive,Logo} -Command 'Get-Clipboard' 2>/dev/null
+
+        return $?
+    fi
+
+    builtin print -l -u2 -- "Failed to resolve paste command." ""
+    xclip-help
+
+    return 3
+fi
+
+#section Copy
+
+if (( $#OPT_IN )) || [[ ! -t 0 ]]
+then
+    # Resolve best copy command
+    local resolved
+
+    #section Copy - win32yank.exe
+
+    resolved="${commands[(i)win32yank(|.exe)]}"
+    if [[ -n $resolved ]]
+    then
+        command =$resolved -i < "${1:-/dev/stdin}"
+
+        return $?
+    fi
+
+    #section Copy - clip.exe
+
+    resolved="${commands[(i)clip(|.exe)]}"
+    if [[ -n $resolved ]]
+    then
+        command =$resolved < "${1:-/dev/stdin}"
+
+        return $?
+    fi
+
+    builtin print -l -u2 -- "Failed to resolve copy command." ""
+    xclip-help
+
+    return 4
+fi
+
+builtin print -l -u2 -- "Invalid Arguments." ""
+xclip-help
+
+return 2
