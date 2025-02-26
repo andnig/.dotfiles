@@ -25,6 +25,7 @@ apt:
   - python3-pip
   - python3-neovim
   - python3.11-dev
+  - fzf
   - eza
   - fd-find
   - gh

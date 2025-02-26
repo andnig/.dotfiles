@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export FZF_BASE=$HOME/.fzf/bin/fzf
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -70,7 +72,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python kubectl taskwarrior tmux vi-mode fzf-zsh-plugin)
+plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python kubectl fzf-zsh-plugin tmux)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
@@ -121,6 +123,7 @@ complete -o nospace -C /usr/bin/terraform terraform
 autoload -Uz compinit && compinit
 
 export PATH="/snap/bin:$HOME/.local/bin:$PATH"
+export PATH="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:$PATH"
 
 source <(kubectl completion zsh)
 
@@ -132,6 +135,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 eval "$(starship init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # n version manager
 export PATH="$HOME/.local/.npm-global/bin:$PATH"
@@ -192,7 +197,7 @@ export DOTNET_ROOT="$(dirname $(which dotnet))"
 export OPENAI_API_KEY=$(cat ~/.secrets/rmopenai.secret)
 export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
 
-export XDG_RUNTIME_DIR="/tmp/"
+# export XDG_RUNTIME_DIR="/tmp/"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
