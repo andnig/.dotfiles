@@ -1,16 +1,8 @@
 #!/bin/bash
 
 create_tmux_window() {
-  # Set fzf path based on OS
-  if [[ "$(uname)" == "Darwin" ]]; then
-    # macOS - use just 'fzf'
-    FZF_CMD="fzf"
-  else
-    # Linux - use the full path
-    FZF_CMD="$HOME/.fzf/bin/fzf"
-  fi
   # Capture the output from the find command piped to fzf
-  selected_dir=$(find ~/github ~/ ~/.dotfiles -mindepth 1 -maxdepth 3 -type d 2>/dev/null | $FZF_CMD)
+  selected_dir=$(find ~/github ~/ ~/.dotfiles -mindepth 1 -maxdepth 3 -type d 2>/dev/null | fzf)
 
   # Check if the selection is non-empty
   if [[ -n "$selected_dir" ]]; then

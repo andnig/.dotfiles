@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-# Set fzf path based on OS
-if [[ "$(uname)" == "Darwin" ]]; then
-  # macOS - use just 'fzf'
-  FZF_CMD="fzf"
-else
-  # Linux - use the full path
-  FZF_CMD="$HOME/.fzf/bin/fzf"
-fi
 SOURCE=${BASH_SOURCE[0]}
 while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR=$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)
@@ -16,7 +8,7 @@ while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR=$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)
 
-selected=$(cat "$DIR/tmux-cht-languages" "$DIR/tmux-cht-commands" | $FZF_CMD)
+selected=$(cat "$DIR/tmux-cht-languages" "$DIR/tmux-cht-commands" | fzf)
 if [[ -z $selected ]]; then
   exit 0
 fi
