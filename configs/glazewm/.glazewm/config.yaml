@@ -116,7 +116,7 @@ window_rules:
       - window_process: { regex: "WindowsTerminal" }
   - commands: ["move --workspace 2"]
     match:
-      - window_process: { regex: "msedge|brave|Arc|chrome" }
+      - window_process: { regex: "msedge|brave|Arc|chrome|firefox|zen" }
   - commands: ["move --workspace 3"]
     match:
       - window_process: { regex: "(ms-teams|Spark Desktop)" }
@@ -224,8 +224,8 @@ keybindings:
     bindings: ["alt+t"]
 
   # Change the focused window to be fullscreen.
-  - commands: ["toggle-fullscreen"]
-    bindings: ["alt+space"]
+  # - commands: ["toggle-fullscreen"]
+  #   bindings: ["alt+space"]
 
   # Minimize focused window.
   - commands: ["toggle-minimized"]
@@ -247,11 +247,11 @@ keybindings:
   - commands: ["wm-redraw"]
     bindings: ["alt+shift+w"]
 
-  # Launch CMD terminal. Alternatively, use `shell-exec wt` or
-  # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
-  # Terminal and Git Bash respectively.
-  - commands: ["shell-exec cmd"]
-    bindings: ["alt+enter"]
+  # # Launch CMD terminal. Alternatively, use `shell-exec wt` or
+  # # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
+  # # Terminal and Git Bash respectively.
+  # - commands: ["shell-exec cmd"]
+  #   bindings: ["alt+enter"]
 
   # Focus the next/previous workspace defined in `workspaces` config.
   - commands: ["focus --next-workspace"]

@@ -42,3 +42,4 @@ apt:
   - luajit
   - libmagickwand-dev
   - google-cloud-cli
+  - wl-clipboard

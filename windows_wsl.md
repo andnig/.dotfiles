@@ -64,3 +64,20 @@ info on which port the ui runs).
   `ctrl + B + I` again.
 - You should see this image below. Otherwise, please check `image.nvim`
   ![image](./remote.png)
+- If you have issue with wayland or copy-paste (wl-clipboard), try this:
+
+  ```bash
+  cd ~
+  mkdir .wayland-wsl-fix
+  cd .wayland-wsl-fix
+  git clone https://github.com/viruscamp/wslg-links.git
+  cd wslg-links
+  sudo cp wslg-tmp-x11.service /usr/lib/systemd/system/
+  sudo cp wslg-runtime-dir.service /usr/lib/systemd/user/
+  sudo systemctl --global disable pulseaudio.socket
+  sudo systemctl enable wslg-tmp-x11
+  sudo systemctl --global enable wslg-runtime-dir
+  ```
+
+  If the repo is not available, check this:
+  <https://stackoverflow.com/a/79151948/10399989>

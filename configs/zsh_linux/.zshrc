@@ -37,7 +37,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -72,7 +72,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python kubectl fzf-zsh-plugin tmux)
+plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python kubectl zsh-vi-mode fzf-zsh-plugin tmux)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
@@ -111,6 +111,8 @@ alias vim=nvim
 alias explorer.exe="/mnt/c/Windows/explorer.exe"
 alias code="/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
 alias fd="fdfind"
+
+export PATH="/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/cursor/resources/app/bin:$PATH"
 
 function ntfy() {
     echo "Sending notification with message: $1"
@@ -196,6 +198,7 @@ export DOTNET_ROOT="$(dirname $(which dotnet))"
 
 export OPENAI_API_KEY=$(cat ~/.secrets/rmopenai.secret)
 export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
+export GEMINI_API_KEY=$(cat ~/.secrets/gemini.secret)
 
 # export XDG_RUNTIME_DIR="/tmp/"
 
