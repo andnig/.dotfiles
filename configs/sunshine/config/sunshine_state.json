@@ -1,0 +1,15 @@
+{
+    "username": "andnig",
+    "salt": "yKcRpmZdO8=(yUSw",
+    "password": "41AB609014078BF73451667DF56D2C68B72E0D7D9C364AFB9DB252548D3B806D",
+    "root": {
+        "uniqueid": "9061D608-C5DB-AF2A-1A0B-D0D8967E80CD",
+        "named_devices": [
+            {
+                "name": "MacBook Moonlight",
+                "cert": "-----BEGIN CERTIFICATE-----\nMIICvzCCAaegAwIBAgIBADANBgkqhkiG9w0BAQsFADAjMSEwHwYDVQQDDBhOVklE\nSUEgR2FtZVN0cmVhbSBDbGllbnQwHhcNMjUwNDA1MTk1OTA3WhcNNDUwMzMxMTk1\nOTA3WjAjMSEwHwYDVQQDDBhOVklESUEgR2FtZVN0cmVhbSBDbGllbnQwggEiMA0G\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCrdk1jMmGMTXa8tF4+4JbsbgrB3Yk7\nbx6hBgZZBKa5QJPm86srCL05tyAa4HVevDTcZDY59XWDOh9I38QFEaM2eYetErD6\nyX6klHkVqgdsjHRL1rQpQgW0Y1rwUYPJvGO+KdggjZRVcpcBqvbiFN0re738DwIY\nlvGJUIkCy+3jbg3Tvvf7s+mxvW\/WYZnGOKc1\/SiqELULWdRyzsqZzLCN83Ep0+rs\nHZus1lak1qYR+eWQlCYNeMVQdDAVUqhWfLMbnrSS3V+Cn9F9NE6q6IrlyK9b0KNq\nSUx2L0SdSHBoYpC\/2RSOX2PEN11BMLwFs+9\/l4H8ZeseS4s3DmwfVRDbAgMBAAEw\nDQYJKoZIhvcNAQELBQADggEBAKppCUEjlKtjs7HXU9JKXiETcte0hbL00IosVDKK\nMQCI31ASX+\/eKHWRY7GAQtSmV5rAAMzEpKfbzjquvy3Oiayi8XRMTPGNpGusPWVy\nvLBhPPeXbOaMKhQdnNjRKJzVsTs\/v3aLsHH6g8BNHd520uvhl5\/guRZ4S7IjSdeA\nssGZeoboxGnX3WuBC9psaqGp5urqqwLtJo+rCJMbvqpYwiH6fjtBSr+4\/45roKQX\n9lA9lJ6Du\/KnlrfSBqALBM48vH7++J8zegWXYG2cwMzRe8vm3m4MHBvMaJSjRXXK\nkw1qapks5nwh0BA4e5GJxsHR73b\/695orB03SRUvbexB2\/o=\n-----END CERTIFICATE-----\n",
+                "uuid": "54767DC8-034B-B40C-CC90-78969C0E68B8"
+            }
+        ]
+    }
+}
