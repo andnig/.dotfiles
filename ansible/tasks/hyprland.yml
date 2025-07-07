@@ -1,0 +1,45 @@
+- block:
+    - name: Ensure Hyprland and related official packages are installed
+      pacman:
+        name:
+          - hyprland
+          - wofi
+          - waybar
+          - mako
+          - swaybg
+          - xdg-desktop-portal-hyprland
+          - xdg-desktop-portal-gtk
+        state: present
+        update_cache: yes
+      become: true
+
+    - name: Ensure Hyprland AUR packages are installed
+      aur:
+        name:
+          - hyprshot
+          - hyprpicker
+          - hyprlock
+          - hypridle
+          - hyprpolkitagent
+          - hyprland-qtutils
+        state: present
+
+    - name: Start Hyprland on first session in .bash_profile
+      lineinfile:
+        path: "{{ lookup('env', 'HOME') }}/.bash_profile"
+        line: "[[ -z $DISPLAY && $(tty) == /dev/tty1 ]] && exec Hyprland"
+        state: present
+        create: yes
+
+    - name: Start Hyprland on first session in .zprofile
+      lineinfile:
+        path: "{{ lookup('env', 'HOME') }}/.zprofile"
+        line: "[[ -z $DISPLAY && $(tty) == /dev/tty1 ]] && exec Hyprland"
+        state: present
+        create: yes
+
+  when: ansible_os_family == "Archlinux"
+  tags:
+    - hyprland
+    - install
+    - packages

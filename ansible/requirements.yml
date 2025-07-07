@@ -1,1 +1,6 @@
-- src: ecgalaxy.vscode
+roles:
+  - src: ecgalaxy.vscode
+
+collections:
+  - name: kewlfft.aur
+  - name: community.general

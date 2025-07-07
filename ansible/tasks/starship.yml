@@ -3,14 +3,14 @@
       get_url:
         url: https://starship.rs/install.sh
         dest: /tmp/install_starship.sh
-        mode: '0755'
+        mode: "0755"
 
     - name: Execute Starship install script
       command: sh /tmp/install_starship.sh -y
       become: true
 
   when: ansible_os_family == "Debian"
-  tags: 
+  tags:
     - starship
     - install
     - packages

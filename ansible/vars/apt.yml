@@ -7,7 +7,6 @@ apt:
   - build-essential
   - unzip
   - fontconfig
-  - taskwarrior
   - syncthing
   - curl
   - gcc
@@ -32,9 +31,6 @@ apt:
   - jq
   - ripgrep
   - stow
-  - taskwarrior
-  - vit
-  - syncthing
   - cmake
   - gettext
   - xclip

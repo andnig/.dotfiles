@@ -32,8 +32,6 @@ formulas:
   - jesseduffield/lazygit/lazygit
   - miniforge
   - pnpm
-  - task
-  - vit
   - nim
   - syncthing
   - imagemagick
