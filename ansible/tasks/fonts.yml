@@ -92,7 +92,7 @@
             dest: "{{ font_dir }}/"
           loop: "{{ jetbrains_font_files.files }}"
           when: jetbrains_font_files.matched > 0
-      when: ansible_os_family == "Debian"
+      when: ansible_os_family in ["Debian", "Archlinux"]
 
     # ===== Arch-only fonts =====
     - block:
