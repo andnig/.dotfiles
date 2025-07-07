@@ -110,6 +110,12 @@
             mode: "0644"
           when: not caskaydiamono_installed.rc == 0
 
+        - name: Ensure Cascadia temp directory exists
+          file:
+            path: "/tmp/CascadiaFont"
+            state: directory
+            mode: "0755"
+
         - name: Unzip CascadiaMono.zip if font is missing
           unarchive:
             src: "/tmp/CascadiaMono.zip"
@@ -152,6 +158,12 @@
             dest: "/tmp/iafonts.zip"
             mode: "0644"
           when: not iawriter_installed.rc == 0
+
+        - name: Ensure iafonts temp directory exists
+          file:
+            path: "/tmp/iaFonts"
+            state: directory
+            mode: "0755"
 
         - name: Unzip iafonts.zip if font is missing
           unarchive:
