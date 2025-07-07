@@ -92,6 +92,7 @@ pacman:
   - zsh-autosuggestions
   - zsh-syntax-highlighting
   - zsh-completions
+  - python-ruff
 
 yay:
   - google-cloud-cli # Google Cloud SDK CLI
