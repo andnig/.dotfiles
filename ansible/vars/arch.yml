@@ -88,6 +88,10 @@ pacman:
   - xournalpp # Note-taking and PDF annotation
   - thunderbird # Email-Client
   - zsh # Shell
+  - zsh-autocomplete
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - zsh-completions
 
 yay:
   - google-cloud-cli # Google Cloud SDK CLI

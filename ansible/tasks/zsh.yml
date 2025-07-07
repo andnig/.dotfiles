@@ -51,3 +51,18 @@
       tags: *tags_for_zsh_tasks
 
   when: ansible_os_family in ["Debian", "Darwin"]
+
+- block:
+    - name: Ensure custom zsh plugins directory exists
+      file:
+        path: "{{ lookup('env','HOME') }}/.zsh/plugins"
+        state: directory
+        mode: "0755"
+
+    - name: Clone fzf-zsh-plugin
+      git:
+        repo: https://github.com/unixorn/fzf-zsh-plugin.git
+        dest: "{{ lookup('env','HOME') }}/.zsh/plugins/fzf-zsh-plugin"
+        update: yes
+        version: main
+  when: ansible_os_family == "Archlinux"

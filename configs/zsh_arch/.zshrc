@@ -14,7 +14,6 @@ export FZF_BASE=$HOME/.fzf/bin/fzf
 ZSH_THEME="robbyrussell"
 ZSH_TMUX_AUTOSTART=true
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -76,6 +75,12 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # plugins=(watson git dotenv dotnet zsh-autosuggestions zsh-syntax-highlighting ubuntu history-substring-search colored-man-pages colorize pip python kubectl zsh-vi-mode fzf-zsh-plugin tmux)
 # fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # source $ZSH/oh-my-zsh.sh
+
+# Manual plugin loading
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source ~/.zsh/plugins/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
 
 # User configuration
 
