@@ -93,6 +93,7 @@ pacman:
   - zsh-syntax-highlighting
   - zsh-completions
   - python-ruff
+  - npm
 
 yay:
   - google-cloud-cli # Google Cloud SDK CLI
