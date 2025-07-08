@@ -1,0 +1,15 @@
+---
+formulas_linux:
+  - gcc
+  - tmux
+  - imagemagick
+  - lua
+  - luarocks
+  - tlrc
+  - fpp
+  - zoxide
+  - thefuck
+  - httpie
+  - infisical/get-cli/infisical
+  - yazi
+  - uv

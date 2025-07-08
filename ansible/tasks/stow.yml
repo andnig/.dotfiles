@@ -1,0 +1,24 @@
+- name: Stow dotfiles
+  shell: cd ./configs/ && ./stow.sh
+  args:
+    chdir: "{{ dotfiles_dir }}"
+  tags:
+    - install
+    - dotfiles
+    - stow
+
+- name: Add configuration to .bigqueryrc
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.bigqueryrc"
+    line: "{{ item }}"
+    create: yes
+  loop:
+    - "location = EU"
+    - ""
+    - "[query]"
+    - "use_legacy_sql=false"
+  tags:
+    - install
+    - dotfiles
+    - stow
+    - bigquery

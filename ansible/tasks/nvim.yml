@@ -1,0 +1,27 @@
+- name: Remove Neovim
+  file:
+    path: "{{ lookup('env', 'HOME') }}/neovim"
+    state: absent
+  become: true
+  tags:
+    - install
+    - neovim
+- name: Clone Neovim
+  ansible.builtin.git:
+    repo: "https://github.com/neovim/neovim.git"
+    dest: "{{ lookup('env', 'HOME') }}/neovim"
+    version: stable # Specifies the branch to clone
+  tags:
+    - install
+    - neovim
+- name: Build Neovim
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make -j 20 CMAKE_BUILD_TYPE=Release"
+  tags:
+    - install
+    - neovim
+- name: Install Neovim
+  become: true
+  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make install"
+  tags:
+    - install
+    - neovim

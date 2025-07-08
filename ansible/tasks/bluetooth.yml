@@ -1,0 +1,17 @@
+- block:
+    - name: Install blueberry via pacman
+      pacman:
+        name: blueberry
+        state: present
+        update_cache: yes
+      become: yes
+
+    - name: Enable and start bluetooth service
+      systemd:
+        name: bluetooth.service
+        enabled: yes
+        state: started
+      become: yes
+
+  when: ansible_os_family == "Archlinux"
+  tags: [bluetooth, install]

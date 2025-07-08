@@ -1,0 +1,50 @@
+- name: Check if private SSH key exists
+  stat:
+    path: "{{ dest_key }}"
+  register: private_key_stat
+  tags:
+    - dotfiles
+    - install
+    - ssh
+
+- name: Check if public SSH key exists
+  stat:
+    path: "{{ dest_key }}.pub"
+  register: public_key_stat
+  tags:
+    - dotfiles
+    - install
+    - ssh
+
+- name: Ensure .ssh directory exists.
+  file:
+    dest: "{{ dest_key | dirname }}"
+    mode: 0700
+    state: directory
+  tags:
+    - dotfiles
+    - install
+    - ssh
+
+- name: Install ssh key
+  copy:
+    src: "{{ source_key }}"
+    dest: "{{ dest_key }}"
+    mode: 0600
+  when: not private_key_stat.stat.exists
+  tags:
+    - dotfiles
+    - install
+    - ssh
+
+- name: Install ssh key public
+  copy:
+    src: "{{ source_key }}.pub"
+    dest: "{{ dest_key }}.pub"
+    mode: 0644
+  when: not public_key_stat.stat.exists
+  tags:
+    - dotfiles
+    - install
+    - ssh
+

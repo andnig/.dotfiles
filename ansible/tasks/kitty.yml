@@ -1,0 +1,55 @@
+- block:
+    - name: Download the kitty installer script
+      get_url:
+        url: https://sw.kovidgoyal.net/kitty/installer.sh
+        dest: /tmp/kitty_installer.sh
+        mode: "0755"
+
+    - name: Execute the kitty installer script
+      shell: /tmp/kitty_installer.sh
+
+    - block:
+        - name: Create symlink for kitty
+          file:
+            src: "{{ ansible_env.HOME }}/.local/kitty.app/bin/kitty"
+            dest: "/usr/local/bin/kitty"
+            state: link
+            force: yes
+
+        - name: Create symlink for kitten
+          file:
+            src: "{{ ansible_env.HOME }}/.local/kitty.app/bin/kitten"
+            dest: "/usr/local/bin/kitten"
+            state: link
+            force: yes
+
+        - name: Copy desktop file
+          copy:
+            src: "{{ ansible_env.HOME }}/.local/kitty.app/share/applications/kitty.desktop"
+            dest: "/usr/share/applications/kitty.desktop"
+            owner: root
+            group: root
+            mode: 0644
+
+        - name: Find all whiskers_* files
+          find:
+            paths: "{{ dotfiles_dir }}/configs/kitty/.config/kitty/icons"
+            patterns: "whiskers_*"
+          register: whiskers_files
+
+        - name: Copy files to /usr/share/icons/hicolor
+          copy:
+            src: "{{ item.path }}"
+            dest: "/usr/share/icons/hicolor/{{ item.path | regex_search('(\\d+x\\d+)') }}/apps/kitty.png"
+          loop: "{{ whiskers_files.files }}"
+          when: whiskers_files.matched > 0
+          ignore_errors: true
+
+      when: ansible_os_family == "Debian"
+      become: true
+
+  tags:
+    - kitty
+    - install
+    - packages
+  when: ansible_os_family in ["Debian", "Darwmin"]

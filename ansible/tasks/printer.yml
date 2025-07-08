@@ -1,0 +1,23 @@
+- block:
+    - name: Install CUPS and printer utilities
+      pacman:
+        name:
+          - cups
+          - cups-pdf
+          - cups-filters
+          - system-config-printer
+        state: present
+        update_cache: yes
+      become: yes
+
+    - name: Enable and start the CUPS service
+      systemd:
+        name: cups.service
+        enabled: yes
+        state: started
+      become: yes
+
+  when: ansible_os_family == "Archlinux"
+  tags:
+    - install
+    - printer

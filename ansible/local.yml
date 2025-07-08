@@ -1,0 +1,81 @@
+- hosts: localhost
+  gather_facts: yes
+  vars:
+    source_key: "{{ lookup('env', 'HOME') }}/.dotfiles/.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    ssh_dir: "{{ lookup('env', 'HOME') }}/.ssh"
+    secret_dir: "{{ lookup('env', 'HOME') }}/.secrets"
+    personal: "{{ lookup('env', 'HOME') }}/personal"
+    work: "{{ lookup('env', 'HOME') }}/work"
+    username: "{{ lookup('env', 'USER') }}"
+    dotfiles_dir: "{{ lookup('env', 'HOME') }}/.dotfiles"
+  pre_tasks:
+    - name: Update Apt
+      when: ansible_os_family == "Debian"
+      become: true
+      apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+      tags:
+        - install
+        - core
+    - name: Update and upgrade all packages on Arch
+      become: yes
+      pacman:
+        update_cache: yes # Equivalent to 'pacman -Sy'
+        upgrade: yes # Equivalent to 'pacman -Su'
+        state: present
+      when: ansible_os_family == "Archlinux"
+      tags:
+        - install
+        - core
+  tasks:
+    - import_tasks: tasks/yay.yml
+      when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/ssh.yml
+    - import_tasks: tasks/secrets.yml
+    - import_tasks: tasks/git.yml
+    - import_tasks: tasks/docker.yml
+      # Docker is installed with brew on macOS
+      when: ansible_os_family in ["Debian", "Archlinux"]
+    - import_tasks: tasks/packages.yml
+    - import_tasks: tasks/stow.yml
+    - import_tasks: tasks/omarchyinit.yml
+      when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/bluetooth.yml
+      when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/kitty.yml
+      # Kitty is installed with yay on arch
+      when: ansible_os_family in ["Debian", "Darwin"]
+    - import_tasks: tasks/hyprland.yml
+      when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/mamba.yml
+      # Mamba is installed with brew on macOS and not needed on arch
+      when: ansible_os_family == "Debian"
+    - import_tasks: tasks/nvim.yml
+      # Nvim is installed with yay on arch
+      when: ansible_os_family in ["Debian", "Darwin"]
+    - import_tasks: tasks/lazygit.yml
+      # Lazygit is installed with brew on macOS and yay on arch
+      when: ansible_os_family == "Debian"
+    - import_tasks: tasks/zsh.yml
+    - import_tasks: tasks/mimetypes.yml
+      when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/node.yml
+    - import_tasks: tasks/npm-packages.yml
+    - import_tasks: tasks/starship.yml
+      # Starship is installed with brew on macOS and pacman on arch
+      when: ansible_os_family == "Debian"
+    - import_tasks: tasks/printer.yml
+      when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/omarchyextras.yml
+      when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/wsl.yml
+      when: ansible_os_family == "Debian"
+    - import_tasks: tasks/wlan.yml
+      when: ansible_os_family == "Archlinux"
+  roles:
+    - role: ecgalaxy.vscode
+      include_vars:
+        file: vars/vscode_extensions.yml

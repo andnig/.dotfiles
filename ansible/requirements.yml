@@ -1,0 +1,5 @@
+roles:
+  - src: ecgalaxy.vscode
+
+collections:
+  - name: kewlfft.aur

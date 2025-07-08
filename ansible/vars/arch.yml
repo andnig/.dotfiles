@@ -1,0 +1,116 @@
+pacman:
+  - devtools # Tools for Arch packaging and development
+  - base-devel # Essential development tools (make, gcc, etc.)
+  - gum # Tools for glamorous shell scripts
+  - wget # Command-line file downloader
+  - curl # Command-line tool for data transfer
+  - unzip # Extract ZIP archives
+  - inetutils # Basic networking utilities
+  - fd # Fast, user-friendly alternative to 'find'
+  - eza # Modern replacement for 'ls'
+  - fzf # Interactive fuzzy finder
+  - ripgrep # Fast recursive search tool
+  - zoxide # Smart directory jumper
+  - bat # 'cat' clone with syntax highlighting
+  - wl-clipboard # Clipboard utilities for Wayland
+  - fastfetch # System info tool
+  - btop # Resource monitor
+  - man # Unix manual pages viewer
+  - less # Terminal pager
+  - whois # Whois database client
+  - plocate # Fast file indexing/search
+  - bash-completion # Bash tab completion
+  - kitty # GPU-based terminal emulator
+  - starship # Minimal, customizable shell prompt
+  - cargo # Rust package manager
+  - clang # C/C++/Obj-C compiler
+  - llvm # Compiler infrastructure
+  - mise # Universal version manager for dev tools
+  - imagemagick # Suite for image manipulation
+  - mariadb-libs # MariaDB client libraries
+  - postgresql-libs # PostgreSQL client libraries
+  - github-cli # Official GitHub CLI
+  - lazygit # Terminal UI for git
+  - syncthing # Continuous file synchronization
+  - kubectl # Manage Kubernetes clusters
+  - krew # Plugin manager for kubectl
+  - neovim # Modern Vim-based text editor
+  - python-pynvim # Python support for (Neo)Vim plugins
+  # === added missing from apt/brew
+  - ca-certificates # SSL root certificates
+  - gnupg # GnuPG encryption tool
+  - fontconfig # Font configuration library
+  - gcc # GNU C Compiler
+  - containerd # Container runtime for Docker/K8s
+  - pandoc # Universal document converter
+  - python-setuptools # Python packaging tools
+  - python-pip # Python package installer
+  - python # Python programming language
+  - jq # Command-line JSON processor
+  - stow # Symlink farm manager (dotfiles)
+  - cmake # Cross-platform build system
+  - gettext # i18n/l10n tools
+  - xclip # Clipboard utility for X11
+  - noto-fonts-emoji # Colored emoji font
+  - tmux # Terminal multiplexer: split panes, sessions
+  - lua # Lightweight scripting language
+  - luajit # JIT compiler for Lua
+  - luarocks # Lua package manager
+  - httpie # Modern, user-friendly HTTP client
+  - ttf-font-awesome
+  - noto-fonts
+  - noto-fonts-cjk
+  - noto-fonts-extra
+  - brightnessctl # Adjust backlight brightness
+  - playerctl # MPRIS media player controller
+  - pamixer # Pulseaudio command-line mixer
+  - pavucontrol # PulseAudio volume control GUI
+  - wireplumber # PipeWire session and policy manager
+  - fcitx5 # Next generation input method framework
+  - fcitx5-gtk # GTK IM module for fcitx5
+  - fcitx5-qt # Qt IM module for fcitx5
+  - fcitx5-configtool # Configuration tool for fcitx5
+  - nautilus # GNOME file manager
+  - sushi # File previewer for Nautilus
+  - ffmpegthumbnailer # Thumbnailer for videos
+  - gnome-calculator # GNOME calculator application
+  - chromium # Open source web browser
+  - mpv # Video player
+  - evince # GNOME document viewer
+  - imv # Image viewer
+  - wl-clip-persist # Clipboard manager for Wayland (AUR)
+  - uv # Extremely fast Python runner and package manager (AUR: uv)
+  - yazi # Modern TUI file manager (AUR: yazi)
+  - libreoffice-fresh # Modern, full-featured office suite (or libreoffice-still for stable)
+  - obs-studio # Open source live streaming and screen recording
+  - kdenlive # Non-linear video editor
+  - xournalpp # Note-taking and PDF annotation
+  - thunderbird # Email-Client
+  - zsh # Shell
+  - zsh-autocomplete
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - zsh-completions
+  - python-ruff
+  - npm
+  - impala # UI for wifi selection
+
+yay:
+  - pinta # Simple drawing/editing program (like Paint.NET)
+  - google-cloud-cli # Google Cloud SDK CLI
+  - google-cloud-cli-bq # BigQuery command-line tool
+  - google-cloud-cli-component-gke-gcloud-auth-plugin # GKE auth plugin for gcloud
+  - tlrc # tldr Rust client (community-driven man pages)
+  - lazydocker-bin # Terminal UI for Docker & Compose
+  - fpp # PathPicker: select files from output (AUR: fpp)
+  - thefuck # Corrects previous console commands (AUR: thefuck)
+  - infisical-bin # Secrets manager CLI (AUR: infisical-bin or infisical-cli-bin)
+  - clipse-bin # Clipse client (AUR, binary package)
+  - 1password-beta # 1Password beta desktop app (AUR)
+  - 1password-cli # 1Password CLI (AUR)
+  - localsend-bin # LocalSend (AUR, binary package)
+  - zen-browser-bin # Zen browser
+  - signal-desktop # Encrypted desktop messenger (AUR: signal-desktop)
+  - spotify # Music streaming client (AUR: spotify)
+  - zoom # Video conferencing client (AUR: zoom)
+  - zsh-vi-mode

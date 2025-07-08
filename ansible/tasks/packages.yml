@@ -1,0 +1,268 @@
+---
+# Include all the package lists
+- name: Include brew taps list
+  include_vars: vars/brew-taps.yml
+  tags:
+    - brew
+    - packages
+    - install
+
+- name: Include brew formula list
+  include_vars: vars/brew-formula.yml
+  tags:
+    - brew
+    - packages
+    - install
+
+- name: Include brew casks list
+  include_vars: vars/brew-casks.yml
+  tags:
+    - brew
+    - packages
+    - install
+
+- name: Include brew formula list for linux
+  include_vars: vars/brew-formula-linux.yml
+  tags:
+    - apt
+    - packages
+    - install
+
+- name: Include APT package list
+  include_vars: vars/apt.yml
+  tags:
+    - apt
+    - packages
+    - install
+
+- name: Include yay and pacman package list
+  include_vars: vars/arch.yml
+  tags:
+    - yay
+    - pacman
+    - packages
+    - install
+
+- name: Include python package list
+  include_vars: vars/pip.yml
+  tags:
+    - pip
+    - packages
+    - install
+
+# Block for Darwin (MacOS)
+- block:
+    - name: Update/Upgrade Homebrew
+      homebrew:
+        update_homebrew: true
+        upgrade_all: true
+
+    - name: Manage taps
+      homebrew_tap:
+        name: "{{ taps }}"
+        state: "{{ item.value.state | default('present') }}"
+      with_list: "{{ taps }}"
+
+    - name: Manage formula
+      homebrew:
+        name: "{{ formulas }}"
+        state: latest
+
+    - name: Manage casks
+      homebrew_cask:
+        name: "{{ casks }}"
+        state: latest
+
+    # - name: Manage alacritty (requires no-quarantine)
+    #   homebrew_cask:
+    #     name: "alacritty"
+    #     state: "present"
+    #     install_options: "no-quarantine"
+
+    - name: Start Syncthing service
+      command: brew services start syncthing
+
+  when: ansible_os_family == "Darwin"
+  tags:
+    - brew
+    - install
+    - packages
+
+# Block for Debian
+- block:
+    - name: Add Kisak Mesa PPA
+      ansible.builtin.apt_repository:
+        repo: ppa:kisak/kisak-mesa
+        state: present
+
+    - name: Add Google Cloud SDK repository key
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        keyring: /usr/share/keyrings/cloud.google.gpg
+        state: present
+
+    - name: Add Google Cloud SDK repository
+      apt_repository:
+        repo: deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
+        filename: google-cloud-sdk
+        state: present
+        update_cache: yes
+
+    - name: Update/Upgrade apt
+      apt:
+        update_cache: true
+        upgrade: dist
+
+    - name: Update/Upgrade Homebrew
+      homebrew:
+        update_homebrew: true
+        upgrade_all: true
+      environment:
+        PATH: "/home/linuxbrew/.linuxbrew/bin:{{ ansible_env.PATH }}"
+      become: false
+
+    - name: Manage apt packages
+      apt:
+        name: "{{ apt }}"
+        state: latest
+
+    - name: Manage formula
+      homebrew:
+        name: "{{ formulas_linux }}"
+        state: latest
+      environment:
+        PATH: "/home/linuxbrew/.linuxbrew/bin:{{ ansible_env.PATH }}"
+      become: false
+
+    - name: Add user to Docker group
+      user:
+        name: "{{ ansible_env.USER }}"
+        groups: docker
+        append: yes
+
+    - name: Download Nim-lang initialization script
+      get_url:
+        url: https://nim-lang.org/choosenim/init.sh
+        dest: /tmp/init.sh
+        mode: "0755"
+      become: false
+
+    - name: Execute Nim-lang initialization script
+      shell: sh /tmp/init.sh -y
+      args:
+        executable: /bin/sh
+      become: false
+
+    - name: Enable Syncthing service for local user
+      systemd:
+        name: syncthing@{{ username }}.service
+        enabled: yes
+
+    - name: Start Syncthing service for local user
+      systemd:
+        name: syncthing@{{ username }}.service
+        state: started
+
+    # Kubectl needs some special handling
+    - name: Get latest kubectl version
+      uri:
+        url: https://dl.k8s.io/release/stable.txt
+        return_content: yes
+      register: version
+      become: false
+
+    - name: Ensure the directory exists
+      ansible.builtin.file:
+        path: "{{ lookup('env', 'HOME') }}/.local/bin"
+        state: directory
+        mode: "0755"
+      become: false
+
+    - name: Download the latest kubectl release
+      uri:
+        url: https://dl.k8s.io/release/{{ version.content }}/bin/linux/amd64/kubectl
+        dest: "{{ lookup('env', 'HOME') }}/.local/bin"
+        status_code:
+          - 200
+          - 302
+          - 304
+      register: kubectl
+      become: false
+
+    - name: Move kubectl and change permissions
+      file:
+        path: "{{ kubectl.path }}"
+        state: file
+        owner: "{{ username }}"
+        mode: "+x"
+
+  become: true
+  when: ansible_os_family == "Debian"
+  tags:
+    - packages
+    - apt
+    - install
+
+# Block for arch linux
+- block:
+    - name: Manage pacman packages
+      pacman:
+        name: "{{ pacman }}"
+        state: latest
+      become: true
+
+    - name: Manage yay packages
+      kewlfft.aur.aur:
+        use: yay
+        name: "{{ yay }}"
+        state: latest
+  when: ansible_os_family == "Archlinux"
+  tags:
+    - packages
+    - pacman
+    - yay
+    - install
+
+- name: Include fonts installation tasks
+  include_tasks: fonts.yml
+  tags:
+    - fonts
+    - apt
+    - yay
+    - pacman
+    - brew
+    - packages
+    - install
+
+- name: Manage python packages
+  pip:
+    name: "{{ pip }}"
+    state: "latest"
+    executable: "pip3"
+  when: ansible_os_family != "Archlinux"
+  tags:
+    - install
+    - pip
+    - packages
+
+- name: Install tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+    update: yes
+  tags:
+    - install
+    - packages
+    - tmux
+
+- name: Install magick for image.nvim
+  command: luarocks --lua-version 5.1 install --local magick
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.luarocks/share/lua/5.1/magick/init.lua"
+  environment:
+    PATH: "/home/linuxbrew/.linuxbrew/bin:{{ ansible_env.PATH }}"
+  tags:
+    - install
+    - packages
+    - luarocks
+  when: ansible_os_family == "Debian"

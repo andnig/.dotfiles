@@ -1,0 +1,33 @@
+- name: Git personal setup email
+  git_config:
+    name: user.email
+    scope: global
+    value: "andreas.nigg@devopsandmore.com"
+  tags:
+    - git
+    - install
+- name: Git personal setup name
+  git_config:
+    name: user.name
+    scope: global
+    value: "Andreas Nigg"
+  tags:
+    - git
+    - install
+
+- name: Git set pull rebase to true
+  git_config:
+    name: pull.rebase
+    scope: global
+    value: "false"
+  tags:
+    - git
+    - install
+- name: Git set default branch to master
+  git_config:
+    name: init.defaultBranch
+    scope: global
+    value: "main"
+  tags:
+    - git
+    - install

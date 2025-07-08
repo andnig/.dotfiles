@@ -1,0 +1,35 @@
+---
+casks:
+  - appcleaner
+  - betterzip
+  - docker
+  - flux
+  - flycut
+  - font-fira-code
+  - font-sf-mono-nerd-font
+  - font-fontawesome
+  - font-material-icons
+  - font-fira-code-nerd-font
+  - font-source-code-pro
+  - font-hack-nerd-font
+  - font-jetbrains-mono
+  - inkscape
+  - postman
+  - qlcolorcode
+  - qlmarkdown
+  - qlprettypatch
+  - qlstephen
+  - quicklook-csv
+  - quicklook-json
+  - paintbrush
+  - readdle-spark
+  - rectangle
+  - suspicious-package
+  - webpquicklook
+  - microsoft-onenote
+  - onedrive
+  - microsoft-edge
+  - 1password
+  - displaylink
+  - google-cloud-sdk
+  - nikitabobko/tap/aerospace

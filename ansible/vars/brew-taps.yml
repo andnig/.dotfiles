@@ -1,0 +1,9 @@
+---
+taps:
+  - epk/epk
+  - homebrew/bundle
+  - homebrew/cask-fonts
+  - homebrew/services
+  - jesseduffield/lazygit
+  - koekeishiya/formulae
+  - FelixKratz/formulae

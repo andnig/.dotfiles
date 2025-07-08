@@ -1,0 +1,72 @@
+- block:
+    - name: Add Docker GPG apt Key
+      get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: 0644
+        force: true
+      become: true
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb [signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
+        state: present
+      become: true
+  tags:
+    - docker
+    - install
+    - packages
+    - apt
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Ensure Docker and Docker Compose are installed (pacman)
+      pacman:
+        name:
+          - docker
+          - docker-compose
+          - docker-buildx
+        state: present
+        update_cache: yes
+      become: yes
+
+    - name: Create /etc/docker directory
+      file:
+        path: /etc/docker
+        state: directory
+        mode: "0755"
+      become: yes
+
+    - name: Configure Docker log options to limit log size
+      copy:
+        dest: /etc/docker/daemon.json
+        content: |
+          {
+            "log-driver": "json-file",
+            "log-opts": {
+              "max-size": "10m",
+              "max-file": "5"
+            }
+          }
+        owner: root
+        group: root
+        mode: "0644"
+      become: yes
+
+    - name: Enable Docker service to start at boot
+      systemd:
+        name: docker
+        enabled: yes
+      become: yes
+
+    - name: Add current user to the docker group
+      user:
+        name: "{{ username }}"
+        groups: docker
+        append: yes
+      become: yes
+
+  when: ansible_os_family == "Archlinux"
+  tags:
+    - docker
+    - install
+    - packages

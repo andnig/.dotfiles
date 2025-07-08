@@ -1,0 +1,201 @@
+- block:
+    # Set font_dir for each OS
+    - set_fact:
+        font_dir: "{{ ansible_facts.env.HOME }}/.local/share/fonts"
+      when: ansible_os_family in ["Debian", "Archlinux"]
+
+    - set_fact:
+        font_dir: "{{ ansible_facts.env.HOME }}/Library/Fonts"
+      when: ansible_os_family == "Darwin"
+
+    # Ensure fonts directory exists for all OSes
+    - name: Ensure user fonts directory exists
+      file:
+        path: "{{ font_dir }}"
+        state: directory
+        mode: "0755"
+
+    # ===== Common fonts for all OSes =====
+
+    - name: Get latest version of Nerd Fonts
+      uri:
+        url: "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest"
+        return_content: yes
+      register: latest_version_response
+
+    - name: Set latest version variable
+      set_fact:
+        latest_version: "{{ latest_version_response.json.tag_name }}"
+
+    - name: Download Nerd Fonts Symbols Only zip
+      get_url:
+        url: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ latest_version }}/NerdFontsSymbolsOnly.zip"
+        dest: "/tmp/NerdFontsSymbolsOnly.zip"
+        force: no
+
+    - name: Ensure Nerd Fonts temp directory exists
+      file:
+        path: "/tmp/NerdFontsSymbolsOnly"
+        state: directory
+        mode: "0755"
+
+    - name: Unzip Nerd Fonts Symbols Only
+      unarchive:
+        src: "/tmp/NerdFontsSymbolsOnly.zip"
+        dest: "/tmp/NerdFontsSymbolsOnly"
+        remote_src: yes
+        creates: "/tmp/NerdFontsSymbolsOnly/SymbolsNerdFont-Regular.ttf"
+
+    - name: Find .ttf files in extracted Nerd Fonts directory
+      find:
+        paths: "/tmp/NerdFontsSymbolsOnly"
+        patterns: "*.ttf"
+      register: nerd_font_files
+
+    - name: Copy Nerd Fonts .ttf files to fonts directory
+      copy:
+        src: "{{ item.path }}"
+        dest: "{{ font_dir }}/"
+      loop: "{{ nerd_font_files.files }}"
+      when: nerd_font_files.matched > 0
+
+    # ===== JetBrains Mono font, only on Debian =====
+    - block:
+        - name: Download JetBrains Mono font zip
+          get_url:
+            url: "https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip"
+            dest: "/tmp/JetBrainsMono-2.304.zip"
+            force: no
+
+        - name: Ensure JetBrains Mono temp directory exists
+          file:
+            path: "/tmp/JetBrainsMono"
+            state: directory
+            mode: "0755"
+
+        - name: Unzip JetBrains Mono font
+          unarchive:
+            src: "/tmp/JetBrainsMono-2.304.zip"
+            dest: "/tmp/JetBrainsMono"
+            remote_src: yes
+            creates: "/tmp/JetBrainsMono/fonts/"
+
+        - name: Find .ttf files in JetBrains Mono directory
+          find:
+            paths: "/tmp/JetBrainsMono/fonts/ttf"
+            patterns: "JetBrainsMono*.ttf"
+          register: jetbrains_font_files
+
+        - name: Copy JetBrains Mono .ttf files to fonts directory
+          copy:
+            src: "{{ item.path }}"
+            dest: "{{ font_dir }}/"
+          loop: "{{ jetbrains_font_files.files }}"
+          when: jetbrains_font_files.matched > 0
+      when: ansible_os_family in ["Debian", "Archlinux"]
+
+    # ===== Arch-only fonts =====
+    - block:
+        # --- CaskaydiaMono Nerd Font ---
+        - name: Check if CaskaydiaMono Nerd Font is installed
+          shell: fc-list | grep -qi "CaskaydiaMono Nerd Font"
+          register: caskaydiamono_installed
+          failed_when: false
+          changed_when: false
+
+        - name: Download CascadiaMono.zip if font is missing
+          get_url:
+            url: "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip"
+            dest: "/tmp/CascadiaMono.zip"
+            mode: "0644"
+          when: not caskaydiamono_installed.rc == 0
+
+        - name: Ensure Cascadia temp directory exists
+          file:
+            path: "/tmp/CascadiaFont"
+            state: directory
+            mode: "0755"
+
+        - name: Unzip CascadiaMono.zip if font is missing
+          unarchive:
+            src: "/tmp/CascadiaMono.zip"
+            dest: "/tmp/CascadiaFont"
+            remote_src: yes
+          when: not caskaydiamono_installed.rc == 0
+
+        - name: Copy CascadiaMono Nerd Font files to fonts directory
+          copy:
+            src: "{{ item }}"
+            dest: "{{ font_dir }}/"
+            remote_src: yes
+            mode: "0644"
+          with_items:
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFont-Regular.ttf"
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFont-Bold.ttf"
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFont-Italic.ttf"
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFont-BoldItalic.ttf"
+          when: not caskaydiamono_installed.rc == 0
+
+        - name: Remove CascadiaMono.zip and extracted directory
+          file:
+            path: "{{ item }}"
+            state: absent
+          with_items:
+            - "/tmp/CascadiaMono.zip"
+            - "/tmp/CascadiaFont"
+          when: not caskaydiamono_installed.rc == 0
+
+        # --- iA Writer Mono S ---
+        - name: Check if iA Writer Mono S font is installed
+          shell: fc-list | grep -qi "iA Writer Mono S"
+          register: iawriter_installed
+          failed_when: false
+          changed_when: false
+
+        - name: Download iafonts.zip if font is missing
+          get_url:
+            url: "https://github.com/iaolo/iA-Fonts/archive/refs/heads/master.zip"
+            dest: "/tmp/iafonts.zip"
+            mode: "0644"
+          when: not iawriter_installed.rc == 0
+
+        - name: Ensure iafonts temp directory exists
+          file:
+            path: "/tmp/iaFonts"
+            state: directory
+            mode: "0755"
+
+        - name: Unzip iafonts.zip if font is missing
+          unarchive:
+            src: "/tmp/iafonts.zip"
+            dest: "/tmp/iaFonts"
+            remote_src: yes
+          when: not iawriter_installed.rc == 0
+
+        - name: Copy iA Writer Mono S font files to fonts directory
+          copy:
+            src: "{{ item }}"
+            dest: "{{ font_dir }}/"
+            remote_src: yes
+            mode: "0644"
+          with_fileglob:
+            - "/tmp/iaFonts/iA-Fonts-master/iA Writer Mono/Static/iAWriterMonoS-*.ttf"
+          when: not iawriter_installed.rc == 0
+
+        - name: Remove iafonts.zip and extracted directory
+          file:
+            path: "{{ item }}"
+            state: absent
+          with_items:
+            - "/tmp/iafonts.zip"
+            - "/tmp/iaFonts"
+          when: not iawriter_installed.rc == 0
+
+      when: ansible_os_family == "Archlinux"
+  tags: [install, fonts, packages]
+
+# Single font cache update, only if Linux (as macOS updates font cache automatically)
+- name: Update font cache
+  command: "fc-cache -f -v"
+  when: ansible_os_family in ["Debian", "Archlinux"]
+  tags: [install, fonts, packages]
