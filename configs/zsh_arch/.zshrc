@@ -77,7 +77,6 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # source $ZSH/oh-my-zsh.sh
 
-
 autoload -Uz compinit && compinit
 
 # Manual plugin loading
@@ -235,4 +234,3 @@ bindkey -s ^f "tmux-windowizer.sh\n"
 bindkey -s ^w "tmux-windowizer.sh\n"
 
 eval "$(uv generate-shell-completion zsh)"
-
