@@ -114,3 +114,4 @@ yay:
   - spotify # Music streaming client (AUR: spotify)
   - zoom # Video conferencing client (AUR: zoom)
   - zsh-vi-mode
+  - ttf-ms-win11-auto # Microsoft Fonts

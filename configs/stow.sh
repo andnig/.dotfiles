@@ -29,11 +29,7 @@ if [[ -z $STOW_FOLDERS ]]; then
 	esac
 fi
 
-if [[ -z $DOTFILES ]]; then
-	DOTFILES=$HOME/.dotfiles/configs
-fi
-
-pushd $DOTFILES
+pushd $HOME/.dotfiles/configs
 
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g"); do
 	echo "stow $folder"
