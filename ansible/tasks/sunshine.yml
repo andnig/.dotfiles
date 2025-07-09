@@ -1,0 +1,47 @@
+- block:
+    - name: Add LizardByte repositories to /etc/pacman.conf
+      blockinfile:
+        path: /etc/pacman.conf
+        block: |
+          [lizardbyte]
+          SigLevel = Optional
+          Server = https://github.com/LizardByte/pacman-repo/releases/latest/download
+
+          [lizardbyte-beta]
+          SigLevel = Optional
+          Server = https://github.com/LizardByte/pacman-repo/releases/download/beta
+        insertafter: EOF
+        marker: "# {mark} LizardByte Repos"
+
+    - name: Update pacman package database
+      pacman:
+        update_cache: yes
+
+    - name: Install sunshine
+      pacman:
+        name: sunshine
+        state: present
+
+    - name: Get sunshine binary path
+      shell: readlink -f $(which sunshine)
+      register: sunshine_path
+      changed_when: false
+
+    - name: Set capabilities on sunshine binary
+      capabilities:
+        path: "{{ sunshine_path.stdout }}"
+        capability: cap_sys_admin+p
+        state: present
+
+    - name: Enable sunshine service for user
+      systemd:
+        name: sunshine
+        enabled: yes
+        scope: user
+      become: no
+
+  become: yes
+  when: ansible_os_family == "Archlinux"
+  tags:
+    - install
+    - sunshine

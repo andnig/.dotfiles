@@ -94,6 +94,7 @@ pacman:
   - python-ruff
   - npm
   - impala # UI for wifi selection
+  - sunshine # Streaming server
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)
