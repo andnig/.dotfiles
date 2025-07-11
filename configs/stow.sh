@@ -21,7 +21,7 @@ if [[ -z $STOW_FOLDERS ]]; then
           stow -D config -t $HOME/.config --dir=../omarchy/omarchy
           stow config -t $HOME/.config --dir=../omarchy/omarchy
 
-          STOW_FOLDERS="kitty,nvim,starship,tmux,zsh_arch,ssh,scripts,ripgrep,yazi,lazygit"
+          STOW_FOLDERS="kitty,nvim,starship,tmux,zsh_arch,ssh,scripts,ripgrep,yazi,lazygit,swappy"
           ;;
       esac
     fi       # ← Fix: Close the 'if' before the next ';;'

@@ -95,6 +95,9 @@ pacman:
   - npm
   - impala # UI for wifi selection
   - sunshine # Streaming server
+  - grim # For selecting parts of a window in hyprland
+  - slurp # For taking screenshots
+  - swappy # Screenshot edit utility
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)
