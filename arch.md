@@ -66,3 +66,24 @@ sudo pacman -S xorg-xhost
 xhost si:localuser:root
 sudo howdy test
 ```
+
+## Sunshine
+
+Running sunshine is still a bit manual.
+
+```bash
+systemctl --user start sunshine
+hyprctl output crate headless sunshine
+hyprctl keyword monitor "sunshine,2560x1600@120,auto,2"
+xrandr -q # Note down the id (number) of the headless output (probably 1)
+```
+
+Set the id in the sunshine -> audio/video settings -> "Display Number"
+
+Then, create and dispatch workspace 10 to the headless output:
+
+```bash
+hyprctl dispatch workspace 10
+hyprctl dispatch moveworkspacetomonitor 10 sunshine
+hyprctl dispatch workspace 10
+```

@@ -98,6 +98,7 @@ pacman:
   - grim # For selecting parts of a window in hyprland
   - slurp # For taking screenshots
   - swappy # Screenshot edit utility
+  - meson # Dependency for hyperpm
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)
