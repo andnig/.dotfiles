@@ -99,6 +99,7 @@ pacman:
   - slurp # For taking screenshots
   - swappy # Screenshot edit utility
   - meson # Dependency for hyperpm
+  - fd # Find replacement
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)
@@ -120,3 +121,4 @@ yay:
   - zoom # Video conferencing client (AUR: zoom)
   - zsh-vi-mode
   - ttf-ms-win11-auto # Microsoft Fonts
+  - stripe-cli
