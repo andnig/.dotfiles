@@ -74,6 +74,7 @@ pacman:
   - sushi # File previewer for Nautilus
   - ffmpegthumbnailer # Thumbnailer for videos
   - gnome-calculator # GNOME calculator application
+  - gnome-keyring # GNOME keyring for 2FA
   - chromium # Open source web browser
   - mpv # Video player
   - evince # GNOME document viewer
@@ -98,8 +99,11 @@ pacman:
   - grim # For selecting parts of a window in hyprland
   - slurp # For taking screenshots
   - swappy # Screenshot edit utility
+  - wl-screenrec # Screen recording
   - meson # Dependency for hyperpm
   - fd # Find replacement
+  - uwsm # Universal wayland session manager. Wraps wayland compositors into systemd units.
+  - ufw # Firewall
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)
@@ -122,3 +126,4 @@ yay:
   - zsh-vi-mode
   - ttf-ms-win11-auto # Microsoft Fonts
   - stripe-cli
+  - ufw-docker # Ufw firewall for docker

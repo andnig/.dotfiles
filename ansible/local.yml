@@ -75,6 +75,7 @@
       when: ansible_os_family == "Debian"
     - import_tasks: tasks/sunshine.yml
       when: ansible_os_family == "Archlinux"
+    - import_tasks: tasks/ufw.yml
   roles:
     - role: ecgalaxy.vscode
       include_vars:

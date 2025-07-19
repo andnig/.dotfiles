@@ -134,6 +134,10 @@
             - "/tmp/CascadiaFont/CaskaydiaMonoNerdFont-Bold.ttf"
             - "/tmp/CascadiaFont/CaskaydiaMonoNerdFont-Italic.ttf"
             - "/tmp/CascadiaFont/CaskaydiaMonoNerdFont-BoldItalic.ttf"
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFontPropo-Regular.ttf"
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFontPropo-Bold.ttf"
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFontPropo-Italic.ttf"
+            - "/tmp/CascadiaFont/CaskaydiaMonoNerdFontPropo-BoldItalic.ttf"
           when: not caskaydiamono_installed.rc == 0
 
         - name: Remove CascadiaMono.zip and extracted directory

@@ -74,8 +74,9 @@ Running sunshine is still a bit manual.
 ```bash
 systemctl --user start sunshine
 hyprctl output crate headless sunshine
-hyprctl keyword monitor "sunshine,2560x1600@120,auto,2"
-xrandr -q # Note down the id (number) of the headless output (probably 1)
+hyprctl keyword monitor "sunshine,2560x1600@120,auto,1.25"
+xrandr -q
+# Note down the id (number) of the headless output (probably 1)
 ```
 
 Set the id in the sunshine -> audio/video settings -> "Display Number"

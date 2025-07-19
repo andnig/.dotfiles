@@ -18,6 +18,24 @@
         update_cache: yes
       become: yes
 
+    - name: Enable Color option in pacman.conf
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: '^#?Color'
+        line: 'Color'
+        insertafter: '^\[options\]'
+        state: present
+      become: yes
+
+    - name: Enable ILoveCandy option in pacman.conf
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: '^#?ILoveCandy'
+        line: 'ILoveCandy'
+        insertafter: '^\[options\]'
+        state: present
+      become: yes
+
     - name: Clone yay from AUR
       git:
         repo: https://aur.archlinux.org/yay.git

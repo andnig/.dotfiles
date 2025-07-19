@@ -24,6 +24,15 @@
         mode: "0644"
       become: yes
 
+    - name: Install omarchy init scripts (each script, ignore failure)
+      shell: ./omarchy/omarchy/install/{{ item }}
+      args:
+        chdir: "{{ dotfiles_dir }}"
+      ignore_errors: yes
+      loop:
+        - plymouth.sh
+      tags: [install, dotfiles, omarchy, omarchyextras]
+
     - name: Write ~/.XCompose with Omarchy includes and ID
       copy:
         dest: "{{ lookup('env','HOME') }}/.XCompose"
@@ -36,6 +45,32 @@
         owner: "{{ lookup('env','USER') }}"
         group: "{{ lookup('env','USER') }}"
         mode: "0644"
+
+    - name: Ensure /etc/gnupg directory exists
+      file:
+        path: /etc/gnupg
+        state: directory
+        mode: "0755"
+      become: yes
+
+    - name: Copy dirmngr.conf to /etc/gnupg/
+      copy:
+        src: "{{ lookup('env','HOME') }}/.local/share/omarchy/default/gpg/dirmngr.conf"
+        dest: /etc/gnupg/dirmngr.conf
+        owner: root
+        group: root
+        mode: "0644"
+      become: yes
+
+    - name: Kill dirmngr process
+      command: gpgconf --kill dirmngr
+      become: yes
+      failed_when: false
+
+    - name: Launch dirmngr process
+      command: gpgconf --launch dirmngr
+      become: yes
+      failed_when: false
   when: ansible_os_family == "Archlinux"
   tags:
     - install
