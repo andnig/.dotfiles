@@ -3,10 +3,11 @@
       pacman:
         name:
           - hyprland
-          - wofi
           - waybar
           - mako
           - swaybg
+          - libqalculate
+          - swayosd
           - xdg-desktop-portal-hyprland
           - xdg-desktop-portal-gtk
         state: present
@@ -21,6 +22,7 @@
           - hyprlock
           - hypridle
           - polkit-gnome
+          - walker-bin
           - hyprland-qtutils
         state: present
 

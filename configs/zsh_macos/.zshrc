@@ -104,6 +104,9 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+alias jq="sed -E 's/[\x00-\x1F\x7F]//g' | tr -d '\000-\037' | jq"
+
 eval $(/opt/homebrew/bin/brew shellenv)
 
 
