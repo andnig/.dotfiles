@@ -5,6 +5,17 @@ It provides a nice, minimal opinionated setup for Arch Linux. However, we
 are not going to use it directly, as it's a bit too opinionated, so we
 keep it as a git submodule and then only fetch the files we need.
 
+## Tailscale
+
+Use systemctl to enable and start the service:
+sudo systemctl enable --now tailscaled
+
+Connect your machine to your Tailscale network and authenticate in your browser:
+sudo tailscale up
+
+You can find your Tailscale IPv4 address by running:
+tailscale ip -4
+
 ## "Windows Hello" like face recognition auth
 
 Use howdy for that.
