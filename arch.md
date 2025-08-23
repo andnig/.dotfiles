@@ -98,3 +98,30 @@ hyprctl dispatch workspace 10
 hyprctl dispatch moveworkspacetomonitor 10 sunshine
 hyprctl dispatch workspace 10
 ```
+
+## 1Password
+
+1Password is installed. If there are issues with storing 2FA tokens, try:
+
+```bash
+# Check if gnome-keyring is running
+systemctl --user status gnome-keyring-daemon.socket
+# If not, enable and start it
+systemctl --user enable --now gnome-keyring-daemon.socket
+
+# Create a test key (to set up the default keyring)
+secret-tool store --label="test" testkey testvalue
+# Retrieve the test key
+secret-tool lookup testkey testvalue
+# Remove the test key
+secret-tool clear testkey testvalue
+```
+
+Now restart the 1Password app and see if it works.
+
+### Setting up the 1Password Agent
+
+1. Make sure you have an SSH key added to your 1Password account.
+2. Open the 1Password app, then select your account or collection at the top of the sidebar and select Settings > Developer.
+   Select Set Up SSH Agent, then choose whether or not you want to display SSH key names when you authorize connections.
+3. Also selct "Integrate with 1Password CLI"

@@ -159,20 +159,22 @@ function ntfy() {
 } 
 
 # SSH Agent
-export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOST.sock
-ALREADY_RUNNING=$(ssh-add -l > /dev/null; echo $?)
-
-if [[ $ALREADY_RUNNING != "0" ]]; then
-    if [[ -S $SSH_AUTH_SOCK ]]; then
-        # not expecting the socket to exist as the forwarding command isn't running (http://www.tldp.org/LDP/abs/html/fto.html)
-        rm $SSH_AUTH_SOCK
-    fi
-    ssh-add -l 2>/dev/null >/dev/null
-    if [ $? -ge 2 ]; then
-        ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
-        ssh-add
-    fi
-fi
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+# Alternative: If you don't want to use the 1Password SSH agent, you can use the following code to start a local ssh-agent and add your keys to ~/.ssh/.
+# export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOST.sock
+# ALREADY_RUNNING=$(ssh-add -l > /dev/null; echo $?)
+#
+# if [[ $ALREADY_RUNNING != "0" ]]; then
+#     if [[ -S $SSH_AUTH_SOCK ]]; then
+#         # not expecting the socket to exist as the forwarding command isn't running (http://www.tldp.org/LDP/abs/html/fto.html)
+#         rm $SSH_AUTH_SOCK
+#     fi
+#     ssh-add -l 2>/dev/null >/dev/null
+#     if [ $? -ge 2 ]; then
+#         ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+#         ssh-add
+#     fi
+# fi
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -191,6 +193,13 @@ fi
 
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
+fi
+
+# 1Password
+eval "$(op completion zsh)"; compdef _op op
+# sign in to 1Password account if not already signed in
+if ! op account list &> /dev/null; then
+  eval "$(op signin)"
 fi
 
 # n version manager
@@ -217,9 +226,9 @@ export CUDA_HOME=/usr/local/cuda-12.8
 export PATH="$HOME/.dotnet:$PATH"
 export DOTNET_ROOT="$(dirname $(which dotnet))"
 
-export OPENAI_API_KEY=$(cat ~/.secrets/rmopenai.secret)
+# export OPENAI_API_KEY=$(op read 'op://personal/fmttrscnldn4rbsgrhvgj6qnae/password')
 # export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
-export GEMINI_API_KEY=$(cat ~/.secrets/gemini.secret)
+# export GEMINI_API_KEY=$(op read 'op://personal/l63esue26zwv22e75cgnazid2m/password')
 
 # export XDG_RUNTIME_DIR="/tmp/"
 
