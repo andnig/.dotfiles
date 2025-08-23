@@ -109,6 +109,7 @@ pacman:
   - libappindicator-gtk3 # Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)
   - hplip # Drivers for HP printers
   - tailscale # VPN service
+  - doxx # view word documents in terminal
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)

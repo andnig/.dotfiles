@@ -118,7 +118,6 @@ alias jq="sed -E 's/[\x00-\x1F\x7F]//g' | tr -d '\000-\037' | jq"
 
 alias ssh="TERM=screen ssh"
 alias vim=nvim
-alias fd="fdfind"
 
 alias fo=find_and_open.sh
 alias on="cd $HOME/.notes && nvim ."
@@ -219,7 +218,7 @@ export PATH="$HOME/.dotnet:$PATH"
 export DOTNET_ROOT="$(dirname $(which dotnet))"
 
 export OPENAI_API_KEY=$(cat ~/.secrets/rmopenai.secret)
-export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
+# export ANTHROPIC_API_KEY=$(cat ~/.secrets/anthropic.secret)
 export GEMINI_API_KEY=$(cat ~/.secrets/gemini.secret)
 
 # export XDG_RUNTIME_DIR="/tmp/"
