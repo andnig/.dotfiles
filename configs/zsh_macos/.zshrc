@@ -92,6 +92,8 @@ else
   export EDITOR='nvim'
 fi
 
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
