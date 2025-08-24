@@ -36,7 +36,6 @@ pacman:
   - krew # Plugin manager for kubectl
   - neovim # Modern Vim-based text editor
   - python-pynvim # Python support for (Neo)Vim plugins
-  # === added missing from apt/brew
   - ca-certificates # SSL root certificates
   - gnupg # GnuPG encryption tool
   - fontconfig # Font configuration library
@@ -110,6 +109,8 @@ pacman:
   - hplip # Drivers for HP printers
   - tailscale # VPN service
   - doxx # view word documents in terminal
+  - yq # Allows yaml parsing
+  - seahorse # GUI for keyring management
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)
