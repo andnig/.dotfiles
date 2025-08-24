@@ -16,6 +16,16 @@ sudo tailscale up
 You can find your Tailscale IPv4 address by running:
 tailscale ip -4
 
+## Set up FIDO2 authentication
+
+If you have a Fido-token you can use it for sudo authentication. Use the
+omarchy menu to install it
+
+## Set up Fingerprint reader
+
+If you have a fingerprint reader, you can use it for sudo authentication
+as well as user login. Use the omarchy menu to install it.
+
 ## "Windows Hello" like face recognition auth
 
 Use howdy for that.
@@ -124,4 +134,46 @@ Now restart the 1Password app and see if it works.
 1. Make sure you have an SSH key added to your 1Password account.
 2. Open the 1Password app, then select your account or collection at the top of the sidebar and select Settings > Developer.
    Select Set Up SSH Agent, then choose whether or not you want to display SSH key names when you authorize connections.
-3. Also selct "Integrate with 1Password CLI"
+3. Also select "Integrate with 1Password CLI"
+
+## Zen Browser
+
+Initially, there are some manual steps to do:
+
+1. Create new workspaces for the zen browser:
+   a. One for private/general purpose browsing
+   b. One for Pondhouse
+   c. One for DevOps and More
+   d. One for Russmedia (deprecated)
+
+2. Open zen browser in each workspace and log in to the respective accounts.
+
+3. Add outlook, teams and sharepoint to "Essentials" (these are pinned to the sidebar).
+
+## Chromium
+
+Chromium is used for launching web apps (like Teams), as chromium allows for
+border-less windows. For this, we also need respective profiles and logins.
+
+The profiles are part of the dotfiles, but you need to log in manually.
+
+Run all of these commands once and login to the respective accounts:
+
+```bash
+chromium --profile-directory="Profile 1"
+chromium --profile-directory="Profile 2"
+chromium --profile-directory="Profile 3"
+chromium --profile-directory="Profile 4"
+```
+
+## Syncthing
+
+Open syncthing in your Pixel 6 and the web interface of the new computer on localhost:8384.
+On Pixel 6, add the new device - when asked for confirmation on the new device
+select "introducer" ("Verteilergeraet") - this automatically connects with all
+other devices Pixel 6 is synced.
+Add the shared folders on Pixel 6 as normal.
+(If the web ui cant be reached, look at `systemctl status syncthing@andreas` for
+info on which port the ui runs).
+
+##
