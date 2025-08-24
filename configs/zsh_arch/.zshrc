@@ -1,6 +1,13 @@
 source ~/source/shell
 source ~/source/functions
 
+if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
+  export KITTY_SHELL_INTEGRATION="enabled"
+  autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+  kitty-integration
+  unfunction kitty-integration
+fi
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
