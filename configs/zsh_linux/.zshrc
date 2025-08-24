@@ -105,6 +105,8 @@ export WINDOWS_DOWNLOADS="/mnt/c/Users/$WINDOWS_USERNAME/Downloads"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias jq="sed -E 's/[\x00-\x1F\x7F]//g' | tr -d '\000-\037' | jq"
+
 alias r="radian"
 alias ssh="TERM=screen ssh"
 alias vim=nvim

@@ -1,0 +1,87 @@
+- name: Configure UFW firewall
+  block:
+    - name: Set default deny incoming policy
+      command: ufw default deny incoming
+      become: yes
+
+    - name: Set default allow outgoing policy
+      command: ufw default allow outgoing
+      become: yes
+
+    - name: Allow LocalSend UDP port 53317
+      command: ufw allow 53317/udp
+      become: yes
+
+    - name: Allow LocalSend TCP port 53317
+      command: ufw allow 53317/tcp
+      become: yes
+
+    - name: Allow SSH incoming on port 22
+      command: ufw allow 22/tcp
+      become: yes
+
+    - name: Allow Docker containers to use DNS on host
+      command: ufw allow in on docker0 to any port 53
+      become: yes
+
+    # Syncthing default ports
+    - name: Allow Syncthing sync protocol
+      command: ufw allow 22000/tcp
+      become: yes
+
+    - name: Allow Syncthing sync protocol
+      command: ufw allow 22000/udp
+      become: yes
+
+    - name: Allow Syncthing discovery
+      command: ufw allow 21027/udp
+      become: yes
+
+    # Custom TCP ports
+    - name: Allow custom port 47984/tcp
+      command: ufw allow 47984/tcp
+      become: yes
+
+    - name: Allow custom port 47989/tcp
+      command: ufw allow 47989/tcp
+      become: yes
+
+    - name: Allow custom port 48010/tcp
+      command: ufw allow 48010/tcp
+      become: yes
+
+    # Custom UDP ports
+    - name: Allow custom port 47998/udp
+      command: ufw allow 47998/udp
+      become: yes
+
+    - name: Allow custom port 47999/udp
+      command: ufw allow 47999/udp
+      become: yes
+
+    - name: Allow custom port 48000/udp
+      command: ufw allow 48000/udp
+      become: yes
+
+    - name: Allow custom port 48002/udp
+      command: ufw allow 48002/udp
+      become: yes
+
+    - name: Allow custom port 48010/udp
+      command: ufw allow 48010/udp
+      become: yes
+
+    - name: Enable UFW firewall
+      command: ufw --force enable
+      become: yes
+
+    - name: Install ufw-docker
+      command: ufw-docker install
+      become: yes
+
+    - name: Reload UFW configuration
+      command: ufw reload
+      become: yes
+  tags:
+    - install
+    - ufw

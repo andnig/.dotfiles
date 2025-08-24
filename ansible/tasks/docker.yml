@@ -65,6 +65,29 @@
         append: yes
       become: yes
 
+    - name: Create systemd override directory for Docker service
+      file:
+        path: /etc/systemd/system/docker.service.d
+        state: directory
+        mode: "0755"
+      become: yes
+
+    - name: Configure Docker to not block boot for network-online.target
+      copy:
+        dest: /etc/systemd/system/docker.service.d/no-block-boot.conf
+        content: |
+          [Unit]
+          DefaultDependencies=no
+        owner: root
+        group: root
+        mode: "0644"
+      become: yes
+
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: yes
+      become: yes
+
   when: ansible_os_family == "Archlinux"
   tags:
     - docker

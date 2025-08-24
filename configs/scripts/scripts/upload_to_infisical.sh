@@ -3,7 +3,7 @@
 # Function to display help message
 show_help() {
   cat <<EOF
-Usage: $(basename "$0") <env_file_path> <environment>
+Usage: $(basename "$0") [--project-id PROJECT_ID] <env_file_path> <environment>
 
 Import environment variables from a .env file to Infisical.
 
@@ -11,8 +11,12 @@ Arguments:
     env_file_path    Path to the .env file containing the variables
     environment      Target environment in Infisical (e.g., dev, prod, staging)
 
-Example:
+Options:
+    --project-id     Optional project ID to specify the target Infisical project
+
+Examples:
     $(basename "$0") /path/to/.env production
+    $(basename "$0") --project-id abc123 /path/to/.env production
 
 Notes:
     - The .env file should contain variables in KEY=VALUE format
@@ -22,24 +26,49 @@ Notes:
 EOF
 }
 
-# Check for help flag
-if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-  show_help
-  exit 0
-fi
+# Initialize variables
+PROJECT_ID=""
+ENV_FILE=""
+ENV=""
 
-# Check if the correct number of arguments is provided
-if [ $# -ne 2 ]; then
-  echo "Error: Exactly two arguments are required"
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -h|--help)
+      show_help
+      exit 0
+      ;;
+    --project-id)
+      if [ -z "$2" ]; then
+        echo "Error: --project-id requires a value"
+        echo "Try '$(basename "$0") --help' for more information"
+        exit 1
+      fi
+      PROJECT_ID="$2"
+      shift 2
+      ;;
+    *)
+      # Positional arguments
+      if [ -z "$ENV_FILE" ]; then
+        ENV_FILE="$1"
+      elif [ -z "$ENV" ]; then
+        ENV="$1"
+      else
+        echo "Error: Too many arguments"
+        echo "Try '$(basename "$0") --help' for more information"
+        exit 1
+      fi
+      shift
+      ;;
+  esac
+done
+
+# Check if required arguments are provided
+if [ -z "$ENV_FILE" ] || [ -z "$ENV" ]; then
+  echo "Error: Both env_file_path and environment are required"
   echo "Try '$(basename "$0") --help' for more information"
   exit 1
 fi
-
-# Path to your .env file from the first argument
-ENV_FILE="$1"
-
-# Environment from the second argument
-ENV="$2"
 
 # Check if the file exists
 if [ ! -f "$ENV_FILE" ]; then
@@ -68,7 +97,11 @@ while IFS= read -r line || [ -n "$line" ]; do
     fi
 
     # Set the secret in Infisical with the potentially modified value
-    infisical secrets set "$key=$value" --env "$ENV"
+    if [ -n "$PROJECT_ID" ]; then
+      infisical secrets set "$key=$value" --env "$ENV" --projectId "$PROJECT_ID"
+    else
+      infisical secrets set "$key=$value" --env "$ENV"
+    fi
   fi
 done <"$ENV_FILE"
 

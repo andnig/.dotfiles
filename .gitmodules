@@ -1,3 +1,4 @@
-[submodule "omarchy"]
-	path = omarchy
+[submodule "omarchy/omarchy"]
+	path = omarchy/omarchy
 	url = git@github.com:andnig/omarchy.git
+	branch = dev

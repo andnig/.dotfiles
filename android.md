@@ -25,14 +25,3 @@ devices.
    ```
 
 9. Copy the files from ./.secrets/ to /sdcard/secrets/.
-10. For taskserver, run the following commands
-
-    ```bash
-    task config taskd.certificate -- /sdcard/secrets/task.andreas_nigg.cert.pem
-    task config taskd.key -- /sdcard/secrets/task.andreas_nigg.key.pem
-    task config taskd.ca -- /sdcard/secrets/task.ca.cert.pem
-    task config taskd.server -- tasks.devopsandmore.com:53589
-    task config taskd.credentials -- devopsandmore/Andreas Nigg/210de195-3cf3-4b91-b18d-e54450048630
-    ```
-
-11. Run `task sync init`

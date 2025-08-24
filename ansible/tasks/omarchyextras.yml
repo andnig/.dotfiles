@@ -1,6 +1,6 @@
 - block:
     - name: Install omarchy extras (each script, ignore failure)
-      shell: ./omarchy/install/{{ item }}
+      shell: ./omarchy/omarchy/install/{{ item }}
       args:
         chdir: "{{ dotfiles_dir }}"
       ignore_errors: yes
@@ -9,8 +9,7 @@
         - power.sh
         - theme.sh
         - webapps.sh
-        - backgrounds.sh
-      tags: [install, dotfiles, omarchy]
+      tags: [install, dotfiles, omarchy, omarchyextras]
 
     - name: Source omarchy-sync-applications if present (ignore errors)
       shell: |
@@ -24,4 +23,5 @@
         - install
         - dotfiles
         - omarchy
+        - omarchyextras
   when: ansible_os_family == "Archlinux"

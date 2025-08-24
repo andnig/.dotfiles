@@ -207,17 +207,25 @@
 - block:
     - name: Manage pacman packages
       pacman:
-        upgrade: yes
         name: "{{ pacman }}"
         state: latest
       become: true
 
     - name: Manage yay packages
       kewlfft.aur.aur:
-        upgrade: yes
         use: yay
         name: "{{ yay }}"
         state: latest
+
+    - name: Enable Syncthing service for local user
+      systemd:
+        name: syncthing@{{ username }}.service
+        enabled: yes
+
+    - name: Start Syncthing service for local user
+      systemd:
+        name: syncthing@{{ username }}.service
+        state: started
   when: ansible_os_family == "Archlinux"
   tags:
     - packages

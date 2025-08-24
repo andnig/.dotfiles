@@ -40,6 +40,7 @@
 - **ntfy** for sending push notifications like `http POST https://ntfy.devopsandmore.com/devops_notify <<< "Hi. push"`
   - alias: `ntfy 'your message here'`
 - **encrypt_folder.sh** to encrypt all files in a folder. Use `--decrypt` to decrypt all files in folder
+- **doxx**: View word docs in terminal: `doxx <file.docx>`
 
 ## General
 
