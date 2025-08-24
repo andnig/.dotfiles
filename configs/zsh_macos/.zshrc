@@ -92,6 +92,8 @@ else
   export EDITOR='nvim'
 fi
 
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -192,7 +194,9 @@ alias vim=nvim
 export NOTES="$HOME/.notes"
 export TASKS="$HOME/.tasks"
 export DOTFILES="$HOME/.dotfiles"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/homebrew/lib"
