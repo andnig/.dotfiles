@@ -90,6 +90,16 @@ sudo howdy test
 
 ## Sunshine
 
+1. On first login to sunshine, create the username/password
+2. Copy this to `~/.config/sunshine/sunshine.conf`
+
+   ```ini
+    global_prep_cmd = [{"do":"hyprctl output create headless sunshine","undo":""},{"do":"hyprctl keyword monitor \"sunshine,2560x1600@120,auto,1.25\"","undo":""},{"do":"hyprctl dispatch moveworkspacetomonitor 10 sunshine","undo":""},{"do":"hyprctl dispatch workspace 10","undo":""}]
+    nvenc_preset = 6
+    output_name = 1
+    stream_audio = true
+   ```
+
 Running sunshine is still a bit manual.
 
 ```bash

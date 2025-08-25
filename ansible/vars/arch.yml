@@ -94,7 +94,6 @@ pacman:
   - python-ruff
   - npm
   - impala # UI for wifi selection
-  - sunshine # Streaming server
   - grim # For selecting parts of a window in hyprland
   - slurp # For taking screenshots
   - swappy # Screenshot edit utility
@@ -111,6 +110,7 @@ pacman:
   - doxx # view word documents in terminal
   - yq # Allows yaml parsing
   - seahorse # GUI for keyring management
+  - tree-sitter-cli # CLI for treesitter
 
 yay:
   - pinta # Simple drawing/editing program (like Paint.NET)
@@ -134,3 +134,4 @@ yay:
   - ttf-ms-win11-auto # Microsoft Fonts
   - stripe-cli
   - ufw-docker # Ufw firewall for docker
+  - sunshine # Streaming server
