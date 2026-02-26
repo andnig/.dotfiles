@@ -5,7 +5,7 @@ to use notes, scripts and taskwarrior in sync between Android and all the other
 devices.
 
 1. Install [Termux](https://termux.com/) and [Termux:API](https://play.google.com/store/apps/details?id=com.termux)
-2. Make sure the app has storage permission
+2. Make sure the app has storage permission (run `termux-setup-storage` in termux)
 3. Run the termux app
 4. Install the [syncthing app](https://play.google.com/store/search?q=syncthing)
 5. In Syncthing add all the devices to sync. Make sure that the following folders
